@@ -14,121 +14,8 @@
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Courier Details</h5>
                 </div>
-
-                <div class="courier-grid">
-
-                    <div class="form-group">
-                        <label>Received Date <span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter Received Date"
-                            [(ngModel)]="ReceivedDate" #receive="ngModel" name="ReceivedDate" required
-                            [class.error]="receive.invalid && receive.touched">
-
-                        <small class="error-text" *ngIf="receive.invalid && receive.touched">
-                            Mandatory Field
-                        </small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Received By <span>*</span></label>
-
-                        <select class="form-select" [(ngModel)]="receivedBy" #inward="ngModel" name="receivedBy"
-                            required [class.error]="inward.invalid && inward.touched">
-
-                            <option value="" disabled>-- Select --</option>
-                            <option value="1">Inward</option>
-                            <option value="2">Outward</option>
-
-                        </select>
-
-                        <small class="error-text" *ngIf="inward.invalid && inward.touched">
-                            Mandatory Field
-                        </small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Received From <span>*</span></label>
-
-                        <select class="form-select" [(ngModel)]="receivedFrom" #received="ngModel" name="receivedFrom"
-                            required [class.error]="received.invalid && received.touched">
-
-                            <option value="" disabled>-- Select --</option>
-                            <option value="1">Agency 1</option>
-                            <option value="2">Agency 2</option>
-
-                        </select>
-
-                        <small class="error-text" *ngIf="received.invalid && received.touched">
-                            Mandatory Field
-                        </small>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label>Courier Agency Name <span>*</span></label>
-
-                        <input type="text" class="form-control" placeholder="Enter Courier Agency Name"
-                            [(ngModel)]="agencyName" #agency="ngModel" name="agencyName" required
-                            [class.error]="agency.invalid && agency.touched">
-
-                        <small class="error-text" *ngIf="agency.invalid && agency.touched">
-                            Mandatory Field
-                        </small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>AWB Number <span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Enter AWB Number" [(ngModel)]="awbNumber"
-                            #awb="ngModel" name="awbNumber" required [class.error]="awb.invalid && awb.touched">
-
-                        <small class="error-text" *ngIf="awb.invalid && awb.touched">
-                            Mandatory Field
-                        </small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>State</label>
-                        <select class="form-select" required>
-                            <option value="" selected disabled>-- Select State --</option>
-                            <option value="1">Maharashtra</option>
-                            <option value="2">Bihar</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>City</label>
-                        <select class="form-select" required>
-                            <option value="" selected disabled>-- Select City --</option>
-                            <option value="1">Mumbai</option>
-                            <option value="2">Pune</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Remarks</label>
-                        <input type="text" class="form-control" placeholder="Enter Remarks">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Document HandOver To <span>*</span></label>
-
-                        <select class="form-select" [(ngModel)]="handOverTo" #handover="ngModel" name="handOverTo"
-                            required [class.error]="handover.invalid && handover.touched">
-
-                            <option value="" disabled>-- Select --</option>
-                            <option value="1">Agency 1</option>
-                            <option value="2">Agency 2</option>
-
-                        </select>
-
-                        <small class="error-text" *ngIf="handover.invalid && handover.touched">
-                            Mandatory Field
-                        </small>
-                    </div>
-
-                </div>
-
+                <app-dynamic-form [form]="courierForm" [fields]="courierfields"></app-dynamic-form>
             </div>
-
             <!-- accordion -->
             <div class="custom-accordion mt-3">
                 <!-- Proposal Details -->
@@ -143,308 +30,13 @@
                         </i>
                     </div>
 
-                    <div class="accordion-body" *ngIf="openedSection === 'proposal'">
+                    <div class="accordion-body" [hidden]="openedSection !== 'proposal'">
                         <!-- Your Proposal Form Here -->
-                        <div class="courier-grid">
-
-                            <!-- Proposal No -->
-                            <div class="form-group">
-                                <label>Proposal No <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter Proposal Number"
-                                    [(ngModel)]="proposalNo" #proposal="ngModel" name="proposalNo" required
-                                    [class.error]="proposal.invalid && proposal.touched">
-
-                                <small class="error-text" *ngIf="proposal.invalid && proposal.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Product Name -->
-                            <div class="form-group">
-                                <label>Product Name <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="productName" #product="ngModel"
-                                    name="productName" required [class.error]="product.invalid && product.touched">
-
-                                    <option value="" disabled>-- Select Product --</option>
-                                    <option value="SBI Life - Smart Platina Advantage">
-                                        SBI Life - Smart Platina Advantage
-                                    </option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="product.invalid && product.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Proposal Category -->
-                            <div class="form-group">
-                                <label>Proposal Category <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="proposalCategory" #category="ngModel"
-                                    name="proposalCategory" required
-                                    [class.error]="category.invalid && category.touched">
-
-                                    <option value="" disabled>-- Select Category --</option>
-                                    <option value="Individual">Individual</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="category.invalid && category.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- First Name -->
-                            <div class="form-group">
-                                <label>First Name <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter First Name"
-                                    [(ngModel)]="firstName" #first="ngModel" name="firstName" required
-                                    [class.error]="first.invalid && first.touched">
-
-                                <small class="error-text" *ngIf="first.invalid && first.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Middle Name -->
-                            <div class="form-group">
-                                <label>Middle Name</label>
-
-                                <input type="text" class="form-control" placeholder="Enter Middle Name"
-                                    [(ngModel)]="middleName" name="middleName">
-                            </div>
-
-                            <!-- Last Name -->
-                            <div class="form-group">
-                                <label>Last Name <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter Last Name"
-                                    [(ngModel)]="lastName" #last="ngModel" name="lastName" required
-                                    [class.error]="last.invalid && last.touched">
-
-                                <small class="error-text" *ngIf="last.invalid && last.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Sum Assured -->
-                            <div class="form-group">
-                                <label>Sum Assured</label>
-
-                                <input type="number" class="form-control" placeholder="Enter Sum Assured"
-                                    [(ngModel)]="sumAssured" name="sumAssured">
-                            </div>
-
-                            <!-- Premium Amount -->
-                            <div class="form-group">
-                                <label>Premium Amount <span>*</span></label>
-
-                                <input type="number" class="form-control" placeholder="Enter Premium Amount"
-                                    [(ngModel)]="premiumAmount" #premium="ngModel" name="premiumAmount" required
-                                    [class.error]="premium.invalid && premium.touched">
-
-                                <small class="error-text" *ngIf="premium.invalid && premium.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Frequency -->
-                            <div class="form-group">
-                                <label>Frequency <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="frequency" #freq="ngModel" name="frequency"
-                                    required [class.error]="freq.invalid && freq.touched">
-
-                                    <option value="" disabled>-- Select Frequency --</option>
-                                    <option>Yearly</option>
-                                    <option>Half Yearly</option>
-                                    <option>Quarterly</option>
-                                    <option>Monthly</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="freq.invalid && freq.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Defence -->
-                            <div class="form-group">
-                                <label>Are you serving in Defence?</label>
-
-                                <select class="form-select" [(ngModel)]="defence" name="defence">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-                            </div>
-
-                            <!-- Occupation -->
-                            <div class="form-group">
-                                <label>Occupation <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="occupation" #occupationRef="ngModel"
-                                    name="occupation" required
-                                    [class.error]="occupationRef.invalid && occupationRef.touched">
-
-                                    <option value="" disabled>-- Select Occupation --</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="occupationRef.invalid && occupationRef.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Mobile -->
-                            <div class="form-group">
-                                <label>Mobile No <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter Mobile Number"
-                                    [(ngModel)]="mobileNo" #mobile="ngModel" name="mobileNo" required minlength="10"
-                                    maxlength="10" [class.error]="mobile.invalid && mobile.touched">
-
-                                <small class="error-text" *ngIf="mobile.invalid && mobile.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Alternate Mode Registration -->
-                            <div class="form-group">
-                                <label>Alternate Mode Registration <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="alternateModeRegistration" #alternate="ngModel"
-                                    name="alternateModeRegistration" required
-                                    [class.error]="alternate.invalid && alternate.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="alternate.invalid && alternate.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Benefit Illustration -->
-                            <div class="form-group">
-                                <label>Benefit Illustration <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="benefitIllustration" #benefit="ngModel"
-                                    name="benefitIllustration" required
-                                    [class.error]="benefit.invalid && benefit.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="benefit.invalid && benefit.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Need Analysis -->
-                            <div class="form-group">
-                                <label>Need Analysis <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="needAnalysis" #need="ngModel"
-                                    name="needAnalysis" required [class.error]="need.invalid && need.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="need.invalid && need.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- FACTA Form -->
-                            <div class="form-group">
-                                <label>FACTA Form <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="factaForm" #facta="ngModel" name="factaForm"
-                                    required [class.error]="facta.invalid && facta.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="facta.invalid && facta.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- PAN Copy -->
-                            <div class="form-group">
-                                <label>PAN Copy <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="panCopy" #pan="ngModel" name="panCopy" required
-                                    [class.error]="pan.invalid && pan.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="pan.invalid && pan.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Form 60 -->
-                            <div class="form-group">
-                                <label>Form 60 <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="form60" #form="ngModel" name="form60" required
-                                    [class.error]="form.invalid && form.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="form.invalid && form.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Bank Document Details -->
-                            <div class="form-group">
-                                <label>Bank Document Details <span>*</span></label>
-
-                                <select class="form-select" [(ngModel)]="bankDocument" #bankdetails="ngModel"
-                                    name="bankDocument" required
-                                    [class.error]="bankdetails.invalid && bankdetails.touched">
-
-                                    <option value="" disabled>-- Select --</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="bankdetails.invalid && bankdetails.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="proposalForm" [fields]="proposalfields"></app-dynamic-form>
                         </div>
+
+
                     </div>
                 </div>
 
@@ -460,107 +52,10 @@
                         </i>
                     </div>
 
-                    <div class="accordion-body" *ngIf="openedSection === 'channel'">
-                        <div class="courier-grid">
+                    <div class="accordion-body" [hidden]="openedSection !== 'channel'">
 
-                            <!-- Channel -->
-                            <div class="form-group">
-                                <label>Channel <span>*</span></label>
+                        <app-dynamic-form [form]="channelForm" [fields]="channelfields"></app-dynamic-form>
 
-                                <select class="form-select" [(ngModel)]="channel" #channelRef="ngModel" name="channel"
-                                    required [class.error]="channelRef.invalid && channelRef.touched">
-
-                                    <option value="" disabled>-- Select Channel --</option>
-                                    <option value="Agent">Agent</option>
-                                    <option value="Broker">Broker</option>
-                                    <option value="Direct">Direct</option>
-
-                                </select>
-
-                                <small class="error-text" *ngIf="channelRef.invalid && channelRef.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- IA Code -->
-                            <div class="form-group">
-                                <label>IA Code <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter IA Code" [(ngModel)]="iaCode"
-                                    #iaCodeRef="ngModel" name="iaCode" required
-                                    [class.error]="iaCodeRef.invalid && iaCodeRef.touched">
-
-                                <small class="error-text" *ngIf="iaCodeRef.invalid && iaCodeRef.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- IA Name -->
-                            <div class="form-group">
-                                <label>IA Name <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter IA Name" [(ngModel)]="iaName"
-                                    #iaNameRef="ngModel" name="iaName" required
-                                    [class.error]="iaNameRef.invalid && iaNameRef.touched">
-
-                                <small class="error-text" *ngIf="iaNameRef.invalid && iaNameRef.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- UM Name -->
-                            <div class="form-group">
-                                <label>UM Name <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter UM Name" [(ngModel)]="umName"
-                                    #umNameRef="ngModel" name="umName" required
-                                    [class.error]="umNameRef.invalid && umNameRef.touched">
-
-                                <small class="error-text" *ngIf="umNameRef.invalid && umNameRef.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Code 1 -->
-                            <div class="form-group">
-                                <label>Code 1 <span>*</span></label>
-
-                                <input type="text" class="form-control" placeholder="Enter Code 1" [(ngModel)]="code1"
-                                    #code1Ref="ngModel" name="code1" required
-                                    [class.error]="code1Ref.invalid && code1Ref.touched">
-
-                                <small class="error-text" *ngIf="code1Ref.invalid && code1Ref.touched">
-                                    Mandatory Field
-                                </small>
-                            </div>
-
-                            <!-- Code 2 -->
-                            <div class="form-group">
-                                <label>Code 2</label>
-
-                                <input type="text" class="form-control" placeholder="Enter Code 2" [(ngModel)]="code2"
-                                    name="code2">
-                            </div>
-
-                            <!-- Code 3 -->
-                            <div class="form-group">
-                                <label>Code 3</label>
-
-                                <input type="text" class="form-control" placeholder="Enter Code 3" [(ngModel)]="code3"
-                                    name="code3">
-                            </div>
-
-                            <!-- Worksite No -->
-                            <div class="form-group">
-                                <label>Worksite No</label>
-
-                                <input type="text" class="form-control" placeholder="Enter Worksite Number"
-                                    [(ngModel)]="worksiteNo" name="worksiteNo">
-                            </div>
-
-                        </div>
-
-                        <!-- <app-dynamic-form [form]="personalForm"></app-dynamic-form> -->
                     </div>
                 </div>
 
@@ -576,7 +71,7 @@
                         </i>
                     </div>
 
-                    <div class="accordion-body" *ngIf="openedSection === 'payment'">
+                    <div class="accordion-body" [hidden]="openedSection !== 'payment'">
                         <div class="courier-grid">
                             <!-- Mode of Payment -->
                             <div class="form-group">
@@ -671,32 +166,15 @@
 
 
 
-                <div class="accordion-item">
-                    <div class="accordion-header" (click)="toggleAccordion('payment1')">
-                        <div>
-                            <h5>Payment1 Details</h5>
-                            <p>Provide payment and instrument details</p>
-                        </div>
-                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'payment1'"
-                            [class.fa-chevron-up]="openedSection === 'payment1'">
-                        </i>
-                    </div>
-
-                    <div class="accordion-body" [hidden]="openedSection !== 'payment1'">
-                        <div>
-                            <app-dynamic-form [form]="personalForm"></app-dynamic-form>
-
-                        </div>
-                    </div>
-
-
-                </div>
 
                 <!-- Button -->
                 <div class="btn-group mt-3">
 
-                    <button (click)="onSubmit()" class="btn-submit" data-bs-toggle="modal"
+                    <!-- <button (click)="onSubmit()" class="btn-submit" data-bs-toggle="modal"
                         data-bs-target="#myInfoModal">
+                        Submit
+                    </button> -->
+                    <button (click)="onSubmit()" class="btn-submit">
                         Submit
                     </button>
 
@@ -709,6 +187,7 @@
             </div>
 
         </div>
+
         <div class="modal fade" id="myInstrumentModal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content" style="border-radius: 15px;">
@@ -759,6 +238,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="myInfoModal">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">

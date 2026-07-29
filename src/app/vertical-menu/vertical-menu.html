@@ -565,7 +565,7 @@
         </li>
     </ul>
 
-    <div class="collapse-btn" (click)="toggleSidebar()">
+    <div class="collapse-btn" [class.collapsed]="collapsed" (click)="toggleSidebar()">
         <i class="fa-solid" [class.fa-chevron-left]="!collapsed" [class.fa-chevron-right]="collapsed">
         </i>
     </div>

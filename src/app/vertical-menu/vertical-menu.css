@@ -58,7 +58,7 @@
 .collapse-btn {
     position: fixed;
     top: 83px;
-    left: 216px;
+    left: 237px;
     width: 20px;
     height: 20px;
     border: 1px solid #D1D9E5;
@@ -68,12 +68,11 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
-    z-index: 1;
     cursor: pointer;
-    transition: .35s;
+    transition: all 0.35s ease;
 }
 
-.sidebar.collapsed+.collapse-btn {
+.collapse-btn.collapsed {
     left: 50px;
     top: 79px;
 }

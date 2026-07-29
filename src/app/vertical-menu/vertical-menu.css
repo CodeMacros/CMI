@@ -1,0 +1,221 @@
+.sidebar {
+    width: 250px;
+    height: calc(100vh - 60px);
+    background: linear-gradient(to right, #D60D47, #280071);
+    color: #fff;
+    position: sticky;
+    top: 60px;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, .15);
+    transition: .35s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+/* Chrome, Safari, Edge */
+.sidebar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar span {
+    transition: .3s;
+    white-space: nowrap;
+}
+
+.sidebar.collapsed span {
+    display: none;
+}
+
+.sidebar.collapsed .menu-title {
+    justify-content: center;
+}
+
+.sidebar.collapsed .left {
+    width: 100%;
+    justify-content: center;
+}
+
+.sidebar.collapsed .submenu {
+    display: none;
+}
+
+/* Collapse Button */
+.collapse-btn {
+    position: fixed;
+    top: 83px;
+    left: 216px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #D1D9E5;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    z-index: 1;
+    cursor: pointer;
+    transition: .35s;
+}
+
+.sidebar.collapsed+.collapse-btn {
+    left: 50px;
+    top: 79px;
+}
+
+.collapse-btn i {
+    color: #2A286A;
+    font-size: 10px;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.menu-item {
+    /* opacity: 0.8; */
+}
+
+/* Dashboard */
+.menu-item.active {
+    /* background: rgba(255,255,255,.08); */
+    /* opacity: 1; */
+}
+
+/* Title */
+.menu-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    cursor: pointer;
+    transition: .3s;
+
+}
+
+.menu-title:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.left span {
+    font-size: 14px;
+}
+
+.left i {
+    width: 18px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.menu-title>i {
+    font-size: 11px;
+    /* opacity:.8; */
+}
+
+/* Submenu */
+.submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 34px;
+}
+
+.submenu li {
+    position: relative;
+    padding: 6px 10px;
+    font-size: 13px;
+    color: #fff;
+    list-style: none;
+    cursor: pointer;
+    border-radius: 5px 0 0 5px;
+}
+
+/* Hover effect */
+.submenu>li:hover {
+    background: rgba(255, 255, 255, .5);
+}
+
+.inner-submenu>li:hover {
+    background: rgba(255, 255, 255, .5);
+}
+
+.not-hover:hover {
+    background: unset !important;
+}
+
+/* Selected item */
+.has-child:hover {
+    background: rgba(255, 255, 255, .5);
+}
+
+/* Flyout */
+.flyout-menu {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: auto;
+    background: #555388;
+    border-radius: 0 5px 5px 0;
+    padding: 0px;
+    margin: 0;
+    list-style: none;
+    display: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+    z-index: 9999;
+}
+
+.has-child:hover .flyout-menu {
+    display: block;
+}
+
+.flyout-menu li {
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: .3s;
+    border-radius: 8px;
+}
+
+.flyout-menu li:hover {
+    background: rgba(255, 255, 255, .12);
+}
+
+.inner-submenu {
+    padding-left: 6px;
+}
+
+.submenu-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 2px;
+}
+
+.submenu-title>i {
+    font-size: 11px;
+    opacity: .8;
+}

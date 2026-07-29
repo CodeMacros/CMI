@@ -1,0 +1,30 @@
+.info-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    line-height: 1.4;
+}
+.cheque-link{cursor: pointer;}
+@media (min-width: 992px) {
+    .modal-lg, .modal-xl {
+        max-width: 950px;
+    }
+}
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:16px;
+}
+
+/* 4 fields in one row */
+.form-grid .form-group{
+    grid-column:span 3;
+
+}
+
+/* Amount in Words */
+.span-3{
+    grid-column:span 9 !important;
+}
+.span-6{
+    grid-column:span 6 !important;
+}

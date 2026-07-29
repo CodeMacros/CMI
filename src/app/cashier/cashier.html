@@ -1,0 +1,661 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+
+            <!-- Page Heading -->
+            <div class="page-title mb-3">
+                <h4>Cashier Entry</h4>
+                <p>Create a new cashier entry by providing the required details</p>
+            </div>
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+                <!-- <div class="common-card-header pb-0">
+                        <h5 class="section-title">Courier Details</h5>
+                    </div> -->
+
+                <div class="courier-grid">
+
+                    <!-- Policy No -->
+                    <div class="form-group">
+                        <label>Policy No <span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Policy No" [(ngModel)]="policyNo"
+                            #policyNoCtrl="ngModel" name="policyNo" required
+                            [class.error]="policyNoCtrl.invalid && policyNoCtrl.touched">
+
+                        <small class="error-text" *ngIf="policyNoCtrl.invalid && policyNoCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- Proposal No -->
+                    <div class="form-group">
+                        <label>Proposal No <span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Proposal No" [(ngModel)]="proposalNo"
+                            #proposalNoCtrl="ngModel" name="proposalNo" required
+                            [class.error]="proposalNoCtrl.invalid && proposalNoCtrl.touched">
+
+                        <small class="error-text" *ngIf="proposalNoCtrl.invalid && proposalNoCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- Plan (Backend) -->
+                    <div class="form-group">
+                        <label>Plan <span>*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="plan" name="plan" disabled>
+                    </div>
+
+                    <!-- Premium Payment Term -->
+                    <div class="form-group">
+                        <label>Premium Payment Term <span>*</span></label>
+                        <select class="form-select" [(ngModel)]="premiumPaymentTerm" #pptCtrl="ngModel"
+                            name="premiumPaymentTerm" required [class.error]="pptCtrl.invalid && pptCtrl.touched">
+
+                            <option value="" disabled>-- Select PPT --</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="10">10</option>
+                        </select>
+
+                        <small class="error-text" *ngIf="pptCtrl.invalid && pptCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- Received Date (Backend) -->
+                    <div class="form-group">
+                        <label>Received Date <span>*</span></label>
+                        <input type="text" class="form-control" [(ngModel)]="receivedDate" name="receivedDate" readonly>
+                    </div>
+
+                    <!-- Proposal Date -->
+                    <div class="form-group">
+                        <label>Proposal Date <span>*</span></label>
+                        <div class="date-input">
+                            <input type="date" class="form-control" [(ngModel)]="proposalDate"
+                                #proposalDateCtrl="ngModel" name="proposalDate" required
+                                [class.error]="proposalDateCtrl.invalid && proposalDateCtrl.touched">
+
+                            <small class="error-text" *ngIf="proposalDateCtrl.invalid && proposalDateCtrl.touched">
+                                Mandatory Field
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Category ID -->
+                    <div class="form-group">
+                        <label>Category ID <span>*</span></label>
+
+                        <select class="form-select" [(ngModel)]="categoryId" #categoryCtrl="ngModel" name="categoryId"
+                            required [class.error]="categoryCtrl.invalid && categoryCtrl.touched">
+
+                            <option value="" disabled>-- Select Category --</option>
+                            <option value="individual">Individual</option>
+                            <option value="group">Group</option>
+                        </select>
+
+                        <small class="error-text" *ngIf="categoryCtrl.invalid && categoryCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- Series (Backend) -->
+                    <div class="form-group">
+                        <label>Series</label>
+                        <input type="text" class="form-control" [(ngModel)]="series" name="series" disabled>
+                    </div>
+
+                    <!-- Status (Backend) -->
+                    <div class="form-group">
+                        <label>Status</label>
+                        <input type="text" class="form-control" [(ngModel)]="status" name="status" disabled>
+                    </div>
+
+                    <!-- Frequency -->
+                    <div class="form-group">
+                        <label>Frequency <span>*</span></label>
+
+                        <select class="form-select" [(ngModel)]="frequency" #frequencyCtrl="ngModel" name="frequency"
+                            required [class.error]="frequencyCtrl.invalid && frequencyCtrl.touched">
+
+                            <option value="" disabled>-- Select Frequency --</option>
+                            <option value="Yearly">Yearly</option>
+                            <option value="Half-Yearly">Half-Yearly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+
+                        <small class="error-text" *ngIf="frequencyCtrl.invalid && frequencyCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- Installment Premium -->
+                    <div class="form-group">
+                        <label>Installment Premium <span>*</span></label>
+
+                        <input type="number" class="form-control" placeholder="Enter Installment Premium"
+                            [(ngModel)]="installmentPremium" #premiumCtrl="ngModel" name="installmentPremium" required
+                            [class.error]="premiumCtrl.invalid && premiumCtrl.touched">
+
+                        <small class="error-text" *ngIf="premiumCtrl.invalid && premiumCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- Channel Type -->
+                    <div class="form-group">
+                        <label>Channel Type <span>*</span></label>
+
+                        <select class="form-select" [(ngModel)]="channelType" #channelCtrl="ngModel" name="channelType"
+                            required [class.error]="channelCtrl.invalid && channelCtrl.touched">
+
+                            <option value="" disabled>-- Select Channel Type --</option>
+                            <option value="Agent">Agent</option>
+                            <option value="Broker">Broker</option>
+                        </select>
+
+                        <small class="error-text" *ngIf="channelCtrl.invalid && channelCtrl.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <!-- New Fund Allocation (Backend) -->
+                    <div class="form-group">
+                        <label>New Fund Allocation</label>
+                        <input type="text" class="form-control" [(ngModel)]="newFundAllocation" name="newFundAllocation"
+                            disabled>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- accordion -->
+            <div class="custom-accordion mt-3">
+                <!-- Proposal Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('proposal')">
+                        <div>
+                            <h5>Proposal Details</h5>
+                            <p>Provide proposal and customer related information</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
+                            [class.fa-chevron-up]="openedSection === 'proposal'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" *ngIf="openedSection === 'proposal'">
+                        <!-- Your Proposal Form Here -->
+                        <div class="courier-grid">
+
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="firstName" name="firstName"
+                                    placeholder="Enter First Name">
+                            </div>
+
+                            <!-- Middle Name -->
+                            <div class="form-group">
+                                <label>Middle Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="middleName" name="middleName"
+                                    placeholder="Enter Middle Name">
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="lastName" name="lastName"
+                                    placeholder="Enter Last Name">
+                            </div>
+
+                            <!-- Address 1 -->
+                            <div class="form-group">
+                                <label>Address 1</label>
+                                <input type="text" class="form-control" [(ngModel)]="address1" name="address1"
+                                    placeholder="Enter Address 1">
+                            </div>
+
+                            <!-- Address 2 -->
+                            <div class="form-group">
+                                <label>Address 2</label>
+                                <input type="text" class="form-control" [(ngModel)]="address2" name="address2"
+                                    placeholder="Enter Address 2">
+                            </div>
+
+                            <!-- Address 3 -->
+                            <div class="form-group">
+                                <label>Address 3</label>
+                                <input type="text" class="form-control" [(ngModel)]="address3" name="address3"
+                                    placeholder="Enter Address 3">
+                            </div>
+
+                            <!-- Home Phone No -->
+                            <div class="form-group">
+                                <label>Home Phone No</label>
+                                <input type="text" class="form-control" [(ngModel)]="homePhoneNo" name="homePhoneNo"
+                                    placeholder="Enter Home Phone No">
+                            </div>
+
+                            <!-- Office Phone No -->
+                            <div class="form-group">
+                                <label>Office Phone No</label>
+                                <input type="text" class="form-control" [(ngModel)]="officePhoneNo" name="officePhoneNo"
+                                    placeholder="Enter Office Phone No">
+                            </div>
+
+                            <!-- Mobile No -->
+                            <div class="form-group">
+                                <label>Mobile No</label>
+                                <input type="text" class="form-control" [(ngModel)]="mobileNo" name="mobileNo"
+                                    placeholder="Enter Mobile No">
+                            </div>
+
+                            <!-- State -->
+                            <div class="form-group">
+                                <label>State</label>
+                                <select class="form-select" [(ngModel)]="state" name="state" required>
+                                    <option value="" selected disabled>--Select--</option>
+                                    <option>Maharashtra</option>
+                                </select>
+                            </div>
+
+                            <!-- City -->
+                            <div class="form-group">
+                                <label>City</label>
+                                <select class="form-select" [(ngModel)]="city" name="city" required>
+                                    <option value="" selected disabled>--Select--</option>
+                                    <option>Ratnagiri</option>
+                                </select>
+                            </div>
+
+                            <!-- Pin Code -->
+                            <div class="form-group">
+                                <label>Pin Code</label>
+                                <input type="text" class="form-control" [(ngModel)]="pinCode" name="pinCode"
+                                    placeholder="Enter Pin Code">
+                            </div>
+
+                            <!-- Country -->
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select class="form-select" [(ngModel)]="country" name="country" required>
+                                    <option value="" selected disabled>--Select--</option>
+                                    <option>India</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Channel Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('channel')">
+                        <div>
+                            <h5>Channel Details</h5>
+                            <p>Provide channel partner/intermediary details</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'channel'"
+                            [class.fa-chevron-up]="openedSection === 'channel'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" *ngIf="openedSection === 'channel'">
+                        <!-- Your Channel Details Form Here -->
+                        <div class="courier-grid">
+
+                            <!-- Agent Id -->
+                            <div class="form-group">
+                                <label>Agent Id</label>
+                                <input type="text" class="form-control" [(ngModel)]="agentId" name="agentId"
+                                    placeholder="Enter Agent Id">
+                            </div>
+
+                            <!-- Agent Name -->
+                            <div class="form-group">
+                                <label>Agent Name</label>
+                                <input type="text" class="form-control" [(ngModel)]="agentName" name="agentName"
+                                    placeholder="Enter Agent Name">
+                            </div>
+
+                            <!-- RM Code -->
+                            <div class="form-group">
+                                <label>RM Code</label>
+                                <input type="text" class="form-control" [(ngModel)]="rmCode" name="rmCode"
+                                    placeholder="Enter RM Code">
+                            </div>
+
+                            <!-- File No -->
+                            <div class="form-group">
+                                <label>File No</label>
+                                <input type="text" class="form-control" [(ngModel)]="fileNo" name="fileNo"
+                                    placeholder="Enter File No">
+                            </div>
+
+                            <!-- Reference No -->
+                            <div class="form-group">
+                                <label>Reference No</label>
+                                <input type="text" class="form-control" [(ngModel)]="referenceNo" name="referenceNo"
+                                    placeholder="Enter Reference No">
+                            </div>
+
+                            <!-- Worksite No -->
+                            <div class="form-group">
+                                <label>Worksite No</label>
+                                <input type="text" class="form-control" [(ngModel)]="worksiteNo" name="worksiteNo"
+                                    placeholder="Enter Worksite No">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instrument Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('payment')">
+                        <div>
+                            <h5>Instrument Details</h5>
+                            <p>Provide payment and instrument details</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'payment'"
+                            [class.fa-chevron-up]="openedSection === 'payment'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" *ngIf="openedSection === 'payment'">
+                        <!-- Your Instrument Details Form Here -->
+                        <div class="courier-grid">
+                            <!-- Mode of Payment -->
+                            <div class="form-group">
+                                <label>Mode of Payment <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="modeOfPayment" #paymentMode="ngModel"
+                                    name="modeOfPayment" required
+                                    [class.error]="paymentMode.invalid && paymentMode.touched">
+
+                                    <option value="" disabled>-- Select Channel --</option>
+                                    <option value="Cheque">Cheque</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="NEFT">NEFT</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="paymentMode.invalid && paymentMode.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+                            <div class="button-group">
+                                <button class="btn-add" (click)="addPayment()">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Table -->
+                        <div class="table-responsive mt-3">
+                            <div class="table-border">
+
+                                <table class="payment-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Chq./Draft No</th>
+                                            <th>OCR/Non-OCR</th>
+                                            <th>Chq./Draft Date</th>
+                                            <th>IFSC Code</th>
+                                            <th>Account Holder Name</th>
+                                            <th>Bank Account No</th>
+                                            <th>Pay Mode</th>
+                                            <th>Payment Type</th>
+                                            <th>Amount</th>
+                                            <th>Bank</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr *ngFor="let item of instruments; let i = index">
+
+                                            <td style="text-decoration: underline;">
+                                                <span class="cheque-link" data-bs-toggle="modal"
+                                                    data-bs-target="#myInstrumentsModal">
+                                                    {{item.chequeNo}}
+                                                </span>
+                                                <br>
+                                                <a class="edit-link" (click)="editInstrument(item)">
+                                                    Click here to execute/Edit
+                                                </a>
+
+                                            </td>
+
+                                            <td>{{item.ocrType}}</td>
+
+                                            <td>{{item.chequeDate}}</td>
+
+                                            <td>{{item.ifscCode}}</td>
+
+                                            <td>{{item.accountHolder}}</td>
+
+                                            <td>{{item.accountNo}}</td>
+
+                                            <td>{{item.payMode}}</td>
+
+                                            <td>{{item.paymentType}}</td>
+
+                                            <td>{{item.amount}}</td>
+
+                                            <td>{{item.bank}}</td>
+
+                                            <td>
+
+                                                <button class="delete-btn" (click)="deleteInstrument(i)">
+                                                    <i class="fa-regular fa-trash-can"></i>
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <tr *ngIf="instruments.length==0">
+                                            <td colspan="11" class="text-center">
+                                                No Records Found
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Button -->
+            <div class="btn-group mt-3">
+
+                <button class="btn-submit">
+                    Submit
+                </button>
+
+                <button class="btn-clear">
+                    Clear
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="myInstrumentsModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="border-radius: 15px;">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="instrument_header">
+                            <p class="modal_heading_span">Instrument Details</p>
+                        </div>
+                        <div>
+                            <div class="form-grid my-3">
+                                <!-- Row 1 -->
+                                <div class="form-group">
+                                    <label>Pay Mode <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>initial</option>
+                                        <option value="1">Maharashtra</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Payment Type <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>initial</option>
+                                        <option value="1">Maharashtra</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cheque/Draft No <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="***" name="chNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Reenter Cheq/Draft No <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="467567" name="chNumber"
+                                        required>
+                                </div>
+
+                                <!-- Row 2 -->
+                                <div class="form-group">
+                                    <label>Cheque/Draft Date <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="06 Mar 2026" name="chNumber"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cheque Type <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>local</option>
+                                        <option value="1">Maharashtra</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="***" name="chNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Reenter Amount <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="90,000" name="chNumber"
+                                        required>
+                                </div>
+
+                                <!-- Full Width -->
+                                <div class="form-group span-3">
+                                    <label>Amount in Words</label>
+                                    <input type="text" class="form-control" placeholder="Ninety Thousand Rupees Only"
+                                        name="chNumber" required disabled>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Proposer Relationship <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>policy Holder</option>
+                                        <option value="1">Son</option>
+                                    </select>
+                                </div>
+
+                                <!-- Row -->
+                                <div class="form-group">
+                                    <label>Bank Account No</label>
+                                    <input type="text" class="form-control" placeholder="***" name="chNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Reenter Bank Account No</label>
+                                    <input type="text" class="form-control" placeholder="6547868" name="chNumber"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Holder Name <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="Akanksha" name="chNumber"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Policy Holder Name <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="Akanksha Chavan"
+                                        name="chNumber" required>
+                                </div>
+
+                                <!-- row -->
+                                <div class="form-group">
+                                    <label>Signature Available <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="" name="chNumber" required
+                                        disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>AML Document Submitted</label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>Income Proof</option>
+                                        <option value="1">Tax Proof</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                                <!-- row -->
+                                <div class="form-group">
+                                    <label>MICR Code</label>
+                                    <input type="text" class="form-control" placeholder="467567" disabled required>
+                                </div>
+                                <div class="form-group">
+                                    <label>IFSC Code <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="SBIN0002444" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Reenter IFSC Code <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="SBIN0002444" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Instrument Type</label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>Current AC</option>
+                                        <option value="1">savings</option>
+                                    </select>
+                                </div>
+
+                                <!-- row -->
+                                <div class="form-group span-6">
+                                    <label>Bank <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="State Bank Of India" required
+                                        disabled>
+                                </div>
+                                <div class="form-group span-6">
+                                    <label>Branch <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="Sayaji Ganj,Baroda" required
+                                        disabled>
+                                </div>
+                                <!-- row -->
+                                <div class="form-group">
+                                    <label>State <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>Haryana</option>
+                                        <option value="1">Maharashtra</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>City <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>india</option>
+                                        <option value="1">GurGoan</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-3 d-flex gap-2">
+                                <button class="btn-submit">Add</button>
+                                <button class="btn-clear">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

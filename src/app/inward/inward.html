@@ -1,0 +1,1247 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+
+            <!-- Page Heading -->
+            <div class="page-title mb-3">
+                <h4>Inward Entry</h4>
+                <p>Create a new inward entry by providing the required details</p>
+            </div>
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Courier Details</h5>
+                </div>
+
+                <div class="courier-grid">
+
+                    <div class="form-group">
+                        <label>Received Date <span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter Received Date"
+                            [(ngModel)]="ReceivedDate" #receive="ngModel" name="ReceivedDate" required
+                            [class.error]="receive.invalid && receive.touched">
+
+                        <small class="error-text" *ngIf="receive.invalid && receive.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Received By <span>*</span></label>
+
+                        <select class="form-select" [(ngModel)]="receivedBy" #inward="ngModel" name="receivedBy"
+                            required [class.error]="inward.invalid && inward.touched">
+
+                            <option value="" disabled>-- Select --</option>
+                            <option value="1">Inward</option>
+                            <option value="2">Outward</option>
+
+                        </select>
+
+                        <small class="error-text" *ngIf="inward.invalid && inward.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Received From <span>*</span></label>
+
+                        <select class="form-select" [(ngModel)]="receivedFrom" #received="ngModel" name="receivedFrom"
+                            required [class.error]="received.invalid && received.touched">
+
+                            <option value="" disabled>-- Select --</option>
+                            <option value="1">Agency 1</option>
+                            <option value="2">Agency 2</option>
+
+                        </select>
+
+                        <small class="error-text" *ngIf="received.invalid && received.touched">
+                            Mandatory Field
+                        </small>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>Courier Agency Name <span>*</span></label>
+
+                        <input type="text" class="form-control" placeholder="Enter Courier Agency Name"
+                            [(ngModel)]="agencyName" #agency="ngModel" name="agencyName" required
+                            [class.error]="agency.invalid && agency.touched">
+
+                        <small class="error-text" *ngIf="agency.invalid && agency.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>AWB Number <span>*</span></label>
+                        <input type="text" class="form-control" placeholder="Enter AWB Number" [(ngModel)]="awbNumber"
+                            #awb="ngModel" name="awbNumber" required [class.error]="awb.invalid && awb.touched">
+
+                        <small class="error-text" *ngIf="awb.invalid && awb.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>State</label>
+                        <select class="form-select" required>
+                            <option value="" selected disabled>-- Select State --</option>
+                            <option value="1">Maharashtra</option>
+                            <option value="2">Bihar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>City</label>
+                        <select class="form-select" required>
+                            <option value="" selected disabled>-- Select City --</option>
+                            <option value="1">Mumbai</option>
+                            <option value="2">Pune</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <input type="text" class="form-control" placeholder="Enter Remarks">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Document HandOver To <span>*</span></label>
+
+                        <select class="form-select" [(ngModel)]="handOverTo" #handover="ngModel" name="handOverTo"
+                            required [class.error]="handover.invalid && handover.touched">
+
+                            <option value="" disabled>-- Select --</option>
+                            <option value="1">Agency 1</option>
+                            <option value="2">Agency 2</option>
+
+                        </select>
+
+                        <small class="error-text" *ngIf="handover.invalid && handover.touched">
+                            Mandatory Field
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- accordion -->
+            <div class="custom-accordion mt-3">
+                <!-- Proposal Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('proposal')">
+                        <div>
+                            <h5>Proposal Details</h5>
+                            <p>Provide proposal and customer related information</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
+                            [class.fa-chevron-up]="openedSection === 'proposal'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" *ngIf="openedSection === 'proposal'">
+                        <!-- Your Proposal Form Here -->
+                        <div class="courier-grid">
+
+                            <!-- Proposal No -->
+                            <div class="form-group">
+                                <label>Proposal No <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter Proposal Number"
+                                    [(ngModel)]="proposalNo" #proposal="ngModel" name="proposalNo" required
+                                    [class.error]="proposal.invalid && proposal.touched">
+
+                                <small class="error-text" *ngIf="proposal.invalid && proposal.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Product Name -->
+                            <div class="form-group">
+                                <label>Product Name <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="productName" #product="ngModel"
+                                    name="productName" required [class.error]="product.invalid && product.touched">
+
+                                    <option value="" disabled>-- Select Product --</option>
+                                    <option value="SBI Life - Smart Platina Advantage">
+                                        SBI Life - Smart Platina Advantage
+                                    </option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="product.invalid && product.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Proposal Category -->
+                            <div class="form-group">
+                                <label>Proposal Category <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="proposalCategory" #category="ngModel"
+                                    name="proposalCategory" required
+                                    [class.error]="category.invalid && category.touched">
+
+                                    <option value="" disabled>-- Select Category --</option>
+                                    <option value="Individual">Individual</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="category.invalid && category.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- First Name -->
+                            <div class="form-group">
+                                <label>First Name <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter First Name"
+                                    [(ngModel)]="firstName" #first="ngModel" name="firstName" required
+                                    [class.error]="first.invalid && first.touched">
+
+                                <small class="error-text" *ngIf="first.invalid && first.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Middle Name -->
+                            <div class="form-group">
+                                <label>Middle Name</label>
+
+                                <input type="text" class="form-control" placeholder="Enter Middle Name"
+                                    [(ngModel)]="middleName" name="middleName">
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="form-group">
+                                <label>Last Name <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter Last Name"
+                                    [(ngModel)]="lastName" #last="ngModel" name="lastName" required
+                                    [class.error]="last.invalid && last.touched">
+
+                                <small class="error-text" *ngIf="last.invalid && last.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Sum Assured -->
+                            <div class="form-group">
+                                <label>Sum Assured</label>
+
+                                <input type="number" class="form-control" placeholder="Enter Sum Assured"
+                                    [(ngModel)]="sumAssured" name="sumAssured">
+                            </div>
+
+                            <!-- Premium Amount -->
+                            <div class="form-group">
+                                <label>Premium Amount <span>*</span></label>
+
+                                <input type="number" class="form-control" placeholder="Enter Premium Amount"
+                                    [(ngModel)]="premiumAmount" #premium="ngModel" name="premiumAmount" required
+                                    [class.error]="premium.invalid && premium.touched">
+
+                                <small class="error-text" *ngIf="premium.invalid && premium.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Frequency -->
+                            <div class="form-group">
+                                <label>Frequency <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="frequency" #freq="ngModel" name="frequency"
+                                    required [class.error]="freq.invalid && freq.touched">
+
+                                    <option value="" disabled>-- Select Frequency --</option>
+                                    <option>Yearly</option>
+                                    <option>Half Yearly</option>
+                                    <option>Quarterly</option>
+                                    <option>Monthly</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="freq.invalid && freq.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Defence -->
+                            <div class="form-group">
+                                <label>Are you serving in Defence?</label>
+
+                                <select class="form-select" [(ngModel)]="defence" name="defence">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+                            </div>
+
+                            <!-- Occupation -->
+                            <div class="form-group">
+                                <label>Occupation <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="occupation" #occupationRef="ngModel"
+                                    name="occupation" required
+                                    [class.error]="occupationRef.invalid && occupationRef.touched">
+
+                                    <option value="" disabled>-- Select Occupation --</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="occupationRef.invalid && occupationRef.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Mobile -->
+                            <div class="form-group">
+                                <label>Mobile No <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter Mobile Number"
+                                    [(ngModel)]="mobileNo" #mobile="ngModel" name="mobileNo" required minlength="10"
+                                    maxlength="10" [class.error]="mobile.invalid && mobile.touched">
+
+                                <small class="error-text" *ngIf="mobile.invalid && mobile.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Alternate Mode Registration -->
+                            <div class="form-group">
+                                <label>Alternate Mode Registration <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="alternateModeRegistration" #alternate="ngModel"
+                                    name="alternateModeRegistration" required
+                                    [class.error]="alternate.invalid && alternate.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="alternate.invalid && alternate.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Benefit Illustration -->
+                            <div class="form-group">
+                                <label>Benefit Illustration <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="benefitIllustration" #benefit="ngModel"
+                                    name="benefitIllustration" required
+                                    [class.error]="benefit.invalid && benefit.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="benefit.invalid && benefit.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Need Analysis -->
+                            <div class="form-group">
+                                <label>Need Analysis <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="needAnalysis" #need="ngModel"
+                                    name="needAnalysis" required [class.error]="need.invalid && need.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="need.invalid && need.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- FACTA Form -->
+                            <div class="form-group">
+                                <label>FACTA Form <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="factaForm" #facta="ngModel" name="factaForm"
+                                    required [class.error]="facta.invalid && facta.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="facta.invalid && facta.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- PAN Copy -->
+                            <div class="form-group">
+                                <label>PAN Copy <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="panCopy" #pan="ngModel" name="panCopy" required
+                                    [class.error]="pan.invalid && pan.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="pan.invalid && pan.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Form 60 -->
+                            <div class="form-group">
+                                <label>Form 60 <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="form60" #form="ngModel" name="form60" required
+                                    [class.error]="form.invalid && form.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="form.invalid && form.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Bank Document Details -->
+                            <div class="form-group">
+                                <label>Bank Document Details <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="bankDocument" #bankdetails="ngModel"
+                                    name="bankDocument" required
+                                    [class.error]="bankdetails.invalid && bankdetails.touched">
+
+                                    <option value="" disabled>-- Select --</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="bankdetails.invalid && bankdetails.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Channel Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('channel')">
+                        <div>
+                            <h5>Channel Details</h5>
+                            <p>Provide channel partner/intermediary details</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'channel'"
+                            [class.fa-chevron-up]="openedSection === 'channel'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" *ngIf="openedSection === 'channel'">
+                        <div class="courier-grid">
+
+                            <!-- Channel -->
+                            <div class="form-group">
+                                <label>Channel <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="channel" #channelRef="ngModel" name="channel"
+                                    required [class.error]="channelRef.invalid && channelRef.touched">
+
+                                    <option value="" disabled>-- Select Channel --</option>
+                                    <option value="Agent">Agent</option>
+                                    <option value="Broker">Broker</option>
+                                    <option value="Direct">Direct</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="channelRef.invalid && channelRef.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- IA Code -->
+                            <div class="form-group">
+                                <label>IA Code <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter IA Code" [(ngModel)]="iaCode"
+                                    #iaCodeRef="ngModel" name="iaCode" required
+                                    [class.error]="iaCodeRef.invalid && iaCodeRef.touched">
+
+                                <small class="error-text" *ngIf="iaCodeRef.invalid && iaCodeRef.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- IA Name -->
+                            <div class="form-group">
+                                <label>IA Name <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter IA Name" [(ngModel)]="iaName"
+                                    #iaNameRef="ngModel" name="iaName" required
+                                    [class.error]="iaNameRef.invalid && iaNameRef.touched">
+
+                                <small class="error-text" *ngIf="iaNameRef.invalid && iaNameRef.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- UM Name -->
+                            <div class="form-group">
+                                <label>UM Name <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter UM Name" [(ngModel)]="umName"
+                                    #umNameRef="ngModel" name="umName" required
+                                    [class.error]="umNameRef.invalid && umNameRef.touched">
+
+                                <small class="error-text" *ngIf="umNameRef.invalid && umNameRef.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Code 1 -->
+                            <div class="form-group">
+                                <label>Code 1 <span>*</span></label>
+
+                                <input type="text" class="form-control" placeholder="Enter Code 1" [(ngModel)]="code1"
+                                    #code1Ref="ngModel" name="code1" required
+                                    [class.error]="code1Ref.invalid && code1Ref.touched">
+
+                                <small class="error-text" *ngIf="code1Ref.invalid && code1Ref.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+
+                            <!-- Code 2 -->
+                            <div class="form-group">
+                                <label>Code 2</label>
+
+                                <input type="text" class="form-control" placeholder="Enter Code 2" [(ngModel)]="code2"
+                                    name="code2">
+                            </div>
+
+                            <!-- Code 3 -->
+                            <div class="form-group">
+                                <label>Code 3</label>
+
+                                <input type="text" class="form-control" placeholder="Enter Code 3" [(ngModel)]="code3"
+                                    name="code3">
+                            </div>
+
+                            <!-- Worksite No -->
+                            <div class="form-group">
+                                <label>Worksite No</label>
+
+                                <input type="text" class="form-control" placeholder="Enter Worksite Number"
+                                    [(ngModel)]="worksiteNo" name="worksiteNo">
+                            </div>
+
+                        </div>
+
+                        <!-- <app-dynamic-form [form]="personalForm"></app-dynamic-form> -->
+                    </div>
+                </div>
+
+                <!-- Payment Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('payment')">
+                        <div>
+                            <h5>Payment Details</h5>
+                            <p>Provide payment and instrument details</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'payment'"
+                            [class.fa-chevron-up]="openedSection === 'payment'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" *ngIf="openedSection === 'payment'">
+                        <div class="courier-grid">
+                            <!-- Mode of Payment -->
+                            <div class="form-group">
+                                <label>Mode of Payment <span>*</span></label>
+
+                                <select class="form-select" [(ngModel)]="modeOfPayment" #paymentMode="ngModel"
+                                    name="modeOfPayment" required
+                                    [class.error]="paymentMode.invalid && paymentMode.touched">
+
+                                    <option value="" disabled>-- Select Channel --</option>
+                                    <option value="Cheque">Cheque</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="NEFT">NEFT</option>
+
+                                </select>
+
+                                <small class="error-text" *ngIf="paymentMode.invalid && paymentMode.touched">
+                                    Mandatory Field
+                                </small>
+                            </div>
+                            <div class="button-group">
+                                <button class="btn-add" (click)="addPayment()" data-bs-toggle="modal"
+                                    data-bs-target="#myInstrumentModal">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <!-- Table -->
+
+                        <div class="table-responsive mt-3">
+                            <div class="table-border">
+                                <table class="payment-table">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Cheque Number</th>
+                                            <th>Cheque Date</th>
+                                            <th>Cheque Amount</th>
+                                            <th>Bank Name</th>
+                                            <th>Payment Type</th>
+                                            <th>Mode Of Payment</th>
+                                            <th>Option</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr *ngFor="let payment of payments; let i=index">
+
+                                            <td style="text-decoration: underline;">
+                                                <a data-bs-toggle="modal" data-bs-target="#myModal"
+                                                    style="cursor: pointer;">
+                                                    {{payment.chequeNumber}}
+                                                </a>
+                                            </td>
+                                            <td>{{payment.chequeDate}}</td>
+                                            <td>{{payment.amount}}</td>
+                                            <td>{{payment.bankName}}</td>
+                                            <td>{{payment.paymentType}}</td>
+                                            <td>{{payment.mode}}</td>
+
+                                            <td>
+
+                                                <button class="delete-btn" (click)="deletePayment(i)">
+
+                                                    <i class="fa-regular fa-trash-can"></i>
+
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <tr *ngIf="payments.length==0">
+
+                                            <td colspan="7" class="text-center py-4">
+                                                No Records Found
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('payment1')">
+                        <div>
+                            <h5>Payment1 Details</h5>
+                            <p>Provide payment and instrument details</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'payment1'"
+                            [class.fa-chevron-up]="openedSection === 'payment1'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'payment1'">
+                        <div>
+                            <app-dynamic-form [form]="personalForm"></app-dynamic-form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Button -->
+                <div class="btn-group mt-3">
+
+                    <button (click)="onSubmit()" class="btn-submit" data-bs-toggle="modal"
+                        data-bs-target="#myInfoModal">
+                        Submit
+                    </button>
+
+                    <button class="btn-clear">
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="modal fade" id="myInstrumentModal">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" style="border-radius: 15px;">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div class="instrument_header">
+                            <p class="modal_heading_span">Instrument Details</p>
+                        </div>
+                        <div>
+                            <div class="info-row gap-3 my-3">
+                                <div class="form-group">
+                                    <label>Ch/DD No <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="467567" name="chNumber"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ch/DD Date <span>*</span></label>
+                                    <div class="date-input">
+                                        <input type="date" class="form-control" name="fromDate" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cheque Amount <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="467567" name="chNumber"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="info-row gap-3">
+                                <div class="form-group">
+                                    <label>Bank Name <span>*</span></label>
+                                    <input type="text" class="form-control" placeholder="BANK OF MAHARASHTRA"
+                                        name="chNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Payment Type <span>*</span></label>
+                                    <select class="form-select" required>
+                                        <option value="" selected>initial</option>
+                                        <option value="1">Maharashtra</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-3 d-flex gap-2">
+                                <button class="button_add">Add</button>
+                                <button class="button_close">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myInfoModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body info-top-border">
+                        <div class="text-center">
+                            <img src="assets/images/success.png" />
+                            <div class="info_modal_header">
+                                <p>Success</p>
+                            </div>
+                            <div class="info_sub_details">
+                                <p>Inward at HO branch done Successfully <br />
+                                    <span>HO/IW/2026/14375</span>
+                                </p>
+                            </div>
+                            <div class="info_modal_btn_div">
+                                <button class="cash_entry_btn">Cashier Entry</button>
+                                <button class="ok_btn">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myAlertModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body alert-top-border">
+                        <div class="text-center">
+                            <img src="assets/images/warning.png" />
+                            <div class="info_modal_header">
+                                <p>Alert</p>
+                            </div>
+                            <div class="info_sub_details">
+                                <p>
+                                    Please check instrument is scanned through <br /> Smart Advisor
+                                </p>
+                            </div>
+                            <div class="info_modal_btn_div">
+                                <button class="ok_btn">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="modal_outer_div">
+                    <div class="modal_heading">
+                        <img src="assets/images/instrument_details.png" />
+                        <span class="modal_heading_span">Instrument Details</span>
+                    </div>
+                    <div style="padding: 10px;">
+                        <div class="modal_main_highlight">
+                            <div class="d-flex" style="gap:20px;">
+                                <div class="d-flex align-items-center gap-3 fix-width">
+                                    <div class="icon_bg">
+                                        <img src="assets/images/cheque_date.png" />
+                                    </div>
+                                    <div class="icon_text">
+                                        <p>Cheque/Draft Date</p>
+                                        <h6>06 MAR 2026</h6>
+                                    </div>
+                                </div>
+                                <div style="border-left: 1px solid #B8B8DA;"></div>
+                                <div class="d-flex align-items-center gap-3 fix-width">
+                                    <div class="icon_bg">
+                                        <img src="assets/images/hash_tag.png" />
+                                    </div>
+                                    <div class="icon_text">
+                                        <p>Cheque/Draft No</p>
+                                        <h6>465768</h6>
+                                    </div>
+                                </div>
+                                <div style="border-left: 1px solid #B8B8DA;"></div>
+                                <div class="d-flex align-items-center gap-3 fix-width">
+                                    <div class="icon_bg">
+                                        <img src="assets/images/rupee.png" />
+                                    </div>
+                                    <div class="icon_text">
+                                        <p>Amount</p>
+                                        <h6>465768</h6>
+                                    </div>
+                                </div>
+                                <div style="border-left: 1px solid #B8B8DA;"></div>
+                                <div class="d-flex align-items-center gap-3 fix-width">
+                                    <div class="icon_bg">
+                                        <img src="assets/images/acc_holder.png" />
+                                    </div>
+                                    <div class="icon_text">
+                                        <p>Account Holder</p>
+                                        <h6>465768</h6>
+                                    </div>
+                                </div>
+                                <div style="border-left: 1px solid #B8B8DA;"></div>
+                                <div class="d-flex align-items-center gap-3 fix-width">
+                                    <div class="icon_bg">
+                                        <img src="assets/images/approve_status.png" />
+                                    </div>
+                                    <div class="icon_text">
+                                        <p>Approve Status</p>
+                                        <h6>NAP</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_main_highlight mt-2">
+                            <div class="d-flex gap-2">
+                                <div style="width: 33%;">
+                                    <div class="d-flex info_list">
+                                        <p>Cheque Type</p>
+                                        <span>LOCAL</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Pay Mode</p>
+                                        <span>Cheque</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Bank</p>
+                                        <span>STATE BANK OF INDIA</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Instrument Type</p>
+                                        <span>Current A/c</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Branch</p>
+                                        <span>GHATKOPAR WEST</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>City</p>
+                                        <span>Mumbai</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Residual Amount</p>
+                                        <span>90,000</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Valid</p>
+                                        <span>Not Realised</span>
+                                    </div>
+                                    <div class="d-flex info_list">
+                                        <p>Record Updated Date</p>
+                                        <span>06 MAR 2026</span>
+                                    </div>
+                                    <div class="d-flex info_list border-0">
+                                        <p>Source Uid</p>
+                                        <span>roopan.anchan</span>
+                                    </div>
+                                </div>
+                                <div style="border-left: 1px solid #E3E3EF;"></div>
+                                <div style="width: 33%;">
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Cheque/Draft Date</p>
+                                        <span>06 MAR 2026</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Payment Type</p>
+                                        <span>initial</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Bank Account No</p>
+                                        <span>2435469</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>MICR Code</p>
+                                        <span>400002027</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Proposer Relationship</p>
+                                        <span>Policy Holder</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Transaction Id</p>
+                                        <span>107676371</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Cheque/Draft Received Date</p>
+                                        <span>06 MAR 2026</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Person Type</p>
+                                        <span>INDIV</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Source</p>
+                                        <span>HO</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width border-0">
+                                        <p>Override Eligibility</p>
+                                        <span>N</span>
+                                    </div>
+                                </div>
+                                <div style="border-left: 1px solid #E3E3EF;"></div>
+                                <div style="width: 33%;">
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Cheque/Draft No</p>
+                                        <span>465768</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Amount</p>
+                                        <span>4657</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Account Holder Name</p>
+                                        <span>Akanksha</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>IFSC Code</p>
+                                        <span>SBIN0001131</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>AML Document Submitted</p>
+                                        <span>Income Proof</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Pay Type</p>
+                                        <span>Money-In</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Approve Status</p>
+                                        <span>NAP</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Record Added Date</p>
+                                        <span>06 MAR 2026</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width">
+                                        <p>Source Id</p>
+                                        <span>HO</span>
+                                    </div>
+                                    <div class="d-flex info_list long_info_width border-0">
+                                        <p>Override Reason</p>
+                                        <span>-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal_outer_div my-3">
+                    <div class="modal_heading">
+                        <img src="assets/images/proposal_details.png" />
+                        <span class="modal_heading_span">Proposal Details</span>
+                    </div>
+                    <div style="padding: 10px;">
+                        <div class="policy_no_main">
+                            <div class="policy_no_highlight">
+                                <p>Policy No.</p>
+                                <span>4ECA383631</span>
+                            </div>
+                        </div>
+                        <div class="channel-card">
+                            <!-- Row 1 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Policy No</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Proposal No</label>
+                                    <span>4ECA383631</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Plan</label>
+                                    <span>SBI Life - Smart Platina Advantage</span>
+                                </div>
+                            </div>
+                            <!-- Row 2 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Received Date</label>
+                                    <span>06 MAR 2026</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Proposal Date</label>
+                                    <span>06 MAR 2026</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Premium Payment Term</label>
+                                    <span>7</span>
+                                </div>
+                            </div>
+                            <!-- Row 3 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Category ID</label>
+                                    <span>Individual</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Series</label>
+                                    <span>1</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Status</label>
+                                    <span>Pre_Proposition</span>
+                                </div>
+                            </div>
+                            <!-- Row 4 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Frequency</label>
+                                    <span>Yearly</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Installment Premium</label>
+                                    <span>9000</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Amount</label>
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <!-- Row 5 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Channel Type</label>
+                                    <span>Agent</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>New Fund Allocation</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Country</label>
+                                    <span>India</span>
+                                </div>
+                            </div>
+                            <!-- Row 6 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>First Name</label>
+                                    <span>Akanksha</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Middle Name</label>
+                                    <span></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Last Name</label>
+                                    <span>Chavan</span>
+                                </div>
+                            </div>
+                            <!-- Row 7 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Home Phone No</label>
+                                    <span></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Office Phone No</label>
+                                    <span></span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Mobile No</label>
+                                    <span>9876546724</span>
+                                </div>
+                            </div>
+                            <!-- Row 8 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Address 1</label>
+                                    <span>At Post Mahal</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Address 2</label>
+                                    <span>Taluka Lanja</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Address 3</label>
+                                    <span>Ratnagiri</span>
+                                </div>
+                            </div>
+                            <!-- Row 9 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>City</label>
+                                    <span>Ratnagiri</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>State</label>
+                                    <span>Maharashtra</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Pin Code</label>
+                                    <span>416701</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal_outer_div my-3">
+                    <div class="modal_heading">
+                        <img src="assets/images/channel_details.png" />
+                        <span class="modal_heading_span">Channel Details</span>
+                    </div>
+                    <div style="padding: 10px;">
+                        <div class="channel-card">
+                            <!-- Row 1 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Agent Id / Broker Code / CIF Code</label>
+                                    <span>90680</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Agent Name / Broker Name / CIF Name</label>
+                                    <span>PRAVINKUMAR TRIBHUVANDAS</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>CA Code</label>
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <!-- Row 2 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>CA Name</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Bank Name / Specific Person Name</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Bank Name / Specific Person Name</label>
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <!-- Row 3 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Branch Code</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Branch Name</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>KAM Code</label>
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <!-- Row 4 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>RM Code</label>
+                                    <span>0153300</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>File Number</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Reference Number</label>
+                                    <span>-</span>
+                                </div>
+                            </div>
+                            <!-- Row 5 -->
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Worksite Number</label>
+                                    <span>-</span>
+                                </div>
+                                <div class="info-item"></div>
+                                <div class="info-item"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button data-bs-dismiss="modal" class="button_close">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+.app-header {
+    height: 60px;
+    background: #FDFDFD;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #EAEEF5;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .06);
+}
+
+/* Logo */
+.header-left {
+    border-right: 1px solid #E4E4E4;
+    padding-right: 20px;
+}
+
+.logo {
+    width: 185px;
+}
+
+/* Search */
+.header-center {
+    flex: 1;
+}
+
+.search-box {
+    width: 420px;
+    height: 40px;
+    border: 1px solid #E4E8EE;
+    background: #F3F3F3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    transition: .3s;
+}
+
+.search-box:hover {
+    border-color: #2a2076;
+}
+
+.search-box img {
+    color: #475569;
+    margin-right: 10px;
+    width: 14px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 13px;
+    color: #2a2076;
+    background: transparent;
+}
+
+.search-box input::placeholder {
+    color: #475569;
+}
+
+/* Right */
+.header-right {
+    display: flex;
+    align-items: center;
+    /* gap: 16px; */
+}
+
+/* Icons */
+.icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    position: relative;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn:hover {
+    background: #F5F6FA;
+}
+
+.icon-btn i {
+    color: #2A286B !important;
+    font-size: 18px !important;
+}
+
+.badge {
+    position: absolute;
+    right: 0px;
+    top: -5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #EE2D37;
+    color: #fff;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'lato';
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.profile-initial {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #2A286B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E4E6EF;
+}
+
+.profile-initial span {
+    font-size: 15px;
+    color: #2A286B;
+    letter-spacing: 1px;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details h6 {
+    margin: 0;
+    font-size: 13px;
+    font-family: 'lato-bold';
+    color: #2A286B;
+}
+
+.user-details span {
+    font-size: 11px;
+    color: #5A77BB;
+}
+
+.arrow-icon {
+    background: #E5E6F1;
+    width: 16px;
+    height: 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-icon i {
+    color: #000000;
+    font-size: 10px;
+}

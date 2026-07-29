@@ -1,0 +1,175 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="dashboard">
+        
+            <h2>Welcome Back, Roopa</h2>
+        
+            <p class="subtitle">
+                Here's your stats for today
+            </p>
+        
+            <div class="stats">
+                <div class="stat-card" *ngFor="let card of cards">
+                    <div class="icon-box">
+                        <img [src]="card.image" [alt]="card.title">
+                    </div>
+                    <div>
+                        <div class="title">
+                            {{card.title}}
+                        </div>
+        
+                        <h3>{{card.value}}</h3>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div class="approval mt-3">
+        
+                <h4>
+                    Approval Queue
+                </h4>
+        
+                <div class="table-responsive">
+        
+                    <table class="table">
+        
+                        <thead>
+        
+                            <tr>
+        
+                                <th>Transaction ID</th>
+        
+                                <th>ID</th>
+        
+                                <th>Customer</th>
+        
+                                <th>Amount (₹)</th>
+        
+                                <th>Mode</th>
+        
+                                <th>Created By</th>
+        
+                                <th>Date & Time</th>
+        
+                                <th>Status</th>
+        
+                                <th></th>
+        
+                            </tr>
+        
+                        </thead>
+        
+                        <tbody>
+        
+                            <tr *ngFor="let item of paginatedData">
+        
+                                <td class="transaction-no">{{item.txn}}</td>
+        
+                                <td>{{item.id}}</td>
+        
+                                <td>{{item.customer}}</td>
+        
+                                <td>{{item.amount}}</td>
+        
+                                <td>{{item.mode}}</td>
+        
+                                <td>{{item.created}}</td>
+        
+                                <td>{{item.date}}</td>
+        
+                                <td>
+        
+                                    <span class="status">
+                                        {{item.status}}
+                                    </span>
+        
+                                </td>
+        
+                                <td>
+        
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+        
+                                </td>
+        
+                            </tr>
+        
+                        </tbody>
+        
+                    </table>
+        
+                </div>
+        
+                <div class="pagination">
+        
+                    <button (click)="previousPage()" [disabled]="currentPage === 1">
+                        ‹
+                    </button>
+        
+                    <button *ngFor="let page of pages" (click)="changePage(page)" [class.active]="currentPage === page">
+        
+                        {{page}}
+        
+                    </button>
+        
+                    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+                        ›
+                    </button>
+        
+                </div>
+        
+            </div>
+        
+            <!-- quick action -->
+            <div class="quick-action-section mt-3">
+        
+                <div class="quick-actions-card">
+        
+                    <h4 class="section-title">
+                        Quick Actions
+                    </h4>
+        
+                    <div class="quick-grid">
+        
+                        <div class="quick-item" *ngFor="let item of quickActions">
+        
+                            <div class="quick-icon">
+        
+                                <img [src]="item.icon" [alt]="item.title">
+        
+                            </div>
+        
+                            <div class="quick-title">
+        
+                                {{item.title}}
+        
+                            </div>
+        
+                        </div>
+        
+                    </div>
+        
+                </div>
+        
+                <div class="trend-card">
+        
+                    <h4 class="section-title">
+                        Today's collection Trends
+                    </h4>
+        
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [stroke]="chartOptions.stroke"
+                        [fill]="chartOptions.fill" [markers]="chartOptions.markers" [grid]="chartOptions.grid"
+                        [xaxis]="chartOptions.xaxis" [yaxis]="chartOptions.yaxis" [tooltip]="chartOptions.tooltip"
+                        [dataLabels]="chartOptions.dataLabels">
+                    </apx-chart>
+        
+                </div>
+        
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,132 @@
+<!-- <div  [formGroup]="form" class="courier-grid">
+
+    @for(field of fields; track field.controlName){
+
+    <div class="form-group">
+        <label>
+            {{field.label}}
+
+            @if(field.required){
+
+            <span>*</span>
+
+            }
+
+        </label>
+
+        @switch(field.type){
+
+        @case('text'){
+
+        <input class="form-control" [placeholder]="field.placeholder" [readonly]="field.readonly"
+            [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
+            [attr.inputmode]="field.allowOnlyNumbers ? 'numeric' : null" (keypress)="allowOnlyNumbers($event, field)"
+            (input)="onInput($event, field)">
+
+        }
+
+        @case('email'){
+
+        <input type="email" class="form-control" [placeholder]="field.placeholder"
+            [formControlName]="field.controlName">
+
+        }
+
+        @case('number'){
+
+        <input type="number" class="form-control" [placeholder]="field.placeholder"
+            [formControlName]="field.controlName">
+
+        }
+
+        @case('date'){
+
+        <input type="date" class="form-control" [formControlName]="field.controlName">
+
+        }
+
+        @case('select'){
+
+        <select class="form-select" [formControlName]="field.controlName">
+
+            <option value="">
+                -- Select --
+            </option>
+
+            @for(option of field.options; track option.value){
+
+            <option [value]="option.value">
+                {{option.label}}
+            </option>
+
+            }
+
+        </select>
+
+        }
+
+        }
+
+        @if(form.get(field.controlName)?.touched){
+
+        @if(form.get(field.controlName)?.hasError('required')){
+
+        <small class="error-text">
+
+            {{field.label}} is required
+
+        </small>
+
+        }
+
+        @if(form.get(field.controlName)?.hasError('email')){
+
+        <small class="error-text">
+
+            Invalid Email Address
+
+        </small>
+
+        }
+
+        @if(form.get(field.controlName)?.hasError('pattern')){
+
+        <small class="error-text">
+
+            {{field.patternMessage}}
+
+        </small>
+
+        }
+
+        @if(form.get(field.controlName)?.hasError('minlength')){
+
+        <small class="error-text">
+
+            Minimum {{field.minLength}} characters required
+
+        </small>
+
+        }
+
+        @if(form.get(field.controlName)?.hasError('maxlength')){
+
+        <small class="error-text">
+
+            Maximum {{field.maxLength}} characters allowed
+
+        </small>
+
+        }
+
+        }
+
+    </div>
+
+    }
+
+</div> -->
+
+<div>
+    Hello
+</div>

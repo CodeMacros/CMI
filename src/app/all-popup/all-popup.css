@@ -1,0 +1,190 @@
+.modal_outer_div {
+    border: 1px solid #B5B4D6;
+    border-radius: 15px;
+}
+.modal_heading {
+    display: flex;
+    background: #F5F7FF;
+    border-bottom: 1px solid #B5B4D6;
+    border-radius: 15px 15px 0 0;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+}
+.modal_heading img{
+    height: 22px;
+}
+.modal_heading_span{
+    background: linear-gradient(45deg, rgba(228, 41, 84, 1) 0%, rgba(40, 0, 112, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'lato-bold';
+}
+.modal_main_highlight{
+    border: 1px solid #B5B4D6;
+    border-radius: 10px;padding:10px;
+}
+.icon_bg{
+    background: #F5F7FF;
+    border: 1px solid #D0D0F4;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}    
+.icon_bg img{height: 20px;}
+.icon_text p{
+    margin: 0;
+    color: #828282;
+    font-size: 14px;
+}
+.icon_text h6{
+    margin: 0;
+    color: #2A286A;
+}
+.fix-width{width: 67%;}
+.info_list{
+    padding: 10px 0;
+    border-bottom: 1px solid #E3E3EF;
+    line-height: 1;
+}
+.info_list p{
+    margin: 0;
+    color: #202020;
+    font-family: 'lato-bold';width: 180px;
+    font-size: 14px;
+}
+.long_info_width p{width: 215px !important;}
+.info_list span{
+color: #2A286A;font-size: 14px;
+}
+.channel-card{
+    overflow:hidden;
+}
+.info-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);    line-height: 1.4;
+}
+.info-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:8px;
+    /* min-height:72px; */
+    border-bottom:1px solid #E3E3EF;
+}
+.info-item:not(:last-child){
+    border-right:1px solid #E3E3EF;
+}
+.info-row:last-child .info-item{
+    border-bottom:none;
+}
+.info-item label{
+    width:55%;
+    color: #202020;font-size: 14px;
+    font-family: "lato-bold";
+}
+.info-item span{
+    width:40%;
+    color:#2A286A;
+    word-break:break-word;font-size: 14px;
+}
+.policy_no_main{
+    padding: 5px 0 15px 8px;
+    border-bottom: 1px solid #E3E3EF;
+    margin-bottom: 10px;
+}
+.policy_no_highlight{
+    display: flex;
+    padding: 2px 2px 2px 10px;
+    font-size: 14px;
+    background: #2A286A;
+    width: fit-content;
+    align-items: center;
+    line-height: 1;
+    justify-content: space-between;
+    border-radius: 30px;
+    gap: 10px;
+}
+.policy_no_highlight p{
+    margin: 0;
+    color: #fff;
+}
+.policy_no_highlight span{
+    background: #fff;
+    color: #2A286A;
+    font-family: lato-bold;
+    padding: 8px;
+    border-radius: 20px;
+}
+.button_close{
+    border: 1px solid #2A286B;
+    background: #2A286B1A;
+    color: #2A286B;
+    border-radius: 10px;    font-size: 14px;
+    padding: 5px 25px;width: 95px;
+}
+.button_add{
+    border: 1px solid transparent;
+    border-radius: 10px;    font-size: 14px;
+    padding: 5px 25px; color: #fff;
+    background: linear-gradient(45deg, rgba(228, 41, 84, 1) 0%, rgba(40, 0, 112, 1) 100%);
+    width: 95px;
+}
+.info_modal_btn_div{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.info_modal_btn_div button{
+    border-radius: 10px;    font-size: 14px;
+    padding: 5px 0; width: 110px;
+}
+.cash_entry_btn{
+    border: 1px solid #BBBACE;
+    background: #DADAEB;
+    color: #2A286B;
+}
+.ok_btn{
+    color: #fff; background: #2A286A; border: 1px solid #2A286A;
+}
+.info-top-border{
+    border-top: 5px solid #34C759;    border-radius: 15px;
+}
+.alert-top-border{
+    border-top: 5px solid #FECB05;    border-radius: 15px;
+}
+
+.info-top-border img, .alert-top-border img{   height: 30px; margin-bottom: 15px;}
+.info_modal_header p{
+    color: #343D4E; font-family: lato-bold; font-size: 18px;
+    margin: 0;
+}
+.info_sub_details{
+    margin-bottom: 5px;
+    overflow: auto;
+}
+.info_sub_details p{
+    font-size: 14px;    color: #767676;
+}
+.info_sub_details span{
+    color: #2A286A;
+    font-family: lato-bold;
+}
+#myInfoModal .modal-content, #myAlertModal  .modal-content{border-radius: 15px;}
+@media (min-width: 576px) {
+    .modal-sm {
+        max-width: 350px;
+    }
+}
+.instrument_header{
+    border-bottom: 1px solid #DFDFDF;
+}
+.instrument_header p{
+    display: inline-block;
+    margin: 0;
+    padding-bottom: 10px;
+}

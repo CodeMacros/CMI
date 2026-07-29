@@ -1,4 +1,4 @@
-<div  [formGroup]="form" class="courier-grid">
+<div [formGroup]="form" class="courier-grid">
 
     @for(field of fields; track field.controlName){
 
@@ -18,8 +18,8 @@
 
         @case('text'){
 
-        <input class="form-control" [placeholder]="field.placeholder" [readonly]="field.readonly"
-            [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
+        <input [id]="field.controlName" class="form-control" [placeholder]="field.placeholder"
+            [readonly]="field.readonly" [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
             [attr.inputmode]="field.allowOnlyNumbers ? 'numeric' : null" (keypress)="allowOnlyNumbers($event, field)"
             (input)="onInput($event, field)">
 
@@ -27,27 +27,27 @@
 
         @case('email'){
 
-        <input type="email" class="form-control" [placeholder]="field.placeholder"
+        <input [id]="field.controlName" type="email" class="form-control" [placeholder]="field.placeholder"
             [formControlName]="field.controlName">
 
         }
 
         @case('number'){
 
-        <input type="number" class="form-control" [placeholder]="field.placeholder"
+        <input [id]="field.controlName" type="number" class="form-control" [placeholder]="field.placeholder"
             [formControlName]="field.controlName">
 
         }
 
         @case('date'){
 
-        <input type="date" class="form-control" [formControlName]="field.controlName">
+        <input [id]="field.controlName" type="date" class="form-control" [formControlName]="field.controlName">
 
         }
 
         @case('select'){
 
-        <select class="form-select" [formControlName]="field.controlName">
+        <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName">
 
             <option value="">
                 -- Select --
@@ -74,7 +74,7 @@
         <small class="error-text">
 
             <!-- {{field.label}} is required -->
-             Mandatory Field
+            Mandatory Field
 
         </small>
 
@@ -127,4 +127,3 @@
     }
 
 </div>
-

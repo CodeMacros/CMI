@@ -49,6 +49,15 @@ export class MiscellaneousInward {
       defaultValue: '30-07-2026',
       disabled: true
     },
+    // temprary added by sudesh
+    // {
+    //   type: 'date',
+    //   label: 'Received Date',
+    //   controlName: 'receivedDate123',
+    //   required: true,
+    //   defaultValue: '',
+    //   disabled: false
+    // },
     {
       type: 'text',
       label: 'Courier Agency Name',

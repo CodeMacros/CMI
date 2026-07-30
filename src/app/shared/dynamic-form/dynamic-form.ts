@@ -1,10 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DynamicField } from '../../modal/dynamic-field';
+import { NgStyle } from '@angular/common';
+import { DatepickerDirective } from '../../directives/datepicker.directive';
 
 @Component({
   selector: 'app-dynamic-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, 
+    // NgStyle , DatepickerDirective
+
+  ],
   templateUrl: './dynamic-form.html',
   styleUrl: './dynamic-form.css',
 })
@@ -132,5 +137,22 @@ export class DynamicForm implements OnInit {
     return field.showWhen.values.includes(control.value);
 
   }
+
+  toDateEventEmitter(date: any) {
+    console.log(date);
+    
+  }
+
+  //   dateEventEmitter(date: any) {
+  //   this.str_dob = date.target.value
+  //   this.age = this.calculateAge(date.target.value)!.toString();//calculate age by using DOB
+  //   if (this.age < 18 || this.age > 55) {
+  //     alert("Enter age between 18 to 55");
+  //     this.str_dob = ""
+  //   }
+  // }
+
+
+
 
 }

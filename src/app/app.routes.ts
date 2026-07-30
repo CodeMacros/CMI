@@ -14,10 +14,40 @@ export const routes: Routes = [
         children: [
             { path: 'dashboard', loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard) },
             { path: 'cashier', loadComponent: () => import('./cashier/cashier').then(c => c.Cashier) },
-            { path: 'inward', loadComponent: () => import('./inward/inward').then(c => c.Inward) },
+            // { path: 'inward', loadComponent: () => import('./inward/inward').then(c => c.Inward) },
+            {
+        path: 'inward',
+        children: [
+          {
+            path: '',
+            loadComponent: () =>
+              import('./inward/inward').then(c => c.Inward)
+          },
+          {
+            path: 'newBusiness',
+            loadComponent: () =>
+              import('./inward/new-business/new-business')
+                .then(c => c.NewBusiness)
+          },
+        //   {
+        //     path: 'scmc',
+        //     loadComponent: () =>
+        //       import('./inward/scmc/scmc')
+        //         .then(c => c.Scmc)
+        //   },
+        //   {
+        //     path: 'credit-life',
+        //     loadComponent: () =>
+        //       import('./inward/credit-life/credit-life')
+        //         .then(c => c.CreditLife)
+        //   }
+        ]
+      }
         ]
     },
     // { path: 'cashier', component: Cashier },
     { path: 'approval', component: Approval },
     { path: 'popup', component: AllPopup }
 ];
+
+

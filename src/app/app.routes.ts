@@ -14,9 +14,6 @@ export const routes: Routes = [
         path: 'layout', component: LayoutComponent,
         children: [
             { path: 'dashboard', loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard) },
-            // { path: 'cashier', loadComponent: () => import('./cashier/cashier').then(c => c.Cashier) },
-            // { path: 'inward', loadComponent: () => import('./inward/inward').then(c => c.Inward) },
-
             {
                 path: 'inward',
                 loadChildren: () =>

@@ -1,1 +1,19 @@
-<p>track-edit works!</p>
+<div class="container mt-1">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class=" border-0">
+                <div class="">
+                    <h4 class="text-center mb-2">Track & Edit</h4>
+                    <div class="mb-3">
+                        <select class="form-select" (change)="onActionChange($event)">
+                            <option selected disabled>Select an option</option>
+                            <option value="track-inward">Track Inward</option>
+                            <option value="edit-inward">Edit Inward</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet ></router-outlet>
+</div>

@@ -117,4 +117,20 @@ export class DynamicForm implements OnInit {
   }
 
 
+  isVisible(field: DynamicField): boolean {
+
+    if (!field.showWhen) {
+      return true;
+    }
+
+    const control = this.form.get(field.showWhen.controlName);
+
+    if (!control) {
+      return true;
+    }
+
+    return field.showWhen.values.includes(control.value);
+
+  }
+
 }

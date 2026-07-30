@@ -53,8 +53,10 @@
                     </div>
 
                     <div class="accordion-body" [hidden]="openedSection !== 'channel'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="channelForm" [fields]="channelfields"></app-dynamic-form>
+                        </div>
 
-                        <app-dynamic-form [form]="channelForm" [fields]="channelfields"></app-dynamic-form>
 
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DynamicForm } from '../shared/dynamic-form/dynamic-form';
 import { DynamicField } from '../modal/dynamic-field';
 
@@ -194,7 +194,9 @@ export class Inward implements OnInit {
       controlName: 'occupation',
       placeholder: '-- Select Occupation --',
       required: true,
-      options: []
+      options: [
+        { label: 'Accountant', value: 'Accountant' }
+      ]
     },
     {
       type: 'text',
@@ -349,16 +351,9 @@ export class Inward implements OnInit {
   ];
 
 
-  ReceivedDate = '';
-  receivedBy = '';
-  receivedFrom = '';
-  agencyName = '';
-  awbNumber = '';
-  handOverTo = '';
 
   // accordion start from here
   openedSection = '';
-
 
 
 
@@ -401,36 +396,7 @@ export class Inward implements OnInit {
 
   }
 
-  // accordion 1 
-  proposalNo = '';
-  productName = '';
-  proposalCategory = '';
-  firstName = '';
-  middleName = '';
-  lastName = '';
-  sumAssured = '';
-  premiumAmount = '';
-  frequency = '';
-  defence = '';
-  occupation = '';
-  mobileNo = '';
-  alternateModeRegistration = '';
-  benefitIllustration = '';
-  needAnalysis = '';
-  factaForm = '';
-  panCopy = '';
-  form60 = '';
-  bankDocument = '';
 
-  // accordion 2 
-  channel = '';
-  iaCode = '';
-  iaName = '';
-  umName = '';
-  code1 = '';
-  code2 = '';
-  code3 = '';
-  worksiteNo = '';
 
   // accordion 3
   modeOfPayment = '';
@@ -474,7 +440,7 @@ export class Inward implements OnInit {
 
     if (this.mainForm.invalid) {
       console.log(this.mainForm.invalid);
-
+      this.scrollToFirstInvalidControl(this.mainForm);
       return;
     }
 
@@ -482,6 +448,45 @@ export class Inward implements OnInit {
 
   }
 
+
+
+  scrollToFirstInvalidControl(control: AbstractControl): void {
+
+    if (control instanceof FormGroup) {
+
+      for (const key of Object.keys(control.controls)) {
+
+        const childControl = control.get(key);
+
+        if (childControl?.invalid) {
+
+          if (childControl instanceof FormGroup || childControl instanceof FormArray) {
+            this.scrollToFirstInvalidControl(childControl);
+            return;
+          }
+
+          setTimeout(() => {
+
+            const element = document.getElementById(key);
+
+            if (element) {
+
+              element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+              });
+
+              (element as HTMLElement).focus();
+
+            }
+
+          });
+
+          return;
+        }
+      }
+    }
+  }
 }
 
 

@@ -1,0 +1,23 @@
+.modal-xl{
+    max-width:95%;
+}
+
+.modal-content{
+    border-radius:12px;
+}
+
+.modal-body{
+    max-height:75vh;
+    overflow:auto;
+}
+
+.accordion-button{
+    background:#0d6efd;
+    color:#fff;
+    font-weight:600;
+}
+
+.accordion-button:not(.collapsed){
+    background:#0d6efd;
+    color:#fff;
+}

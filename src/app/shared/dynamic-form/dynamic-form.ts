@@ -10,79 +10,10 @@ import { DynamicField } from '../../modal/dynamic-field';
 })
 export class DynamicForm implements OnInit {
 
-  fields: DynamicField[] = [
 
-    {
-      type: 'date',
-      label: 'Received Form Date',
-      controlName: 'receiveFormdDate',
-      required: true,
-      defaultValue: '',
-      min: '2024-01-01',      // Optional
-      max: '2030-12-31'       // Optional
-    },
 
-    {
-      type: 'text',
-      label: 'Received Date',
-      controlName: 'receivedDate',
-      placeholder: 'Enter Received Date',
-      required: true
-    },
 
-    {
-      type: 'select',
-      label: 'Received By',
-      controlName: 'receivedBy',
-      required: true,
-
-      options: [
-        { label: 'Inward', value: 'Inward' },
-        { label: 'Outward', value: 'Outward' }
-      ]
-    },
-
-    {
-      type: 'text',
-      label: 'Mobile Number',
-      controlName: 'mobile',
-      required: true,
-      placeholder: 'Enter Mobile Number',
-      pattern: /^[6-9]\d{9}$/,
-      allowOnlyNumbers: true,
-      maxLength: 10,
-      patternMessage: 'Please enter valid mobile number.'
-    },
-
-    {
-      type: 'email',
-      label: 'Email',
-      placeholder: 'Enter Email',
-      controlName: 'email',
-      required: true
-    },
-
-    {
-      type: 'text',
-      label: 'PAN Number',
-      controlName: 'pan',
-      placeholder: 'Enter Pan',
-      required: true,
-      pattern: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
-      patternMessage: 'Invalid PAN Number.'
-    },
-
-    {
-      type: 'text',
-      label: 'Name',
-      controlName: 'name',
-      placeholder: 'Enter Name',
-      minLength: 3,
-      maxLength: 5
-    }
-
-  ];
-
+  @Input() fields!: DynamicField[];
 
   @Input() form!: FormGroup;
 

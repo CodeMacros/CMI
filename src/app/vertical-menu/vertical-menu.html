@@ -71,12 +71,12 @@
             @if(isOpen('cashier')){
             <ul class="submenu">
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/cashier-entry" >
+                    <div class="submenu-title" routerLink="/layout/cashier/cashier-entry">
                         <span>Cashier Entry</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title"  routerLink="/layout/cashier/bulk-upload">
+                    <div class="submenu-title" routerLink="/layout/cashier/bulk-upload">
                         <span>Bulk Upload</span>
                     </div>
                 </li>
@@ -91,20 +91,14 @@
 
         <!--Outward-->
         <li class="menu-item">
-            <div class="menu-title" (click)="toggle('Outward')">
-                <div class="left">
+            <div class="menu-title">
+                <div class="left" routerLink="/layout/outward">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    @if (!collapsed) {<span>Outward</span>}
+                    <span>Outward</span>
                 </div>
-
-                @if (!collapsed) {
-                <i class="fa-solid" [ngClass]="isOpen('Outward') ? 'fa-angle-up' : 'fa-angle-down'">
-                </i>
-                }
-
             </div>
 
-            @if (isOpen('Outward')) {
+            <!-- @if (isOpen('Outward')) {
             <ul class="submenu">
                 <li>
                     <div class="submenu-title">
@@ -122,7 +116,7 @@
                     </div>
                 </li>
             </ul>
-            }
+            } -->
         </li>
 
 

@@ -27,6 +27,11 @@ export const routes: Routes = [
                 loadChildren: () =>
                     import('./cashier/cashier.route').then(r => r.CASHIER_ROUTES)
             },
+            {
+                path: 'outward',
+                loadChildren: () =>
+                    import('./outward/outward.route').then(r => r.OUTWARD_ROUTES)
+            },
         ]
     },
     // { path: 'cashier', component: Cashier },

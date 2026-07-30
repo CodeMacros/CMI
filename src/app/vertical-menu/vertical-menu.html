@@ -4,90 +4,59 @@
 
         <!-- Menu -->
         <li class="menu-item active" routerLink="/layout/dashboard">
-            <!-- <a routerLink="/dashboard"> -->
             <div class="menu-title">
                 <div class="left">
-                    <i class="fa-solid fa-house"></i>
-                    @if(!collapsed){<span>Dashboard</span>}
+                    <i class="fa-solid fa-house"></i>Dashboard
                 </div>
             </div>
-            <!-- </a> -->
         </li>
 
-        <!-- My Space -->
+        <!-- Inward -->
         <li class="menu-item">
-            <div class="menu-title" (click)="toggle('BOS')">
+            <div class="menu-title" (click)="toggle('inward')">
                 <div class="left">
-                    <i class="fa-solid fa-table-cells-large"></i>
-                    @if (!collapsed) {<span>BOS</span>}
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>Inward
                 </div>
-                @if (!collapsed) {<i class="fa-solid" [ngClass]="isOpen('BOS') ? 'fa-angle-up' : 'fa-angle-down'">
-                </i>}
 
+                @if (!collapsed) {
+                <i class="fa-solid" [ngClass]="isOpen('inward') ? 'fa-angle-up' : 'fa-angle-down'">
+                </i>
+                }
             </div>
 
-            <!-- Summenu -->
-
-            @if(isOpen('BOS')){
+            @if (isOpen('inward')) {
             <ul class="submenu">
-
-                <!-- BOS -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('cashireentry')">
-                        @if(!collapsed){<span>Cashire Entry</span>}
-                        <i class="fa-solid" [ngClass]="isSubOpen('cashireentry') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                <!-- Inner menu -->
-                @if(isSubOpen('cashireentry')){
-                <ul class="inner-submenu">
-                    <li>Select Collection Bank</li>
-                    <li>Pending Instrument Report</li>
-                    <li>Mark/Unmark Non Lodgment</li>
-                    <li>Cash Deposit Slip</li>
-                    <li>View CE</li>
-                    <li>Descriptive Rating Sheet</li>
-                </ul>
-                }
-
-                <!-- Admin -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('dailycashbook')">
-                        @if(!collapsed){ <span>Daily Cash Book</span>}
-                        <i class="fa-solid" [ngClass]="isSubOpen('dailycashbook') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                <!-- Inner menu -->
-                @if(isSubOpen('dailycashbook')){
-                <ul class="inner-submenu">
-                    <li>Capture/Modify DCB</li>
-                    <li>View DCB</li>
-                </ul>
-                }
-
                 <li>
                     <div class="submenu-title">
-                        <span>Fund Transfer</span>
+                        <span>New Business</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="submenu-title">
+                        <span>Renewal</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="submenu-title">
+                        <span>Correct AWB Number</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="submenu-title">
+                        <span>Track/Edit</span>
                     </div>
                 </li>
             </ul>
             }
-
-
-
         </li>
 
-        <!-- Individual Cashier -->
+        <!-- Cashiering -->
         <li class="menu-item">
             <div class="menu-title" (click)="toggle('cashier')">
                 <div class="left">
                     <i class="fa-regular fa-user"></i>
                     @if(!collapsed){
-                    <span>Individual Cashier</span>
+                    <span>Cashiering</span>
                     }
                 </div>
 
@@ -100,254 +69,21 @@
             <!-- Summenu -->
             @if(isOpen('cashier')){
             <ul class="submenu">
-                <!-- Cashier -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('subcashier')">
-                        @if(!collapsed){
+                <li>
+                    <div class="submenu-title">
                         <span>Cashier Entry</span>
-                        }
-                        <i class="fa-solid" [ngClass]="isSubOpen('subcashier') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
                     </div>
                 </li>
-
-                <!-- Inner menu -->
-                @if(isSubOpen('subcashier')){
-                <ul class="inner-submenu">
-
-                    <li routerLink="/layout/cashier">Cashier Entry</li>
-                    <li>Cashier Slip</li>
-                    <li>CDA Intimation Letter</li>
-                    <li>View CDA Details</li>
-                    <li>PA Cashier Entry</li>
-
-                </ul>
-                }
-
                 <li>
                     <div class="submenu-title">
-                        <span>Edit Cashier Entry</span>
+                        <span>Bulk Upload</span>
                     </div>
                 </li>
-
-
                 <li>
                     <div class="submenu-title">
-                        <span>Upload File Payment</span>
+                        <span>Reports</span>
                     </div>
                 </li>
-
-
-
-
-
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('fileupload')">
-                        @if(!collapsed){
-                        <span>File Upload</span>
-                        }
-                        <i class="fa-solid" [ngClass]="isSubOpen('fileupload') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                <!-- Inner menu -->
-                @if(isSubOpen('fileupload')){
-
-                <ul class="inner-submenu">
-                    <li>EFT Upload</li>
-                    <li>SCMC File Upload</li>
-                    <li>SCMC File Upload Reports</li>
-                    <li>CDA File Upload</li>
-                    <li>Online Payment File Upload</li>
-                    <li>CE File Upload</li>
-                    <li>IP CE File Upload Log</li>
-                    <li>Cashiering of Feed Not received</li>
-                    <li>RPP Payment Upload</li>
-                </ul>
-                }
-
-
-
-
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('reprint')">
-                        @if(!collapsed){
-                        <span>RePrint</span>
-                        }
-                        <i class="fa-solid" [ngClass]="isSubOpen('reprint') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                <!-- Inner menu -->
-                @if(isSubOpen('reprint')){
-
-                <ul class="inner-submenu">
-                    <li>Proposal Deposit Receipts</li>
-                    <li>Renewal Premuim Receipts</li>
-                </ul>
-                }
-
-
-                <!-- Approval -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('approval')">
-                        @if(!collapsed){
-                        <span>Approval CE</span>
-                        }
-                        <i class="fa-solid" [ngClass]="isSubOpen('approval') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                <!-- Inner menu -->
-                @if(isSubOpen('approval')){
-
-                <ul class="inner-submenu">
-                    <!-- Approve Cashier Entry -->
-                    <li class="submenu-item has-child">
-                        <span>Approve Edit Cashier Entry</span>
-                    </li>
-                    <li class="submenu-item has-child">
-                        <span>Approve PA Cashier Entry</span>
-                    </li>
-                    <li class="submenu-item has-child">
-                        <span>View Receipt</span>
-                    </li>
-                    <li class="submenu-item has-child">
-                        <span>MICR Code</span>
-                    </li>
-                    <li class="submenu-item has-child">
-                        <span>EFT Approve Cashiering</span>
-                    </li>
-                    <li class="submenu-item has-child">
-                        <span>RPP Cashiering Approve</span>
-                    </li>
-                </ul>
-                }
-
-            </ul>
-
-
-            }
-
-
-
-        </li>
-
-
-
-
-        <!-- Inward -->
-        <li class="menu-item">
-            <div class="menu-title" (click)="toggle('inward')">
-                <div class="left">
-                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    @if (!collapsed) {<span>Inward</span>}
-                </div>
-
-                @if (!collapsed) {
-                <i class="fa-solid" [ngClass]="isOpen('inward') ? 'fa-angle-up' : 'fa-angle-down'">
-                </i>
-                }
-            </div>
-
-            <!-- Submenu -->
-            @if (isOpen('inward')) {
-            <ul class="submenu">
-
-
-                <!-- Create Inward -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('newinward')">
-
-                        @if (!collapsed) {
-                        <span>Create Inward</span>
-                        }
-
-                        <i class="fa-solid" [ngClass]="isSubOpen('newinward') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                @if (isSubOpen('newinward')) {
-                <ul class="inner-submenu">
-                    <li routerLink="/layout/inward">Individual Proposal Form</li>
-                    <li>Individual SCMC</li>
-                    <li>Credit Life Proposal</li>
-                    <li>Credit Life Proposal SCMC</li>
-                    <li>Linked Branch Inward</li>
-                    <li>Other Branch Inward</li>
-                    <li>Miscellaneous Inward</li>
-                    <li>Claim Requests</li>
-                    <li>CDA Details</li>
-                </ul>
-                }
-
-
-                <!-- Requirements -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('subReq')">
-
-                        @if (!collapsed) {
-                        <span>Requirements</span>
-                        }
-
-                        <i class="fa-solid" [ngClass]="isSubOpen('subReq') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                <!-- Requirements menu -->
-                @if (isSubOpen('subReq')) {
-                <ul class="inner-submenu">
-                    <li>Requirements</li>
-                </ul>
-                }
-
-                <!-- Post Issuance Request -->
-                <li>
-                    <div class="submenu-title">
-                        <span>Post Issuance Request</span>
-                    </div>
-                </li>
-
-
-                <!--Renewal Cheque -->
-                <li class="not-hover">
-                    <div class="submenu-title" (click)="toggleSub('renewalcheque')">
-
-                        @if (!collapsed) {
-                        <span>Renewal Cheque</span>
-                        }
-
-                        <i class="fa-solid" [ngClass]="isSubOpen('renewalcheque') ? 'fa-angle-up' : 'fa-angle-down'">
-                        </i>
-                    </div>
-                </li>
-
-                @if (isSubOpen('renewalcheque')) {
-                <ul class="inner-submenu">
-                    <li>Renewal Cheque</li>
-                    <!-- <span>Post Issuance Request</span> -->
-                    <li>Renewal Cheque SCMC</li>
-                </ul>
-                }
-
-                <!-- Correct AWB Number -->
-                <li>
-                    <div class="submenu-title">
-                        <span>Correct AWB Number</span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="submenu-title">
-                        <span>Track Inward</span>
-                    </div>
-                </li>
-
             </ul>
             }
         </li>
@@ -376,22 +112,88 @@
                 </li>
                 <li>
                     <div class="submenu-title">
-                        <span>Bulk Outward</span>
+                        <span>Track Outward</span>
                     </div>
                 </li>
                 <li>
                     <div class="submenu-title">
-                        <span>Track Outward</span>
+                        <span>Edit Outward</span>
                     </div>
-                </li>
-
-
+                </li>          
             </ul>
             }
         </li>
 
 
-        <li class="menu-item">
+        <!-- ------------------------------------------------------------------------ -->
+
+        <!-- BOS -->
+        <!-- <li class="menu-item">
+            <div class="menu-title" (click)="toggle('BOS')">
+                <div class="left">
+                    <i class="fa-solid fa-table-cells-large"></i>
+                    @if (!collapsed) {<span>BOS</span>}
+                </div>
+                @if (!collapsed) {<i class="fa-solid" [ngClass]="isOpen('BOS') ? 'fa-angle-up' : 'fa-angle-down'">
+                </i>}
+
+            </div>
+
+            @if(isOpen('BOS')){
+            <ul class="submenu">
+
+                
+                <li class="not-hover">
+                    <div class="submenu-title" (click)="toggleSub('cashireentry')">
+                        @if(!collapsed){<span>Cashire Entry</span>}
+                        <i class="fa-solid" [ngClass]="isSubOpen('cashireentry') ? 'fa-angle-up' : 'fa-angle-down'">
+                        </i>
+                    </div>
+                </li>
+
+                
+                @if(isSubOpen('cashireentry')){
+                <ul class="inner-submenu">
+                    <li>Select Collection Bank</li>
+                    <li>Pending Instrument Report</li>
+                    <li>Mark/Unmark Non Lodgment</li>
+                    <li>Cash Deposit Slip</li>
+                    <li>View CE</li>
+                    <li>Descriptive Rating Sheet</li>
+                </ul>
+                }
+
+                <li class="not-hover">
+                    <div class="submenu-title" (click)="toggleSub('dailycashbook')">
+                        @if(!collapsed){ <span>Daily Cash Book</span>}
+                        <i class="fa-solid" [ngClass]="isSubOpen('dailycashbook') ? 'fa-angle-up' : 'fa-angle-down'">
+                        </i>
+                    </div>
+                </li>
+
+               
+                @if(isSubOpen('dailycashbook')){
+                <ul class="inner-submenu">
+                    <li>Capture/Modify DCB</li>
+                    <li>View DCB</li>
+                </ul>
+                }
+
+                <li>
+                    <div class="submenu-title">
+                        <span>Fund Transfer</span>
+                    </div>
+                </li>
+            </ul>
+            }
+
+
+
+        </li> -->
+
+
+        <!-- Loan Repayment -->
+        <!-- <li class="menu-item">
             <div class="menu-title" (click)="toggle('loanRepayment')">
                 <div class="left">
                     <i class="fa-regular fa-user"></i>
@@ -409,7 +211,6 @@
             <ul class="submenu">
 
 
-                <!-- Create Inward -->
                 <li class="not-hover">
                     <div class="submenu-title" (click)="toggleSub('savingscheme')">
 
@@ -432,10 +233,10 @@
             }
 
 
-        </li>
+        </li> -->
 
 
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <div class="menu-title" (click)="toggle('policyServicng')">
                 <div class="left">
                     <i class="fa-regular fa-user"></i>
@@ -504,10 +305,10 @@
             }
 
 
-        </li>
+        </li> -->
 
         <!-- Admin -->
-        <li class="menu-item">
+        <!-- <li class="menu-item">
             <div class="menu-title" (click)="toggle('admin')">
                 <div class="left">
                     <i class="fa-solid fa-gear"></i>
@@ -547,11 +348,11 @@
                 </li>
             </ul>
             }
-        </li>
+        </li> -->
     </ul>
 
 
-    <ul class="menu p-0">
+    <!-- <ul class="menu p-0">
         <li class="menu-item">
             <div class="menu-title">
                 <div class="left">
@@ -563,7 +364,7 @@
                 </div>
             </div>
         </li>
-    </ul>
+    </ul> -->
 
     <div class="collapse-btn" [class.collapsed]="collapsed" (click)="toggleSidebar()">
         <i class="fa-solid" [class.fa-chevron-left]="!collapsed" [class.fa-chevron-right]="collapsed">

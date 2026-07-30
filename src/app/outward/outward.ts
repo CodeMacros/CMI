@@ -10,10 +10,13 @@ import { Router, RouterOutlet } from '@angular/router';
 export class Outward implements OnInit {
   constructor(private router: Router) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   onActionChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
+    console.log(value);
+
     if (value) {
       this.router.navigate(['/layout/outward/', value]);
     }

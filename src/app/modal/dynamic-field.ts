@@ -39,4 +39,10 @@ export interface DynamicField {
         value: any;
     }[];
 
+    showWhen?: {
+        controlName: string;
+        values: any[];
+    };
+
+    col?: string
 }

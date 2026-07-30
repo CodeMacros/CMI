@@ -12,6 +12,10 @@ export const INWARD_ROUTES: Routes = [
     {
         path: 'new-business',
         component: NewBusiness,
+        children: [
+            { path: 'miscellaneous-inward', loadComponent: () => import('./new-business/miscellaneous-inward/miscellaneous-inward').then(c => c.MiscellaneousInward) },
+            { path: 'discrepancy-inward', loadComponent: () => import('./new-business/discrepancy-inward/discrepancy-inward').then(c => c.DiscrepancyInward) },
+        ]
     },
     {
         path: 'renewal',
@@ -20,6 +24,10 @@ export const INWARD_ROUTES: Routes = [
     {
         path: 'track-edit',
         component: TrackEdit,
+        children: [
+            { path: 'track-inward', loadComponent: () => import('./track-edit/track-inward/track-inward').then(c => c.TrackInward) },
+            { path: 'edit-inward', loadComponent: () => import('./track-edit/edit-inward/edit-inward').then(c => c.EditInward) },
+        ]
     },
     {
         path: 'correct-awb-number',

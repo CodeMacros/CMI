@@ -1,0 +1,18 @@
+<app-dynamic-form [form]="trackInwardForm" [fields]="trackInwardfields"></app-dynamic-form>
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="trackInward()">
+                    Track Inward
+                </button>
+            </div>
+
+            <button class="btn-clear"   (click)="clear()">
+                Clear
+            </button>
+
+        </div>
+    </div>
+</div>

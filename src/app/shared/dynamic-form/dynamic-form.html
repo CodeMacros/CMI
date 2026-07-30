@@ -1,129 +1,127 @@
-<div [formGroup]="form" class="courier-grid">
-
+<div [formGroup]="form" class="row">
     @for(field of fields; track field.controlName){
+        @if(isVisible(field)){
+            <div [class]="field.col || 'col-md-3 mb-3'">
 
-    <div class="form-group">
-        <label>
-            {{field.label}}
 
-            @if(field.required){
+        <div class="form-group">
 
-            <span>*</span>
+            <label>
 
-            }
+                {{field.label}}
 
-        </label>
+                @if(field.required){
+                <span>*</span>
+                }
 
-        @switch(field.type){
+            </label>
 
-        @case('text'){
+            @switch(field.type){
 
-        <input [id]="field.controlName" class="form-control" [placeholder]="field.placeholder"
-            [readonly]="field.readonly" [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
-            [attr.inputmode]="field.allowOnlyNumbers ? 'numeric' : null" (keypress)="allowOnlyNumbers($event, field)"
-            (input)="onInput($event, field)">
+            @case('text'){
 
-        }
-
-        @case('email'){
-
-        <input [id]="field.controlName" type="email" class="form-control" [placeholder]="field.placeholder"
-            [formControlName]="field.controlName">
-
-        }
-
-        @case('number'){
-
-        <input [id]="field.controlName" type="number" class="form-control" [placeholder]="field.placeholder"
-            [formControlName]="field.controlName">
-
-        }
-
-        @case('date'){
-
-        <input [id]="field.controlName" type="date" class="form-control" [formControlName]="field.controlName">
-
-        }
-
-        @case('select'){
-
-        <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName">
-
-            <option value="">
-                -- Select --
-            </option>
-
-            @for(option of field.options; track option.value){
-
-            <option [value]="option.value">
-                {{option.label}}
-            </option>
+            <input [id]="field.controlName" class="form-control" [placeholder]="field.placeholder"
+                [readonly]="field.readonly" [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
+                [attr.inputmode]="field.allowOnlyNumbers ? 'numeric' : null"
+                (keypress)="allowOnlyNumbers($event, field)" (input)="onInput($event, field)">
 
             }
 
-        </select>
+            @case('email'){
 
-        }
+            <input [id]="field.controlName" type="email" class="form-control" [placeholder]="field.placeholder"
+                [formControlName]="field.controlName">
 
-        }
+            }
 
-        @if(form.get(field.controlName)?.touched){
+            @case('number'){
 
-        @if(form.get(field.controlName)?.hasError('required')){
+            <input [id]="field.controlName" type="number" class="form-control" [placeholder]="field.placeholder"
+                [formControlName]="field.controlName">
 
-        <small class="error-text">
+            }
 
-            <!-- {{field.label}} is required -->
-            Mandatory Field
+            @case('date'){
 
-        </small>
+            <input [id]="field.controlName" type="date" class="form-control" [formControlName]="field.controlName">
 
-        }
+            }
 
-        @if(form.get(field.controlName)?.hasError('email')){
+            @case('select'){
 
-        <small class="error-text">
+            <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName">
 
-            Invalid Email Address
+                <option value="">
+                    -- Select --
+                </option>
 
-        </small>
+                @for(option of field.options; track option.value){
 
-        }
+                <option [value]="option.value">
 
-        @if(form.get(field.controlName)?.hasError('pattern')){
+                    {{option.label}}
 
-        <small class="error-text">
+                </option>
 
-            {{field.patternMessage}}
+                }
 
-        </small>
+            </select>
 
-        }
+            }
 
-        @if(form.get(field.controlName)?.hasError('minlength')){
+            }
 
-        <small class="error-text">
+            @if(form.get(field.controlName)?.touched){
 
-            Minimum {{field.minLength}} characters required
+            @if(form.get(field.controlName)?.hasError('required')){
 
-        </small>
+            <small class="error-text">
+                Mandatory Field
+            </small>
 
-        }
+            }
 
-        @if(form.get(field.controlName)?.hasError('maxlength')){
+            @if(form.get(field.controlName)?.hasError('email')){
 
-        <small class="error-text">
+            <small class="error-text">
+                Invalid Email Address
+            </small>
 
-            Maximum {{field.maxLength}} characters allowed
+            }
 
-        </small>
+            @if(form.get(field.controlName)?.hasError('pattern')){
 
-        }
+            <small class="error-text">
+                {{field.patternMessage}}
+            </small>
 
-        }
+            }
+
+            @if(form.get(field.controlName)?.hasError('minlength')){
+
+            <small class="error-text">
+                Minimum {{field.minLength}} characters required
+            </small>
+
+            }
+
+            @if(form.get(field.controlName)?.hasError('maxlength')){
+
+            <small class="error-text">
+                Maximum {{field.maxLength}} characters allowed
+            </small>
+
+            }
+
+            }
+
+        </div>
 
     </div>
+        }
 
     }
+
+
 
 </div>

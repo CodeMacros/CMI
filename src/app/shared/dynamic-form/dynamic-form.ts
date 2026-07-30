@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DynamicField } from '../../inward/modal/dynamic-field';
+import { DynamicField } from '../../modal/dynamic-field';
 
 @Component({
   selector: 'app-dynamic-form',

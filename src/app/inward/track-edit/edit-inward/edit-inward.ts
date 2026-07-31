@@ -22,7 +22,7 @@ export class EditInward {
       label: 'Inward Number',
       controlName: 'inwardNumber',
       placeholder: 'Enter Inward Number',
-      required: true
+      required: true,
     },
     {
       type: 'text',
@@ -36,6 +36,8 @@ export class EditInward {
       label: 'Proposal/Policy/MF/Loan AC No',
       controlName: 'searchType',
       required: true,
+      visible: true,
+      triggerChange: true,
       options: [
         {
           label: 'Proposal Number',
@@ -61,6 +63,7 @@ export class EditInward {
       controlName: 'proposalNumber',
       placeholder: 'Enter Proposal Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['proposal']
@@ -72,6 +75,7 @@ export class EditInward {
       controlName: 'policyNumber',
       placeholder: 'Enter Policy Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['policy']
@@ -83,6 +87,7 @@ export class EditInward {
       controlName: 'mfNumber',
       placeholder: 'Enter MF Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['mf']
@@ -94,6 +99,7 @@ export class EditInward {
       controlName: 'loanAccountNumber',
       placeholder: 'Enter Loan Account Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['loan']
@@ -112,6 +118,38 @@ export class EditInward {
   }
 
 
+  onSelectChange(event: { controlName: string; value: any }) {
+
+    if (event.controlName !== 'searchType') {
+      return;
+    }
+
+    this.editInwardfields.forEach(field => {
+
+      if (!field.showWhen) {
+        field.visible = true;
+        return;
+      }
+
+      field.visible = field.showWhen.values.includes(event.value);
+
+      const control = this.editForm.get(field.controlName);
+
+      if (!control) {
+        return;
+      }
+
+      if (field.visible) {
+        control.enable();
+      } else {
+        control.reset();
+        control.disable();
+      }
+
+    });
+
+  }
+
   editInward(): void {
     console.log('this =', this);
     console.log('comSrv =', this.comSrv);
@@ -128,4 +166,5 @@ export class EditInward {
   clear(): void {
     this.comSrv.clearForm(this.editInwardForm, this.editInwardfields)
   }
+
 }

@@ -47,4 +47,6 @@ export interface DynamicField {
     col?: string;
 
     triggerChange?: boolean
+
+    visible? : boolean
 }

@@ -11,7 +11,8 @@
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Edit Details</h5>
                 </div>
-                <app-dynamic-form [form]="editForm" [fields]="editInwardfields"></app-dynamic-form>
+                <app-dynamic-form [form]="editForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="editInwardfields"></app-dynamic-form>
                 <!-- <div class="container mt-4">
 
                     <div class="">

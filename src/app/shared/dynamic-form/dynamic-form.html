@@ -1,6 +1,6 @@
 <div [formGroup]="form" class="row">
     @for(field of fields; track field.controlName){
-    @if(isVisible(field)){
+    @if(field.visible !== false){
     <div [class]="field.col || 'col-md-3 mb-3'">
 
 

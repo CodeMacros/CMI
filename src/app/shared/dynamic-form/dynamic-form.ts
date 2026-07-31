@@ -126,7 +126,8 @@ export class DynamicForm implements OnInit {
 
 
   isVisible(field: DynamicField): boolean {
-
+    console.log(field);
+  
     if (!field.showWhen) {
       return true;
     }

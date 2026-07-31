@@ -195,7 +195,7 @@ export class MiscellaneousInward {
     if (this.comSrv.validateForm(this.mainForm)) {
       console.log(this.mainForm.getRawValue())
     } else {
-      console.log('trackInwardForm is valid', this.comSrv.validateForm(this.mainForm));
+      console.log('Form is valid', this.comSrv.validateForm(this.mainForm));
     }
   }
 

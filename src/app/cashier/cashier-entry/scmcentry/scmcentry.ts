@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
 import { DynamicField } from '../../../modal/dynamic-field';
-import { Modal } from 'bootstrap';
-
 
 @Component({
   selector: 'app-scmcentry',
@@ -34,7 +32,7 @@ export class Scmcentry {
       label: 'Received Date',
       controlName: 'receivedDate',
       required: true,
-      defaultValue: '30-07-2026',
+      defaultValue: '31-07-2026',
       disabled: true
     },
 

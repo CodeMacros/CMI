@@ -1,7 +1,7 @@
 <div [formGroup]="form" class="row">
     @for(field of fields; track field.controlName){
-        @if(isVisible(field)){
-            <div [class]="field.col || 'col-md-3 mb-3'">
+    @if(isVisible(field)){
+    <div [class]="field.col || 'col-md-3 mb-3'">
 
 
         <div class="form-group">
@@ -51,7 +51,7 @@
 
             <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName">
 
-                <option value="">
+                <option value="" disabled selected>
                     -- Select --
                 </option>
 
@@ -118,7 +118,7 @@
         </div>
 
     </div>
-        }
+    }
 
     }
 

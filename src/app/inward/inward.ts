@@ -23,7 +23,7 @@ export class Inward implements OnInit {
       controlName: 'ReceivedDate',
       placeholder: 'Enter Received Date',
       required: true,
-      defaultValue: '29-07-2026',
+      defaultValue: '31-07-2026',
       disabled: true
     },
     {

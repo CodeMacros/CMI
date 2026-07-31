@@ -52,7 +52,7 @@ export class IndependentOutward implements OnInit {
       controlName: 'dispatchDate',
       placeholder: 'Enter Received Date',
       required: true,
-      defaultValue: '30-07-2026',
+      defaultValue: '31-07-2026',
       disabled: true
     },
     {

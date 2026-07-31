@@ -1,21 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DynamicField } from '../../modal/dynamic-field';
+import { NgStyle } from '@angular/common';
+import { DatepickerDirective } from '../../directives/datepicker.directive';
 
 @Component({
   selector: 'app-dynamic-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,
+    // NgStyle , DatepickerDirective
+
+  ],
   templateUrl: './dynamic-form.html',
   styleUrl: './dynamic-form.css',
 })
 export class DynamicForm implements OnInit {
 
+  @Input({ required: true }) fields!: DynamicField[];
+
+  @Input({ required: true }) form!: FormGroup;
 
 
-
-  @Input() fields!: DynamicField[];
-
-  @Input() form!: FormGroup;
+  @Output() fieldChanged = new EventEmitter<{
+    controlName: string;
+    value: any;
+  }>();
 
 
   constructor(private fb: FormBuilder) { }
@@ -118,13 +126,13 @@ export class DynamicForm implements OnInit {
 
 
   isVisible(field: DynamicField): boolean {
-
+    console.log(field);
+  
     if (!field.showWhen) {
       return true;
     }
 
     const control = this.form.get(field.showWhen.controlName);
-
     if (!control) {
       return true;
     }
@@ -132,5 +140,22 @@ export class DynamicForm implements OnInit {
     return field.showWhen.values.includes(control.value);
 
   }
+
+  toDateEventEmitter(date: any) {
+    console.log(date);
+  }
+
+
+
+  onSelectChange(event: Event, field: DynamicField) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.fieldChanged.emit({
+      controlName: field.controlName,
+      value
+    });
+
+  }
+
+
 
 }

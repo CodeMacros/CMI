@@ -1,70 +1,39 @@
 <div class="row">
     <div class="col-12">
         <div class="common-wrapper">
+
+            <!-- Page Heading -->
+            <!-- <div class="page-title mb-3">
+                <h4>Edit Inward</h4>
+            </div> -->
             <div class="inward-card">
+
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Edit Details</h5>
                 </div>
-                <div class="container mt-4">
-                    <div class="">
-                        <div class="row align-items-center mb-5">
-                            <div class="col-md-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="searchType" id="inwardNo">
-                                    <label class="form-check-label fw-semibold" for="inwardNo">
-                                        Inward Number
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="searchType" id="awbNo">
-                                    <label class="form-check-label fw-semibold" for="awbNo">
-                                        AWB Number
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="searchType" id="proposal"
-                                        checked>
-                                    <label class="form-check-label fw-semibold" for="proposal">
-                                        Proposal/Policy/MF/Loan A/C No.
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <select class="form-select">
-                                    <option>Proposal No</option>
-                                    <option>Policy No</option>
-                                    <option>Membership Form No</option>
-                                    <option>Loan Account No</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <label class="form-label fw-semibold d-block text-center">
-                                    Proposal Number <span class="text-danger">*</span>
-                                </label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <button class="btn-submit px-4">
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <app-dynamic-form [form]="editForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="editoutwardfields"></app-dynamic-form>
+          
             </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="editoutward()">
+                    Edit Outward
+                </button>
+            </div>
+
+            <button class="btn-clear" (click)="clear()">
+                Clear
+            </button>
+
         </div>
     </div>
 </div>

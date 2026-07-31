@@ -42,11 +42,11 @@ export class MiscellaneousInward {
       ]
     },
     {
-      type: 'text',
+      type: 'date',
       label: 'Received Date',
       controlName: 'receivedDate',
       required: true,
-      defaultValue: '30-07-2026',
+      defaultValue: '2026-07-31',
       disabled: true
     },
     {
@@ -67,6 +67,7 @@ export class MiscellaneousInward {
       type: 'select',
       label: 'State',
       controlName: 'state',
+      triggerChange: true,
       options: [
         { label: 'Maharashtra', value: 'MH' },
         { label: 'Bihar', value: 'BR' }
@@ -147,9 +148,8 @@ export class MiscellaneousInward {
     this.mainForm = this.fb.group({
       courierForm: this.fb.group({}),
       documnetForm: this.fb.group({}),
-
     });
-
+    this.comSrv.loadStates(this.courierfields)
   }
 
 
@@ -169,12 +169,24 @@ export class MiscellaneousInward {
     }
   }
 
-  onSubmit() {
+  onFieldChanged(event: any) {
+    console.log(event);
+    switch (event.controlName) {
+      case 'state':
+        this.comSrv.loadCities(event.value, this.courierfields, this.courierForm);
+        break;
+      // case 'city':
+      //   console.log('Selected City:', event.value);
+      //   break;
+    }
 
+  }
+
+  onSubmit() {
     if (this.comSrv.validateForm(this.mainForm)) {
       console.log(this.mainForm.getRawValue())
     } else {
-      console.log('trackInwardForm is valid', this.comSrv.validateForm(this.mainForm));
+      console.log('Form is valid', this.comSrv.validateForm(this.mainForm));
     }
   }
 

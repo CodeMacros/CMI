@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+
+            <div class="page-title  m-2">
+                <h4>Cashier Entry For Multiple Proposals</h4>
+            </div>
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0 ">
+                    <h5 class="section-title">Details of Consolidated Cheque/Draft</h5>
+                </div>
+                <app-dynamic-form [form]="checkDraftForm" [fields]="checkDraftfields"></app-dynamic-form>
+
+                <div class="common-card-header d-flex  align-items-center my-4 gap-4">
+                    <h5 class="section-title mb-0">Details of Individual Proposal/Policy</h5>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#proposalModal"> Add</button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="proposalModal" tabindex="-1">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"> </button>
+                    </div>
+                    <div class="p-4">
+                        <app-dynamic-form [form]="individualForm" [fields]="individualDetails"></app-dynamic-form>
+                    </div>
+
+                   
+                  <!-- Proposal Details -->
+                <div class="accordion-item mx-4">
+                    <div class="accordion-header" (click)="toggleAccordion('proposal')">
+                        <div>
+                            <h5>Proposal Details</h5>
+                            <p>Provide proposal and customer related information</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
+                            [class.fa-chevron-up]="openedSection === 'proposal'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'proposal'">
+                        
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="proposalForm" [fields]="proposalfields"></app-dynamic-form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Channel Details -->
+                <div class="accordion-item mx-4 mb-2">
+                    <div class="accordion-header" (click)="toggleAccordion('channel')">
+                        <div>
+                            <h5>Channel Details</h5>
+                            <p>Provide channel partner/intermediary details</p>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'channel'"
+                            [class.fa-chevron-up]="openedSection === 'channel'">
+                        </i>
+                    </div>
+
+                    <!-- <div class="accordion-body" [hidden]="openedSection !== 'channel'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="channelForm" [fields]="channelfields"></app-dynamic-form>
+                        </div>
+                    </div> -->
+
+                </div>
+
+
+                    <div class="modal-footer justify-content-center">
+                        <button class="btn btn-primary"> Add Proposal </button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal"> Cancel </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade show" *ngIf="showAlertModal"> </div>
+
+       
+    </div>
+
+</div>

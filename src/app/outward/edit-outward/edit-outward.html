@@ -1,1 +1,39 @@
-<p>edit-outward works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+
+            <!-- Page Heading -->
+            <!-- <div class="page-title mb-3">
+                <h4>Edit Inward</h4>
+            </div> -->
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Edit Details</h5>
+                </div>
+                <app-dynamic-form [form]="editForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="editoutwardfields"></app-dynamic-form>
+          
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="editoutward()">
+                    Edit Outward
+                </button>
+            </div>
+
+            <button class="btn-clear" (click)="clear()">
+                Clear
+            </button>
+
+        </div>
+    </div>
+</div>

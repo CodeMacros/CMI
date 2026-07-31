@@ -3,6 +3,11 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
 import { DynamicField } from '../../../modal/dynamic-field';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e52a6fcab5262dc4c8842d9a4458e3fd76d980d9
 
 @Component({
   selector: 'app-scmcentry',

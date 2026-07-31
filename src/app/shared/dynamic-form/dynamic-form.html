@@ -1,6 +1,6 @@
 <div [formGroup]="form" class="row">
     @for(field of fields; track field.controlName){
-    @if(isVisible(field)){
+    @if(field.visible !== false){
     <div [class]="field.col || 'col-md-3 mb-3'">
 
 
@@ -42,6 +42,12 @@
             }
 
             @case('date'){
+            <!-- <div style="display: -webkit-box">
+                <input appDatepicker type="text" [id]="field.controlName" name="str_dob"
+                    class="form-control icon_calender"  [formControlName]="field.controlName" readonly
+                     (dateEventEmitter)="toDateEventEmitter($event)"
+                    [ngStyle]="{'pointer-events': field.disabled ? 'none' : 'auto', 'opacity': field.disabled ? '0.5' : '1'}">
+            </div> -->
 
             <input [id]="field.controlName" type="date" class="form-control" [formControlName]="field.controlName">
 
@@ -49,7 +55,8 @@
 
             @case('select'){
 
-            <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName">
+            <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName"
+                (change)="field.triggerChange && onSelectChange($event, field)">
 
                 <option value="" disabled selected>
                     -- Select --

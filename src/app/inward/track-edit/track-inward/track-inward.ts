@@ -36,6 +36,8 @@ export class TrackInward {
       label: 'Proposal/Policy/MF/Loan AC No',
       controlName: 'searchType',
       required: true,
+      visible: true,
+      triggerChange: true,
       options: [
         {
           label: 'Proposal Number',
@@ -61,6 +63,7 @@ export class TrackInward {
       controlName: 'proposalNumber',
       placeholder: 'Enter Proposal Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['proposal']
@@ -72,6 +75,7 @@ export class TrackInward {
       controlName: 'policyNumber',
       placeholder: 'Enter Policy Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['policy']
@@ -83,6 +87,7 @@ export class TrackInward {
       controlName: 'mfNumber',
       placeholder: 'Enter MF Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['mf']
@@ -94,6 +99,7 @@ export class TrackInward {
       controlName: 'loanAccountNumber',
       placeholder: 'Enter Loan Account Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['loan']
@@ -121,6 +127,7 @@ export class TrackInward {
       console.log(this.trackInwardForm.getRawValue())
     } else {
       console.log('trackInwardForm is valid', this.comSrv.validateForm(this.trackInwardForm));
+      console.log(this.trackInwardForm.value);
     }
 
   }
@@ -129,5 +136,37 @@ export class TrackInward {
     this.comSrv.clearForm(this.trackInwardForm, this.trackInwardfields)
   }
 
+
+  onSelectChange(event: { controlName: string; value: any }) {
+
+    if (event.controlName !== 'searchType') {
+      return;
+    }
+
+    this.trackInwardfields.forEach(field => {
+
+      if (!field.showWhen) {
+        field.visible = true;
+        return;
+      }
+
+      field.visible = field.showWhen.values.includes(event.value);
+
+      const control = this.trackInwardForm.get(field.controlName);
+
+      if (!control) {
+        return;
+      }
+
+      if (field.visible) {
+        control.enable();
+      } else {
+        control.reset();
+        control.disable();
+      }
+
+    });
+
+  }
 
 }

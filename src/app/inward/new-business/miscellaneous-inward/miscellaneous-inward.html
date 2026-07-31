@@ -13,7 +13,8 @@
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Courier Details</h5>
                 </div>
-                <app-dynamic-form [form]="courierForm" [fields]="courierfields"></app-dynamic-form>
+                <app-dynamic-form [form]="courierForm" [fields]="courierfields"
+                    (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
             </div>
             <!-- accordion -->
             <div class="custom-accordion mt-3">

@@ -5,7 +5,7 @@
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Track Details</h5>
                 </div>
-                <app-dynamic-form [form]="trackOutwardForm" [fields]="trackOutwardfields"></app-dynamic-form>
+                <app-dynamic-form [form]="outwardForm" (fieldChanged)="onSelectChange($event)" [fields]="trackOutwardfields" ></app-dynamic-form>
             </div>
         </div>
     </div>

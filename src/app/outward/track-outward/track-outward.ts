@@ -34,6 +34,8 @@ export class TrackOutward {
       label: 'Proposal/Policy/MF/Loan AC No',
       controlName: 'searchType',
       required: true,
+      visible: true,
+      triggerChange: true,
       options: [
         {
           label: 'Proposal Number',
@@ -59,6 +61,7 @@ export class TrackOutward {
       controlName: 'proposalNumber',
       placeholder: 'Enter Proposal Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['proposal']
@@ -70,6 +73,7 @@ export class TrackOutward {
       controlName: 'policyNumber',
       placeholder: 'Enter Policy Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['policy']
@@ -81,6 +85,7 @@ export class TrackOutward {
       controlName: 'mfNumber',
       placeholder: 'Enter MF Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['mf']
@@ -92,6 +97,7 @@ export class TrackOutward {
       controlName: 'loanAccountNumber',
       placeholder: 'Enter Loan Account Number',
       required: true,
+      visible: false,
       showWhen: {
         controlName: 'searchType',
         values: ['loan']
@@ -105,7 +111,7 @@ export class TrackOutward {
     this.trackOutwardForm = this.fb.group({});
   }
 
-  get courierForm(): FormGroup {
+  get outwardForm(): FormGroup {
     return this.trackOutwardForm
   }
 
@@ -123,6 +129,39 @@ export class TrackOutward {
 
   clear(): void {
     this.comSrv.clearForm(this.trackOutwardForm, this.trackOutwardfields)
+  }
+
+
+  onSelectChange(event: { controlName: string; value: any }) {
+
+    if (event.controlName !== 'searchType') {
+      return;
+    }
+
+    this.trackOutwardfields.forEach(field => {
+
+      if (!field.showWhen) {
+        field.visible = true;
+        return;
+      }
+
+      field.visible = field.showWhen.values.includes(event.value);
+
+      const control = this.outwardForm.get(field.controlName);
+
+      if (!control) {
+        return;
+      }
+
+      if (field.visible) {
+        control.enable();
+      } else {
+        control.reset();
+        control.disable();
+      }
+
+    });
+
   }
 
 

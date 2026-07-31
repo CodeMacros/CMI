@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DynamicField } from '../../modal/dynamic-field';
 import { NgStyle } from '@angular/common';
@@ -6,7 +6,7 @@ import { DatepickerDirective } from '../../directives/datepicker.directive';
 
 @Component({
   selector: 'app-dynamic-form',
-  imports: [ReactiveFormsModule, 
+  imports: [ReactiveFormsModule,
     // NgStyle , DatepickerDirective
 
   ],
@@ -15,12 +15,15 @@ import { DatepickerDirective } from '../../directives/datepicker.directive';
 })
 export class DynamicForm implements OnInit {
 
+  @Input({ required: true }) fields!: DynamicField[];
+
+  @Input({ required: true }) form!: FormGroup;
 
 
-
-  @Input() fields!: DynamicField[];
-
-  @Input() form!: FormGroup;
+  @Output() fieldChanged = new EventEmitter<{
+    controlName: string;
+    value: any;
+  }>();
 
 
   constructor(private fb: FormBuilder) { }
@@ -129,7 +132,6 @@ export class DynamicForm implements OnInit {
     }
 
     const control = this.form.get(field.showWhen.controlName);
-
     if (!control) {
       return true;
     }
@@ -140,18 +142,18 @@ export class DynamicForm implements OnInit {
 
   toDateEventEmitter(date: any) {
     console.log(date);
-    
   }
 
-  //   dateEventEmitter(date: any) {
-  //   this.str_dob = date.target.value
-  //   this.age = this.calculateAge(date.target.value)!.toString();//calculate age by using DOB
-  //   if (this.age < 18 || this.age > 55) {
-  //     alert("Enter age between 18 to 55");
-  //     this.str_dob = ""
-  //   }
-  // }
 
+
+  onSelectChange(event: Event, field: DynamicField) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.fieldChanged.emit({
+      controlName: field.controlName,
+      value
+    });
+
+  }
 
 
 

@@ -55,7 +55,8 @@
 
             @case('select'){
 
-            <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName">
+            <select [id]="field.controlName" class="form-select" [formControlName]="field.controlName"
+                (change)="field.triggerChange && onSelectChange($event, field)">
 
                 <option value="">
                     -- Select --

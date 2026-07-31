@@ -44,5 +44,7 @@ export interface DynamicField {
         values: any[];
     };
 
-    col?: string
+    col?: string;
+
+    triggerChange?: boolean
 }

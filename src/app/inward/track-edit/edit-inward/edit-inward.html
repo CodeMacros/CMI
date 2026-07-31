@@ -11,7 +11,8 @@
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Edit Details</h5>
                 </div>
-                <div class="container mt-4">
+                <app-dynamic-form [form]="editForm" [fields]="editInwardfields"></app-dynamic-form>
+                <!-- <div class="container mt-4">
 
                     <div class="">
 
@@ -84,9 +85,27 @@
 
                     </div>
 
-                </div>
+                </div> -->
 
             </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="editInward()">
+                    Edit Inward
+                </button>
+            </div>
+
+            <button class="btn-clear" (click)="clear()">
+                Clear
+            </button>
 
         </div>
     </div>

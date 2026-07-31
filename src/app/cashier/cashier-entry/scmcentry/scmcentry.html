@@ -16,9 +16,20 @@
 
                 <div class="common-card-header d-flex  align-items-center my-4 gap-4">
                     <h5 class="section-title mb-0">Details of Individual Proposal/Policy</h5>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#proposalModal"> Add</button>
-
+                    <button class=" btn-submit"  (click)="onAddClick()"> Add</button>
+<!-- data-bs-toggle="modal" data-bs-target="#proposalModal" -->
                 </div>
+
+                <div>
+                    <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+                </div>
+                
+                <div class="mt-4 d-flex justify-content-center gap-3">
+                    <button class="btn-submit"> Submit </button>
+                    <button class="btn-clear"> Clear </button>
+                </div>
+
+
             </div>
 
         </div>
@@ -34,61 +45,61 @@
                         <app-dynamic-form [form]="individualForm" [fields]="individualDetails"></app-dynamic-form>
                     </div>
 
-                   
-                  <!-- Proposal Details -->
-                <div class="accordion-item mx-4">
-                    <div class="accordion-header" (click)="toggleAccordion('proposal')">
-                        <div>
-                            <h5>Proposal Details</h5>
-                            <p>Provide proposal and customer related information</p>
-                        </div>
-                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
-                            [class.fa-chevron-up]="openedSection === 'proposal'">
-                        </i>
-                    </div>
 
-                    <div class="accordion-body" [hidden]="openedSection !== 'proposal'">
-                        
-                        <div class="pt-2">
-                            <app-dynamic-form [form]="proposalForm" [fields]="proposalfields"></app-dynamic-form>
+                    <!-- Proposal Details -->
+                    <div class="accordion-item mx-4">
+                        <div class="accordion-header" (click)="toggleAccordion('proposal')">
+                            <div>
+                                <h5>Proposal Details</h5>
+                                <p>Provide proposal and customer related information</p>
+                            </div>
+                            <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
+                                [class.fa-chevron-up]="openedSection === 'proposal'">
+                            </i>
                         </div>
 
+                        <div class="accordion-body" [hidden]="openedSection !== 'proposal'">
 
-                    </div>
-                </div>
+                            <div class="pt-2">
+                                <app-dynamic-form [form]="proposalForm" [fields]="proposalfields"></app-dynamic-form>
+                            </div>
 
-                <!-- Channel Details -->
-                <div class="accordion-item mx-4 mb-2">
-                    <div class="accordion-header" (click)="toggleAccordion('channel')">
-                        <div>
-                            <h5>Channel Details</h5>
-                            <p>Provide channel partner/intermediary details</p>
+
                         </div>
-                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'channel'"
-                            [class.fa-chevron-up]="openedSection === 'channel'">
-                        </i>
                     </div>
 
-                    <!-- <div class="accordion-body" [hidden]="openedSection !== 'channel'">
+                    <!-- Channel Details -->
+                    <div class="accordion-item mx-4 mb-2">
+                        <div class="accordion-header" (click)="toggleAccordion('channel')">
+                            <div>
+                                <h5>Channel Details</h5>
+                                <p>Provide channel partner/intermediary details</p>
+                            </div>
+                            <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'channel'"
+                                [class.fa-chevron-up]="openedSection === 'channel'">
+                            </i>
+                        </div>
+
+                        <!-- <div class="accordion-body" [hidden]="openedSection !== 'channel'">
                         <div class="pt-2">
                             <app-dynamic-form [form]="channelForm" [fields]="channelfields"></app-dynamic-form>
                         </div>
                     </div> -->
 
-                </div>
+                    </div>
 
 
                     <div class="modal-footer justify-content-center">
-                        <button class="btn btn-primary"> Add Proposal </button>
-                        <button class="btn btn-secondary" data-bs-dismiss="modal"> Cancel </button>
+                        <button class="btn-submit" (click)="onAddProposalClick()"> Add Proposal </button>
+                        <button class="btn-clear" data-bs-dismiss="modal"> Cancel </button>
                     </div>
 
                 </div>
             </div>
         </div>
-        <div class="modal-backdrop fade show" *ngIf="showAlertModal"> </div>
+        <!-- <div class="modal-backdrop fade show" *ngIf="showAlertModal"> </div> -->
 
-       
+
     </div>
 
 </div>

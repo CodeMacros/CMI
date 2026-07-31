@@ -27,6 +27,12 @@
 
             }
 
+             @case('textarea'){
+
+            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName" [placeholder]="field.placeholder"></textarea>
+
+            }
+
             @case('email'){
 
             <input [id]="field.controlName" type="email" class="form-control" [placeholder]="field.placeholder"

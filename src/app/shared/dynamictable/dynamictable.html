@@ -1,0 +1,60 @@
+<div class="approval mt-3">
+    <div class="table-responsive">
+
+        <div class="d-flex align-items-center mb-2 gap-2" *ngIf="showEnteries">
+            <label class="mb-0">Show</label>
+
+            <select class="form-select form-select-sm w-auto" [(ngModel)]="itemsPerPage" (change)="onPageSizeChange()">
+
+                <option *ngFor="let size of pageSizeOptions" [value]="size"> {{ size }} </option>
+
+            </select>
+
+            <span>entries</span>
+        </div>
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngIf="data.length === 0">
+                    <td [attr.colspan]="columns.length" class="text-center">
+                        No data available
+                    </td>
+                </tr>
+
+                <tr *ngFor="let row of paginatedData">
+                    <td *ngFor="let col of columns">
+                        <ng-container [ngSwitch]="col.type">
+                            <button *ngSwitchCase="'button'" class="btn btn-sm btn-primary">
+                                {{col.buttonLabel}}
+                            </button>
+
+                            <span *ngSwitchDefault>
+                                {{row[col.field]}}
+                            </span>
+                        </ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination" *ngIf="showPagination">
+
+        <button (click)="previousPage()" [disabled]="currentPage === 1"> &lt; </button>
+
+        <button *ngFor="let page of pages" (click)="changePage(page)" [disabled]="page === '...'"
+            [class.active]="currentPage === page"> {{page}} </button>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages"> &gt; </button>
+
+    </div>
+</div>

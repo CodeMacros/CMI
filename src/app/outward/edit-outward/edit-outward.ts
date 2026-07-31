@@ -17,8 +17,8 @@ export class EditOutward {
   editoutwardfields: DynamicField[] = [
     {
       type: 'text',
-      label: 'outward Number',
-      controlName: 'outwardNumber',
+      label: 'Inward Number',
+      controlName: 'inwardNumber',
       placeholder: 'Enter outward Number',
       required: true,
     },
@@ -163,5 +163,6 @@ export class EditOutward {
 
   clear(): void {
     this.comSrv.clearForm(this.editoutwardForm, this.editoutwardfields)
+
   }
 }

@@ -165,6 +165,8 @@ export class EditInward {
 
   clear(): void {
     this.comSrv.clearForm(this.editInwardForm, this.editInwardfields)
+
+
   }
 
 }

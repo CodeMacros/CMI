@@ -23,6 +23,7 @@ export class Common {
 
     fields.forEach(field => {
       resetValue[field.controlName] = field.defaultValue ?? '';
+      if (field.showWhen) { field.visible = false; }
     });
 
     form.reset(resetValue);

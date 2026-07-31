@@ -134,6 +134,12 @@ export class TrackInward {
 
   clear(): void {
     this.comSrv.clearForm(this.trackInwardForm, this.trackInwardfields)
+    this.trackInwardfields.forEach(field => {
+      if (field.showWhen) {
+        field.visible = false;
+        return;
+      }
+    })
   }
 
 

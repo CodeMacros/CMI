@@ -82,7 +82,8 @@ export class DynamicForm implements OnInit {
 
 
   allowOnlyNumbers(event: KeyboardEvent, field: any): void {
-
+  console.log("adkaljdl");
+  
     if (!field.allowOnlyNumbers) {
       return;
     }

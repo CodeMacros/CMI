@@ -54,7 +54,7 @@ export class MiscellaneousInward {
       label: 'Courier Agency Name',
       controlName: 'courierAgencyName',
       placeholder: 'Enter Courier Agency Name',
-      required: true
+      required: true,
     },
     {
       type: 'text',

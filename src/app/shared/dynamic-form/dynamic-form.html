@@ -23,7 +23,8 @@
             <input [id]="field.controlName" class="form-control" [placeholder]="field.placeholder"
                 [readonly]="field.readonly" [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
                 [attr.inputmode]="field.allowOnlyNumbers ? 'numeric' : null"
-                (keypress)="allowOnlyNumbers($event, field)" (input)="onInput($event, field)">
+                (keypress)="field.allowOnlyNumbers ?allowOnlyNumbers($event, field) : null"
+                (input)="field.allowOnlyNumbers ? onInput($event, field) : null">
 
             }
 

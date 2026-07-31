@@ -51,6 +51,16 @@
             }
         </li>
 
+        <!--Outward-->
+        <li class="menu-item">
+            <div class="menu-title">
+                <div class="left" routerLink="/layout/outward">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span>Outward</span>
+                </div>
+            </div>
+        </li>
+
         <!-- Cashiering -->
         <li class="menu-item">
             <div class="menu-title" (click)="toggle('cashier')">
@@ -89,36 +99,126 @@
             }
         </li>
 
-        <!--Outward-->
+        <!-- Approval -->
         <li class="menu-item">
             <div class="menu-title">
-                <div class="left" routerLink="/layout/outward">
+                <div class="left" routerLink="/layout/approval">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    <span>Outward</span>
+                    <span>Approval</span>
                 </div>
             </div>
+        </li>
 
-            <!-- @if (isOpen('Outward')) {
+        <!-- EOD Collection -->
+        <li class="menu-item">
+            <div class="menu-title" (click)="toggle('eod')">
+                <div class="left">
+                    <i class="fa-regular fa-user"></i>
+                    @if(!collapsed){
+                    <span>EOD Collection</span>
+                    }
+                </div>
+
+                @if(!collapsed){
+                <i class="fa-solid" [ngClass]="isOpen('eod') ? 'fa-angle-up' : 'fa-angle-down'">
+                </i>
+                }
+            </div>
+
+            <!-- Summenu -->
+            @if(isOpen('eod')){
             <ul class="submenu">
                 <li>
-                    <div class="submenu-title">
-                        <span>Independent Outward</span>
+                    <div class="submenu-title" routerLink="/layout/cashier/cashier-entry">
+                        <span>Collection Bank</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title">
-                        <span>Track Outward</span>
+                    <div class="submenu-title" routerLink="/layout/cashier/bulk-upload">
+                        <span>Daily Cash Book</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title">
-                        <span>Edit Outward</span>
+                    <div class="submenu-title" routerLink="/layout/cashier/reports">
+                        <span>Pending Instrument Report</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="submenu-title" routerLink="/layout/cashier/reports">
+                        <span>Mark/UnMark Non Lodgement</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="submenu-title" routerLink="/layout/cashier/reports">
+                        <span>Sahara Policy Update</span>
                     </div>
                 </li>
             </ul>
-            } -->
+            }
         </li>
 
+        <!-- CDA -->
+        <li class="menu-item">
+            <div class="menu-title" (click)="toggle('cda')">
+                <div class="left">
+                    <i class="fa-regular fa-user"></i>
+                    @if(!collapsed){
+                    <span>CDA</span>
+                    }
+                </div>
+
+                @if(!collapsed){
+                <i class="fa-solid" [ngClass]="isOpen('cda') ? 'fa-angle-up' : 'fa-angle-down'">
+                </i>
+                }
+            </div>
+
+            <!-- Summenu -->
+            @if(isOpen('cda')){
+            <ul class="submenu">
+                <li>
+                    <div class="submenu-title" routerLink="/layout/cashier/cashier-entry">
+                        <span>Individual</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="submenu-title" routerLink="/layout/cashier/bulk-upload">
+                        <span>Group</span>
+                    </div>
+                </li>
+            </ul>
+            }
+        </li>
+
+        <!-- Fund Transfer -->
+        <li class="menu-item">
+            <div class="menu-title">
+                <div class="left" routerLink="/layout/approval">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span>Fund Transfer</span>
+                </div>
+            </div>
+        </li>
+
+        <!-- Policy Servicing -->
+        <li class="menu-item">
+            <div class="menu-title">
+                <div class="left" routerLink="/layout/approval">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span>Policy Servicing</span>
+                </div>
+            </div>
+        </li>
+
+        <!-- PIWC Details -->
+        <li class="menu-item">
+            <div class="menu-title">
+                <div class="left" routerLink="/layout/approval">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span>PIWC Details</span>
+                </div>
+            </div>
+        </li>
 
         <!-- ------------------------------------------------------------------------ -->
 
@@ -347,7 +447,7 @@
     </ul>
 
 
-    <!-- <ul class="menu p-0">
+    <ul class="menu p-0">
         <li class="menu-item">
             <div class="menu-title">
                 <div class="left">
@@ -359,7 +459,7 @@
                 </div>
             </div>
         </li>
-    </ul> -->
+    </ul>
 
     <div class="collapse-btn" [class.collapsed]="collapsed" (click)="toggleSidebar()">
         <i class="fa-solid" [class.fa-chevron-left]="!collapsed" [class.fa-chevron-right]="collapsed">

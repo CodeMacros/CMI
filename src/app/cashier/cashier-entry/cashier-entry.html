@@ -1,1 +1,38 @@
-<p>cashier-entry works!</p>
+<div class="page-title mb-3">
+    <h4>Cashier Entry</h4>
+    <p>Create a new cashier entry by providing the required details</p>
+</div>
+
+<div class="inward-card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label custom-label">Cashier Entry</label>
+                <select class="form-select custom-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+                    <option value="">Select</option>
+                    <option value="Individual">Individual</option>
+                    <option value="Group">Group</option>
+                    <option value="Sahara">Sahara</option>
+                    <option value="SCMC & Other Cashiering"> SCMC & Other Cashiering </option>
+                </select>
+            </div>
+
+            <div class="col-md-3" *ngIf="subOptions.length">
+                <label class="form-label custom-label">Type</label>
+
+                <select class="form-select custom-select" [(ngModel)]="selectedSubOption"
+                   >
+                    <option value="">Select</option>
+                    <option *ngFor="let item of subOptions" [value]="item"> {{ item }} </option>
+                </select>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<app-scmcentry *ngIf="selectedSubOption === 'SCMC Entry'"></app-scmcentry>
+
+<app-pacashierentry *ngIf="selectedSubOption === 'PA Cashier Entry'"></app-pacashierentry>

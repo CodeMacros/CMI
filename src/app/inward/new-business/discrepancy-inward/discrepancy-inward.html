@@ -1,1 +1,56 @@
-<p>discrepancy-inward works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="page-title mb-3">
+                <h4>Discrepancy Inward</h4>
+            </div>
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Courier Details</h5>
+                </div>
+                <app-dynamic-form [form]="courierForm" [fields]="courierfields"></app-dynamic-form>
+            </div>
+            <!-- accordion -->
+            <div class="custom-accordion mt-3">
+                <!-- Proposal Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('document')">
+                        <div>
+                            <h5>Document Details</h5>
+                            <!-- <p>Provide proposal and customer related information</p> -->
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'document'"
+                            [class.fa-chevron-up]="openedSection === 'document'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'document'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="documentForm" [fields]="documentField"></app-dynamic-form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <!-- Button -->
+                <div class="btn-group mt-3">
+                    <button (click)="onSubmit()" class="btn-submit">
+                        Submit
+                    </button>
+
+                    <button class="btn-clear">
+                        Clear
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

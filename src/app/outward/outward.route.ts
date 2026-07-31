@@ -1,7 +1,4 @@
 import { Routes } from '@angular/router';
-import { IndependentOutward } from './independent-outward/independent-outward';
-import { TrackOutward } from './track-outward/track-outward';
-import { EditOutward } from './edit-outward/edit-outward';
 import { Outward } from './outward';
 
 export const OUTWARD_ROUTES: Routes = [
@@ -11,15 +8,15 @@ export const OUTWARD_ROUTES: Routes = [
         children: [
             {
                 path: 'independent',
-                component: IndependentOutward,
+                loadComponent: () => import('./independent-outward/independent-outward').then(c => c.IndependentOutward)
             },
             {
                 path: 'track',
-                component: TrackOutward,
+                loadComponent: () => import('./track-outward/track-outward').then(c => c.TrackOutward)
             },
             {
                 path: 'edit',
-                component: EditOutward,
+                loadComponent: () => import('./edit-outward/edit-outward').then(c => c.EditOutward)
             },
         ]
     }

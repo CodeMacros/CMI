@@ -34,7 +34,7 @@ export class Scmcentry {
       label: 'Received Date',
       controlName: 'receivedDate',
       required: true,
-      defaultValue: '30-07-2026',
+      defaultValue: '31-07-2026',
       disabled: true
     },
 

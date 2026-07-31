@@ -14,7 +14,7 @@ export class DiscrepancyInward implements OnInit {
   discrepancyForm!: FormGroup
 
   courierfields: DynamicField[] = [
-      {
+    {
       type: 'text',
       label: 'Inward Number',
       controlName: 'inwardNumber',
@@ -32,22 +32,46 @@ export class DiscrepancyInward implements OnInit {
       ]
     },
     {
-      type: 'select',
-      label: 'Received By',
-      controlName: 'receivedBy',
+      type: 'text',
+      label: 'Proposal /Policy Number/ Form Number',
+      controlName: 'proposalPolicyFormNum',
+      placeholder: 'Enter Proposal Number/Policy Number/ Form Number',
       required: true,
-      options: [
-        { label: 'Inward', value: '1' },
-        { label: 'Outward', value: '2' }
-      ]
+    },
+    {
+      type: 'text',
+      label: 'Proposal /Policy Status',
+      controlName: 'proposalPolicyStatus',
+      placeholder: 'Enter Proposal /Policy Status',
+      required: true,
     },
     {
       type: 'text',
       label: 'Received Date',
       controlName: 'receivedDate',
       required: true,
-      defaultValue: '30-07-2026',
+      defaultValue: '31-07-2026',
       disabled: true
+    },
+    {
+      type: 'select',
+      label: 'Received From',
+      controlName: 'receivedFrom',
+      required: true,
+      options: [
+        { label: 'Channel', value: '1' },
+        { label: 'Customer', value: '2' }
+      ]
+    },
+    {
+      type: 'select',
+      label: 'Received By',
+      controlName: 'receivedBy',
+      required: true,
+      options: [
+        { label: 'Courier', value: '1' },
+        { label: 'Hand Delivery', value: '2' }
+      ]
     },
     {
       type: 'text',
@@ -64,77 +88,37 @@ export class DiscrepancyInward implements OnInit {
       required: true
     },
     {
-      type: 'select',
-      label: 'State',
-      controlName: 'state',
-      options: [
-        { label: 'Maharashtra', value: 'MH' },
-        { label: 'Bihar', value: 'BR' }
-      ]
-    },
-    {
-      type: 'select',
-      label: 'City',
-      controlName: 'city',
-      options: [
-        { label: 'Mumbai', value: 'Mumbai' },
-        { label: 'Pune', value: 'Pune' }
-      ]
-    },
-    {
-      type: 'select',
-      label: 'Document HandOver To',
-      controlName: 'documentHandOverTo',
-      required: true,
-      options: [
-        { label: 'Agency 1', value: '1' },
-        { label: 'Agency 2', value: '2' }
-      ]
-    },
-    {
       type: 'text',
       label: 'Remarks',
       controlName: 'remarks',
       placeholder: 'Enter Remarks',
       col: "col-6"
     },
-    {
-      type: 'text',
-      label: 'Additional Information',
-      controlName: 'additionalInformation',
-      placeholder: 'Enter Additional Information',
-      col: "col-6"
-    },
   ];
 
 
   documentField: DynamicField[] = [
-
     {
-      type: 'select',
-      label: 'Document Sub Category',
-      controlName: 'documentSubCategory',
-      required: true,
-      options: [
-        { label: 'Proposal', value: 'proposal' },
-        { label: 'Policy', value: 'policy' },
-        { label: 'Membership', value: 'membership' },
-        { label: 'Loan', value: 'loan' }
-      ]
+      type: 'text',
+      label: 'Proposal / Policy Number',
+      controlName: 'proposalPolicyNum',
+      placeholder: 'Enter Proposal / Policy Number',
+      required: true
     },
     {
-      type: 'select',
-      label: 'Policy No/Proposal No/Membership Form No/Loan Account No',
-      controlName: 'documentNumberType',
-      required: true,
-      col: 'col-6',
-      options: [
-        { label: 'Policy Number', value: 'policy' },
-        { label: 'Proposal Number', value: 'proposal' },
-        { label: 'Membership Form Number', value: 'membership' },
-        { label: 'Loan Account Number', value: 'loan' }
-      ]
-    }
+      type: 'text',
+      label: 'Instrument Number',
+      controlName: 'instrumentNumber',
+      placeholder: 'Enter Instrument Number',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Instrument Amount',
+      controlName: 'instrumentAmount',
+      placeholder: 'Enter Proposal / Policy Number',
+      required: true
+    },
   ]
 
 

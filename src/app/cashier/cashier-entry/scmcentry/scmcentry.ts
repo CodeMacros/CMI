@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
 import { DynamicField } from '../../../modal/dynamic-field';
 import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
 import { TableColumn } from '../../../modal/dynamicTable-field';
+import { Common } from '../../../service/common';
 
 declare var bootstrap: any;
 
@@ -15,6 +16,7 @@ declare var bootstrap: any;
   styleUrl: './scmcentry.css',
 })
 export class Scmcentry {
+  commonService = inject(Common);
 
   constructor(private fb: FormBuilder) { }
 
@@ -532,11 +534,9 @@ export class Scmcentry {
   }
 
   onAddClick(): void {
-    if (this.checkDraftForm.invalid) {
-      this.checkDraftForm.markAllAsTouched();
-      return;
+    if (this.commonService.validateForm(this.checkDraftForm)) {
+      this.openProposalModal();
     }
-    this.openProposalModal();
 
   }
 
@@ -568,14 +568,11 @@ export class Scmcentry {
 
   onAddProposalClick(): void {
 
-    if (
-      this.individualForm.invalid ||
-      this.proposalForm.invalid ||
-      this.channelForm.invalid
-    ) {
-      this.individualForm.markAllAsTouched();
-      this.proposalForm.markAllAsTouched();
-      this.channelForm.markAllAsTouched();
+    const isIndividualValid = this.commonService.validateForm(this.individualForm);
+    const isProposalValid = this.commonService.validateForm(this.proposalForm);
+    const isChannelValid = this.commonService.validateForm(this.channelForm);
+
+    if (!isIndividualValid || !isProposalValid || !isChannelValid) {
       return;
     }
 
@@ -594,20 +591,17 @@ export class Scmcentry {
       channelType: individual.channelType,
       option: '',
 
-      formData: {
-        individual,
-        proposal,
-        channel
-      }
+      formData: { individual, proposal, channel }
     };
 
     this.tableData.push(tableRow);
 
     this.closeProposalModal();
-    this.individualForm.reset();
-    this.proposalForm.reset();
-    this.channelForm.reset();
-    console.log(this.tableData);
+    this.commonService.clearForm(this.individualForm, this.individualDetails);
+    this.commonService.clearForm(this.proposalForm, this.proposalfields)
+    this.commonService.clearForm(this.channelForm, this.channelfields)
+
+    // console.log(this.tableData);
 
   }
 
@@ -622,6 +616,31 @@ export class Scmcentry {
         bsModal.hide();
       }
     }
+  }
+
+  
+  Submit(): void {
+
+    if (!this.commonService.validateForm(this.checkDraftForm)) {
+      return;
+    }
+
+    if (this.tableData.length === 0) {
+      alert('Please add at least one proposal.');
+      return;
+    }
+
+    const payload = {
+      chequeDetails: this.checkDraftForm.getRawValue(),
+      proposals: this.tableData.map(row => row.formData)
+    };
+
+    console.log(payload);
+
+  }
+  Clear() {
+    this.commonService.clearForm(this.checkDraftForm, this.checkDraftfields);
+    this.tableData = [];
   }
 
 }

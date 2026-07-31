@@ -8,10 +8,6 @@ import { TableColumn } from '../../../modal/dynamicTable-field';
 
 declare var bootstrap: any;
 
-
-
->>>>>>> e52a6fcab5262dc4c8842d9a4458e3fd76d980d9
-
 @Component({
   selector: 'app-scmcentry',
   imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, Dynamictable],

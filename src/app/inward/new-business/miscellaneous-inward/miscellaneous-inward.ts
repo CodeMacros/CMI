@@ -42,22 +42,13 @@ export class MiscellaneousInward {
       ]
     },
     {
-      type: 'text',
+      type: 'date',
       label: 'Received Date',
       controlName: 'receivedDate',
       required: true,
-      defaultValue: '30-07-2026',
+      defaultValue: '2026-07-31',
       disabled: true
     },
-    // temprary added by sudesh
-    // {
-    //   type: 'date',
-    //   label: 'Received Date',
-    //   controlName: 'receivedDate123',
-    //   required: true,
-    //   defaultValue: '',
-    //   disabled: false
-    // },
     {
       type: 'text',
       label: 'Courier Agency Name',

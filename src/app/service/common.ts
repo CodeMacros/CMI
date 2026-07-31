@@ -18,7 +18,7 @@ export class Common {
     return true;
   }
 
-  clearForm(form: FormGroup, fields: any[]): void {
+  clearForm(form: FormGroup, fields: DynamicField[]): void {
     const resetValue: any = {};
 
     fields.forEach(field => {

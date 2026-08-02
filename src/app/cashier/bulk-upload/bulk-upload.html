@@ -1,1 +1,24 @@
-<p>bulk-upload works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- Page Heading -->
+            <div class="page-title mb-3">
+                <h4>Bulk Upload</h4>
+            </div>
+            <!-- Approval Details Card -->
+            <div class="inward-card">
+                <div class="col-md-3">
+                    <label class="form-label custom-label">Bulk Upload Type</label>
+                    <select class="form-select" (change)="onActionChange($event)">
+                        <option value="" selected disabled>Select Bulk Upload Type</option>
+                        <option value="eft-file">EFT Upload</option>
+                        <option value="cashier-entry-file">Cashier Entry File Upload</option>
+                        <option value="online-payment-file">Online Payment File Upload</option>
+                        <option value="rpp-payment-file">RPP Payment Upload</option>
+                    </select>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

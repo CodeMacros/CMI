@@ -129,27 +129,27 @@
             @if(isOpen('eod')){
             <ul class="submenu">
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/cashier-entry">
+                    <div class="submenu-title" routerLink="/layout/eod/collection-bank">
                         <span>Collection Bank</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/bulk-upload">
+                    <div class="submenu-title" routerLink="/layout/eod/daily-cash-book">
                         <span>Daily Cash Book</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/reports">
+                    <div class="submenu-title" routerLink="/layout/eod/pending-instrument-report">
                         <span>Pending Instrument Report</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/reports">
+                    <div class="submenu-title" routerLink="/layout/eod/mark-unmark-non-lodgement">
                         <span>Mark/UnMark Non Lodgement</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/reports">
+                    <div class="submenu-title" routerLink="/layout/eod/sahara-policy-update">
                         <span>Sahara Policy Update</span>
                     </div>
                 </li>
@@ -166,23 +166,23 @@
                     <span>CDA</span>
                     }
                 </div>
-
+        
                 @if(!collapsed){
                 <i class="fa-solid" [ngClass]="isOpen('cda') ? 'fa-angle-up' : 'fa-angle-down'">
                 </i>
                 }
             </div>
-
+        
             <!-- Summenu -->
             @if(isOpen('cda')){
             <ul class="submenu">
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/cashier-entry">
+                    <div class="submenu-title" routerLink="/layout/cda/individual">
                         <span>Individual</span>
                     </div>
                 </li>
                 <li>
-                    <div class="submenu-title" routerLink="/layout/cashier/bulk-upload">
+                    <div class="submenu-title" routerLink="/layout/cda/group">
                         <span>Group</span>
                     </div>
                 </li>
@@ -193,7 +193,7 @@
         <!-- Fund Transfer -->
         <li class="menu-item">
             <div class="menu-title">
-                <div class="left" routerLink="/layout/approval">
+                <div class="left" routerLink="/layout/fund-transfer">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <span>Fund Transfer</span>
                 </div>
@@ -203,7 +203,7 @@
         <!-- Policy Servicing -->
         <li class="menu-item">
             <div class="menu-title">
-                <div class="left" routerLink="/layout/approval">
+                <div class="left" routerLink="/layout/policy-servicing">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <span>Policy Servicing</span>
                 </div>
@@ -213,7 +213,7 @@
         <!-- PIWC Details -->
         <li class="menu-item">
             <div class="menu-title">
-                <div class="left" routerLink="/layout/approval">
+                <div class="left" routerLink="/layout/piwc-details">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <span>PIWC Details</span>
                 </div>

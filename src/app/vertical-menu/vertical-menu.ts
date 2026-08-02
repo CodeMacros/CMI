@@ -5,7 +5,7 @@ import { RouterLink } from "@angular/router";
 @Component({
   selector: 'app-vertical-menu',
   standalone: true,
-  imports: [CommonModule, RouterLink ,],
+  imports: [CommonModule, RouterLink ],
   templateUrl: './vertical-menu.html',
   styleUrls: ['./vertical-menu.css']
 })

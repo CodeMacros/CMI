@@ -5,9 +5,6 @@ import { Renewal } from './renewal/renewal';
 import { TrackEdit } from './track-edit/track-edit';
 import { CorrectAWBNumber } from './correct-awbnumber/correct-awbnumber';
 
-
-
-
 export const INWARD_ROUTES: Routes = [
     {
         path: 'new-business',

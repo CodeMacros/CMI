@@ -91,11 +91,6 @@ export class PendingInstrumentReport {
   { field: 'chequeDdDate', header: 'Ch/DD Date' },
   { field: 'amount', header: 'Amount' },
   { field: 'sbiLifeBranch', header: 'SBILife Branch' },
-  { field: 'sbiLifeBranch', header: 'SBILife Branch' },
-  { field: 'sbiLifeBranch', header: 'SBILife Branch' },
-  { field: 'sbiLifeBranch', header: 'SBILife Branch' },
-  { field: 'sbiLifeBranch', header: 'SBILife Branch' },
-  { field: 'sbiLifeBranch', header: 'SBILife Branch' },
 ];
 
   constructor(private fb: FormBuilder, private comSrv: Common) { }

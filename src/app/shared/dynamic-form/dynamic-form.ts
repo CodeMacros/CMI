@@ -81,19 +81,48 @@ export class DynamicForm implements OnInit {
 
 
 
-  allowOnlyNumbers(event: KeyboardEvent, field: any): void {
-  console.log("adkaljdl");
-  
-    if (!field.allowOnlyNumbers) {
+  // allowOnlyNumbers(event: KeyboardEvent, field: any): void {
+  //   console.log("adkaljdl");
+
+  //   if (!field.allowOnlyNumbers) {
+  //     return;
+  //   }
+
+  //   // Allow control keys
+  //   const allowedKeys = [
+  //     'Backspace',
+  //     'Delete',
+  //     'ArrowLeft',
+  //     'ArrowRight',
+  //     'Tab',
+  //     'Home',
+  //     'End'
+  //   ];
+
+  //   if (allowedKeys.includes(event.key)) {
+  //     return;
+  //   }
+
+  //   // Block anything that's not a digit
+  //   if (!/^\d$/.test(event.key)) {
+  //     event.preventDefault();
+  //   }
+  // }
+
+
+  allowInput(event: KeyboardEvent, field: DynamicField): void {
+    console.log("adkaljdl");
+    if (!field.inputType) {
       return;
     }
 
-    // Allow control keys
     const allowedKeys = [
       'Backspace',
       'Delete',
       'ArrowLeft',
       'ArrowRight',
+      'ArrowUp',
+      'ArrowDown',
       'Tab',
       'Home',
       'End'
@@ -103,32 +132,72 @@ export class DynamicForm implements OnInit {
       return;
     }
 
-    // Block anything that's not a digit
-    if (!/^\d$/.test(event.key)) {
+    let regex: RegExp;
+
+    switch (field.inputType) {
+
+      case 'number':
+        regex = /^[0-9]$/;
+        break;
+
+      case 'alpha':
+        regex = /^[a-zA-Z ]$/;
+        break;
+
+      case 'alphanumeric':
+        regex = /^[a-zA-Z0-9]$/;
+        break;
+
+      default:
+        return;
+    }
+
+    if (!regex.test(event.key)) {
       event.preventDefault();
     }
   }
 
-
-  onInput(event: Event, field: any) {
-
-    if (!field.allowOnlyNumbers) {
-      return;
-    }
+  onInput(event: Event, field: DynamicField): void {
 
     const input = event.target as HTMLInputElement;
+    let value = input.value;
 
-    input.value = input.value.replace(/\D/g, '');
+    // Allow only numbers if configured
+    if (field.inputType === 'number') {
+      value = value.replace(/\D/g, '');
+      input.value = value;
 
-    this.form.get(field.controlName)?.setValue(input.value, {
-      emitEvent: false
-    });
+      this.form.get(field.controlName)?.setValue(value, {
+        emitEvent: false
+      });
+    }
+
+
+    // Trigger API only when pattern matches
+    if (field.triggerChange && field.pattern) {
+
+      const regex =
+        field.pattern instanceof RegExp
+          ? field.pattern
+          : new RegExp(field.pattern);
+
+      if (regex.test(value)) {
+
+        this.fieldChanged.emit({
+          controlName: field.controlName,
+          value
+        });
+
+      }
+
+    }
+
   }
 
 
   isVisible(field: DynamicField): boolean {
     console.log(field);
-  
+
     if (!field.showWhen) {
       return true;
     }

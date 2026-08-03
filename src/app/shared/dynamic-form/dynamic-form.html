@@ -22,15 +22,16 @@
 
             <input [id]="field.controlName" class="form-control" [placeholder]="field.placeholder"
                 [readonly]="field.readonly" [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
-                [attr.inputmode]="field.allowOnlyNumbers ? 'numeric' : null"
-                (keypress)="field.allowOnlyNumbers ?allowOnlyNumbers($event, field) : null"
-                (input)="field.allowOnlyNumbers ? onInput($event, field) : null">
+                [attr.inputmode]="field.inputType === 'number' ? 'numeric' : null"
+                (keypress)="allowInput($event, field)"
+                (input)="field.triggerChange ? onInput($event, field) : null">
 
             }
 
-             @case('textarea'){
+            @case('textarea'){
 
-            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName" [placeholder]="field.placeholder"></textarea>
+            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName"
+                [placeholder]="field.placeholder"></textarea>
 
             }
 

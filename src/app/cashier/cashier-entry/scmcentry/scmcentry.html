@@ -12,7 +12,7 @@
                 <div class="common-card-header pb-0 ">
                     <h5 class="section-title">Details of Consolidated Cheque/Draft</h5>
                 </div>
-                <app-dynamic-form [form]="checkDraftForm" [fields]="checkDraftfields"></app-dynamic-form>
+                <app-dynamic-form [form]="checkDraftForm" [fields]="checkDraftfields" (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
 
                 <div class="common-card-header d-flex  align-items-center my-4 gap-4">
                     <h5 class="section-title mb-0">Details of Individual Proposal/Policy</h5>

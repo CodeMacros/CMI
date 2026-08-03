@@ -32,7 +32,10 @@ export interface DynamicField {
 
     validators?: ValidatorFn[];
 
-    allowOnlyNumbers?: boolean;
+    // allowOnlyNumbers?: boolean;
+
+    inputType?: 'number' | 'alpha' | 'alphanumeric';
+
 
     options?: {
         label: string;
@@ -48,5 +51,5 @@ export interface DynamicField {
 
     triggerChange?: boolean
 
-    visible? : boolean
+    visible?: boolean
 }

@@ -118,7 +118,7 @@ export class Scmcentry {
       label: 'MICR Code',
       controlName: 'micrCode',
       placeholder: 'Enter MICR Code',
-      required: true
+      required: true,
     },
 
     {
@@ -126,6 +126,9 @@ export class Scmcentry {
       label: 'IFSC Code',
       controlName: 'ifscCode',
       placeholder: 'Enter IFSC Code',
+      pattern: '^[A-Z]{4}0[A-Z0-9]{6}$',
+      patternMessage: 'Invalid IFSC Code',
+      triggerChange: true,
       required: true
     },
 
@@ -618,7 +621,20 @@ export class Scmcentry {
     }
   }
 
-  
+  onFieldChanged(event: any) {
+    console.log(event);
+    switch (event.controlName) {
+      case 'ifscCode':
+        console.log("call API");
+        // this.comSrv.loadCities(event.value, this.courierfields, this.courierForm);
+        break;
+      // case 'city':
+      //   console.log('Selected City:', event.value);
+      //   break;
+    }
+
+  }
+
   Submit(): void {
 
     if (!this.commonService.validateForm(this.checkDraftForm)) {

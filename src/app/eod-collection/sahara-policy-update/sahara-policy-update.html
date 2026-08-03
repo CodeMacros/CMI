@@ -1,1 +1,34 @@
-<p>sahara-policy-update works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Sahara Policy Update</h5>
+                </div>
+                <app-dynamic-form [form]="saharaPolicyForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="saharaPolicyfields"></app-dynamic-form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="saharaPolicy()">
+                    Submit
+                </button>
+            </div>
+
+            <!-- <button class="btn-clear" (click)="clear()">
+                    Clear
+                </button> -->
+
+        </div>
+    </div>
+</div>

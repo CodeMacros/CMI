@@ -79,39 +79,7 @@ export class DynamicForm implements OnInit {
     });
   }
 
-
-
-  // allowOnlyNumbers(event: KeyboardEvent, field: any): void {
-  //   console.log("adkaljdl");
-
-  //   if (!field.allowOnlyNumbers) {
-  //     return;
-  //   }
-
-  //   // Allow control keys
-  //   const allowedKeys = [
-  //     'Backspace',
-  //     'Delete',
-  //     'ArrowLeft',
-  //     'ArrowRight',
-  //     'Tab',
-  //     'Home',
-  //     'End'
-  //   ];
-
-  //   if (allowedKeys.includes(event.key)) {
-  //     return;
-  //   }
-
-  //   // Block anything that's not a digit
-  //   if (!/^\d$/.test(event.key)) {
-  //     event.preventDefault();
-  //   }
-  // }
-
-
   allowInput(event: KeyboardEvent, field: DynamicField): void {
-    console.log("adkaljdl");
     if (!field.inputType) {
       return;
     }
@@ -215,8 +183,6 @@ export class DynamicForm implements OnInit {
     console.log(date);
   }
 
-
-
   onSelectChange(event: Event, field: DynamicField) {
     const value = (event.target as HTMLSelectElement).value;
     this.fieldChanged.emit({
@@ -225,7 +191,6 @@ export class DynamicForm implements OnInit {
     });
 
   }
-
 
 
 }

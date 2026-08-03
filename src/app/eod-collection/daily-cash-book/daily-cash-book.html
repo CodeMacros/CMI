@@ -9,7 +9,7 @@
             <div class="inward-card">
                 <div class="col-md-3">
                     <label class="form-label custom-label">Daily Cash Book Type</label>
-                    <select class="form-select" (change)="onActionChange($event)">
+                    <select class="form-select" [(ngModel)]="selectedType" (change)="onActionChange()">
                         <option value="" selected disabled>Select Daily Cash Book Type</option>
                         <option value="approve-dcb">Approve DCB</option>
                         <option value="capture-modify-dcb">Capture/Modify DCB</option>

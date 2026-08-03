@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-fund-transfer',
@@ -10,15 +10,23 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './fund-transfer.css',
 })
 export class FundTransfer implements OnInit {
-  constructor(private router: Router) { }
+  selectedType: string = '';
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+     this.route.firstChild?.url.subscribe(url => {
+      if (url.length) {
+        this.selectedType = url[0].path;
+      }
+    });
   }
 
-  onActionChange(event: Event): void {
-    const value = (event.target as HTMLSelectElement).value;
-    if (value) {
-      this.router.navigate(['/layout/fund-transfer/', value]);
+  onActionChange(): void {
+    if (this.selectedType) {
+      this.router.navigate([this.selectedType], {
+        relativeTo: this.route
+      });
     }
   }
 }

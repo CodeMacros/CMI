@@ -1,1 +1,56 @@
-<p>pending-instrument-report works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Pending Instrument</h5>
+                </div>
+                <app-dynamic-form [form]="pendingInsForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="pendingInsfields"></app-dynamic-form>
+
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center gap-3">
+
+                            <div>
+                                <button class="btn-submit" (click)="pendingIns()">
+                                    Submit
+                                </button>
+                            </div>
+
+                            <!-- <button class="btn-clear" (click)="clear()">
+                    Clear
+                </button> -->
+
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center my-2">
+
+                    <h4 class="fw-bold text-uppercase mb-3">
+                        SBI LIFE INSURANCE COMPANY LTD
+                    </h4>
+
+                    <p class="fs-8 mb-0">
+                        7th Level (D Wing), and 8th Level, CENTRAL PROCESSING CENTER,
+                        Seawoods Grand Central, Tower II, Plot No. R1, Sector 40,
+                        Seawoods, Nerul Node
+                    </p>
+
+                    <p class="fs-8">
+                        NAVI MUMBAI - 400706
+                    </p>
+
+                </div>
+
+                <app-dynamic-form [form]="pendingInsDetailForm" [fields]="pendingInsDetailfields"></app-dynamic-form>
+
+            </div>
+            <app-dynamictable [columns]="tableColumns" ></app-dynamictable>
+
+        </div>
+    </div>
+</div>
+
+

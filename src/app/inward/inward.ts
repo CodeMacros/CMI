@@ -155,7 +155,7 @@ export class Inward implements OnInit {
       label: 'Sum Assured',
       controlName: 'sumAssured',
       placeholder: 'Enter Sum Assured',
-      allowOnlyNumbers: true
+      inputType: 'number'
     },
     {
       type: 'number',
@@ -163,7 +163,7 @@ export class Inward implements OnInit {
       controlName: 'premiumAmount',
       placeholder: 'Enter Premium Amount',
       required: true,
-      allowOnlyNumbers: true
+      inputType: 'number'
     },
     {
       type: 'select',
@@ -205,7 +205,7 @@ export class Inward implements OnInit {
       required: true,
       placeholder: 'Enter Mobile Number',
       pattern: /^[6-9]\d{9}$/,
-      allowOnlyNumbers: true,
+      inputType: 'number',
       maxLength: 10,
       patternMessage: 'Please enter valid mobile number.'
     },

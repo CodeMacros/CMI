@@ -1,1 +1,36 @@
-<p>deactive-collection-bank works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Deactive Collection Bank</h5>
+                </div>
+                <app-dynamic-form [form]=" deActiveCollectionBankForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]=" deActiveCollectionBankfields"></app-dynamic-form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="deActiveCollectionBank()">
+                    Submit
+                </button>
+            </div>
+
+            <!-- <button class="btn-clear" (click)="clear()">
+                    Clear
+                </button> -->
+
+        </div>
+    </div>
+</div>
+
+
+<app-dynamictable [columns]="tableColumns"></app-dynamictable>

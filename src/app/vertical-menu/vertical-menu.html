@@ -6,7 +6,8 @@
         <li class="menu-item active" routerLink="/layout/dashboard">
             <div class="menu-title">
                 <div class="left">
-                    <i class="fa-solid fa-house"></i>Dashboard
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
                 </div>
             </div>
         </li>
@@ -15,7 +16,8 @@
         <li class="menu-item">
             <div class="menu-title" (click)="toggle('inward')">
                 <div class="left">
-                    <i class="fa-solid fa-arrow-right-arrow-left"></i>Inward
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span>Inward</span>
                 </div>
 
                 @if (!collapsed) {
@@ -166,13 +168,13 @@
                     <span>CDA</span>
                     }
                 </div>
-        
+
                 @if(!collapsed){
                 <i class="fa-solid" [ngClass]="isOpen('cda') ? 'fa-angle-up' : 'fa-angle-down'">
                 </i>
                 }
             </div>
-        
+
             <!-- Summenu -->
             @if(isOpen('cda')){
             <ul class="submenu">

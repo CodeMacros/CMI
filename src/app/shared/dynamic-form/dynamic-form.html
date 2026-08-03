@@ -28,9 +28,10 @@
 
             }
 
-             @case('textarea'){
+            @case('textarea'){
 
-            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName" [placeholder]="field.placeholder"></textarea>
+            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName"
+                [placeholder]="field.placeholder"></textarea>
 
             }
 
@@ -46,6 +47,13 @@
             <input [id]="field.controlName" type="number" class="form-control" [placeholder]="field.placeholder"
                 [formControlName]="field.controlName">
 
+            }
+
+            @case('checkbox'){
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" [formControlName]="field.controlName"
+                    [id]="field.controlName">
+            </div>
             }
 
             @case('date'){

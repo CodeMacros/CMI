@@ -1,24 +1,24 @@
-import { Component } from '@angular/core';
-import { Header } from '../header/header';
-import { VerticalMenu } from '../vertical-menu/vertical-menu';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-approval',
-  imports: [Header, VerticalMenu, CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './approval.html',
   styleUrl: './approval.css',
 })
-export class Approval {
-  isSearchOpen = false;
-  searchType = '';
-  fromDate = '';
-  toDate = '';
+export class Approval implements OnInit {
+  constructor(private router: Router) { }
 
-  toggleSearch() {
-    this.isSearchOpen = !this.isSearchOpen;
-  };
+  ngOnInit(): void {
+  }
 
-  impsStatus = 'Success';
+  onActionChange(event: Event): void {
+    const value = (event.target as HTMLSelectElement).value;
+    if (value) {
+      this.router.navigate(['/layout/approval/', value]);
+    }
+  }
 }

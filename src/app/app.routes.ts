@@ -20,19 +20,47 @@ export const routes: Routes = [
                     import('./inward/inward.route').then(r => r.INWARD_ROUTES)
             },
             {
+                path: 'outward',
+                loadChildren: () =>
+                    import('./outward/outward.route').then(r => r.OUTWARD_ROUTES)
+            },
+            {
                 path: 'cashier',
                 loadChildren: () =>
                     import('./cashier/cashier.route').then(r => r.CASHIER_ROUTES)
             },
             {
-                path: 'outward',
+                path: 'approval',
                 loadChildren: () =>
-                    import('./outward/outward.route').then(r => r.OUTWARD_ROUTES)
+                    import('./approval/approval.route').then(r => r.APPROVAL_ROUTES)
+            },
+            {
+                path: 'eod',
+                loadChildren: () =>
+                    import('./eod-collection/eod-collection.route').then(r => r.EOD_ROUTES)
+            },
+            {
+                path: 'cda',
+                loadChildren: () =>
+                    import('./cda/cda.route').then(r => r.CDA_ROUTES)
+            },
+            {
+                path: 'fund-transfer',
+                loadChildren: () =>
+                    import('./fund-transfer/fund-transfer.route').then(r => r.FUND_TRANSFER_ROUTES)
+            },
+            {
+                path: 'policy-servicing',
+                loadChildren: () =>
+                    import('./policy-servicing/policy-servicing.route').then(r => r.POLICY_SERVICING_ROUTES)
+            },
+            {
+                path: 'piwc-details',
+                loadChildren: () =>
+                    import('./piwc-details/piwc-details.route').then(r => r.PIWC_DETAILS_ROUTES)
             },
         ]
     },
-    // { path: 'cashier', component: Cashier },
-    { path: 'approval', component: Approval },
     { path: 'popup', component: AllPopup },
     { path: '**', component: Login },
 

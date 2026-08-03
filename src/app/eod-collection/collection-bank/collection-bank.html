@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- Page Heading -->
+            <div class="page-title mb-3">
+                <h4>Collection Bank</h4>
+            </div>
+            <!-- Approval Details Card -->
+            <div class="inward-card">
+                <div class="col-md-3">
+                    <label class="form-label custom-label">Collection Bank Type</label>
+                    <select class="form-select" (change)="onActionChange($event)">
+                        <option value="" selected disabled>Select Collection Bank Type</option>
+                        <option value="select-collection-bank">Select Collection Bank</option>
+                        <option value="add-collection-bank">Add Collection Bank</option>
+                        <option value="deactive-collection-bank">Deactivate Collection Bank</option>
+                        <option value="approve-collection-bank">Approve Collection Bank</option>
+                    </select>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

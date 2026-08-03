@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- Page Heading -->
+            <div class="page-title mb-3">
+                <h4>Individual</h4>
+            </div>
+            <!-- Approval Details Card -->
+            <div class="inward-card">
+                <div class="col-md-3">
+                    <label class="form-label custom-label">Individual Type</label>
+                    <select class="form-select" (change)="onActionChange($event)">
+                        <option value="" selected disabled>Select Individual Type</option>
+                        <option value="cda-file-upload">CDA File Upload</option>
+                        <option value="view-cda-details">View CDA Details</option>
+                        <option value="cda-intimation-letter">CDA Intimation Letter</option>
+                    </select>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -12,9 +12,10 @@ import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
   styleUrl: './renewal.css',
 })
 export class Renewal {
- renewalyForm!: FormGroup
+  renewalyForm!: FormGroup
 
   courierfields: DynamicField[] = [
+
     {
       type: 'text',
       label: 'Inward Number',
@@ -122,6 +123,17 @@ export class Renewal {
   ]
 
   cashierEntryFields: DynamicField[] = [
+    {
+      type: 'select',
+      label: 'Sub Payment Type',
+      controlName: 'subPaymentType',
+      required: true,
+      options: [
+        { label: 'Renewal Payment', value: 'Renewal Payment' },
+        { label: 'Renewal CDA Charges', value: 'Renewal CDA Charges' },
+        { label: 'Revival Premium', value: 'Revival Premium' }
+      ]
+    },
     {
       type: 'text',
       label: 'Policy No',

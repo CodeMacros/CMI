@@ -80,7 +80,7 @@
 
                     <div class="accordion-body" [hidden]="openedSection !== 'document'">
                         <div class="pt-2">
-                           <app-dynamictable [columns]="tableColumns"></app-dynamictable>
+                            <app-dynamictable [columns]="tableColumns"></app-dynamictable>
                         </div>
 
 
@@ -97,7 +97,7 @@
                         Submit
                     </button>
 
-                    <button class="btn-clear">
+                    <button (click)="clear()" class="btn-clear">
                         Clear
                     </button>
 

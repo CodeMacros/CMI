@@ -124,6 +124,17 @@ export class Intial {
 
   cashierEntryFields: DynamicField[] = [
     {
+      type: 'select',
+      label: 'Sub Payment Type',
+      controlName: 'subPaymentType',
+      required: true,
+      options: [
+        { label: 'Initial Payment', value: 'Initial Payment' },
+        { label: 'Initial CDA Charges', value: 'Initial CDA Charges' },
+        { label: 'Shortage Premium', value: 'Shortage Premium' }
+      ]
+    },
+    {
       type: 'text',
       label: 'Policy No',
       controlName: 'policyNo',
@@ -430,7 +441,6 @@ export class Intial {
   ngOnInit(): void {
     this.intialForm = this.fb.group({
       cashierEntryForm: this.fb.group({}),
-      courierForm: this.fb.group({}),
       paymentForm: this.fb.group({}),
       proposalDetailsForm: this.fb.group({}),
       channelDetailsForm: this.fb.group({}),
@@ -441,9 +451,7 @@ export class Intial {
     return this.intialForm.get('cashierEntryForm') as FormGroup;
   }
 
-  get courierForm(): FormGroup {
-    return this.intialForm.get('courierForm') as FormGroup;
-  }
+
 
   get paymentForm(): FormGroup {
     return this.intialForm.get('paymentForm') as FormGroup;
@@ -474,10 +482,9 @@ export class Intial {
   }
 
   clear(): void {
-    this.comSrv.clearForm(this.courierForm, this.courierfields)
+    this.comSrv.clearForm(this.cashierEntryForm, this.cashierEntryFields)
     this.comSrv.clearForm(this.paymentForm, this.paymentField)
     this.comSrv.clearForm(this.channelDetailsForm, this.channelDetailsFields)
-    this.comSrv.clearForm(this.cashierEntryForm, this.cashierEntryFields)
     this.comSrv.clearForm(this.proposalDetailsForm, this.proposalDetailsFields)
   }
 }

@@ -49,6 +49,13 @@
 
             }
 
+            @case('checkbox'){
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" [formControlName]="field.controlName"
+                    [id]="field.controlName">
+            </div>
+            }
+
             @case('date'){
             <!-- <div style="display: -webkit-box">
                 <input appDatepicker type="text" [id]="field.controlName" name="str_dob"

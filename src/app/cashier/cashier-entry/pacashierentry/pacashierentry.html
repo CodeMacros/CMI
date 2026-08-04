@@ -1,1 +1,37 @@
-<p>pacashierentry works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="page-title  m-2">
+                <h4>PA Cashier Entry</h4>
+            </div>
+
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0 ">
+                    <h5 class="section-title">PA Cashier Entry</h5>
+                </div>
+    
+
+                <app-dynamic-form  [form]="cashier"  [fields]="cashierEntry">
+
+                </app-dynamic-form>
+
+
+            
+
+                <br><br>
+
+
+
+                <div>
+
+
+                    <div class="modal-footer justify-content-center gap-3">
+                        <button (click)="submit()" class="btn-submit">Submit </button>
+                        <button  class="btn-clear"> Clear </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

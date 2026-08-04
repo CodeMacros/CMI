@@ -4,52 +4,26 @@
 
             <!-- Page Heading -->
             <div class="page-title mb-3">
-                <h4>Miscellaneous Inward</h4>
+                <h4>Renewal Document</h4>
             </div>
 
-            <!-- Courier Details Card -->
             <div class="inward-card">
 
                 <div class="common-card-header pb-0">
                     <h5 class="section-title">Inward Details</h5>
                 </div>
-                <app-dynamic-form [form]="inwardDocumnetForm" [fields]="inwardDocumentField"
-                    (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
+                <!-- <app-dynamic-form [form]="courierForm" [fields]="courierfields"
+                    (fieldChanged)="onFieldChanged($event)"></app-dynamic-form> -->
+                <app-dynamic-form [form]="documnetForm" [fields]="documentField"></app-dynamic-form>
             </div>
+
             <!-- accordion -->
             <div class="custom-accordion mt-3">
-
-                <!-- Proposal Details -->
-                <div class="accordion-item">
-                    <div class="accordion-header" (click)="toggleAccordion('courier')">
-                        <div>
-                            <h5>Courier Details</h5>
-                            <!-- <p>Provide proposal and customer related information</p> -->
-                        </div>
-                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'courier'"
-                            [class.fa-chevron-up]="openedSection === 'courier'">
-                        </i>
-                    </div>
-
-                    <div class="accordion-body" [hidden]="openedSection !== 'courier'">
-                        <!-- Your Proposal Form Here -->
-                        <div class="pt-2">
-                            <!-- <app-dynamic-form [form]="documnetForm" [fields]="documentField"></app-dynamic-form> -->
-                            <app-dynamic-form [form]="courierForm" [fields]="courierfields"
-                                (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-
                 <!-- Proposal Details -->
                 <div class="accordion-item">
                     <div class="accordion-header" (click)="toggleAccordion('proposal')">
                         <div>
-                            <h5>Documnet Details</h5>
+                            <h5>Courier Details</h5>
                             <!-- <p>Provide proposal and customer related information</p> -->
                         </div>
                         <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
@@ -59,10 +33,12 @@
 
                     <div class="accordion-body" [hidden]="openedSection !== 'proposal'">
                         <!-- Your Proposal Form Here -->
-                        <div class="pt-2">
-                            <app-dynamic-form [form]="documnetForm" [fields]="documentField"></app-dynamic-form>
-                        </div>
+                        <!-- <div class="pt-2">
+                            <app-dynamic-form [form]="documnetForm" [fields]="documentForm"></app-dynamic-form>
+                        </div> -->
 
+                        <app-dynamic-form [form]="courierForm" [fields]="courierfields"
+                            (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
 
                     </div>
                 </div>

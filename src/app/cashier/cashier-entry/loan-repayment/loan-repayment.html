@@ -1,1 +1,111 @@
-<p>loan-repayment works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- Page Heading -->
+            <div class="page-title my-2">
+                <h4>Loan Repayment</h4>
+            </div>
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+                <!-- <div class="common-card-header pb-0">
+                    <h5 class="section-title">Courier Details</h5>
+                </div> -->
+                <app-dynamic-form [form]="policyForm" [fields]="policyFields"></app-dynamic-form>
+                <div class="btn-group">
+                    <p>View Due Details</p>
+                </div>
+            </div>
+
+
+
+            <!-- proposal Details -->
+            <div class="custom-accordion mt-3">
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('proposer')">
+                        <div>
+                            <h5>Proposer Details</h5>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposer'"
+                            [class.fa-chevron-up]="openedSection === 'proposer'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'proposer'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="proposerForm" [fields]="proposerFields"></app-dynamic-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- loan details -->
+            <div class="custom-accordion mt-3">
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('loan')">
+                        <div>
+                            <h5>Loan Details</h5>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'loan'"
+                            [class.fa-chevron-up]="openedSection === 'loan'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'loan'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="loanForm" [fields]="loanFields"></app-dynamic-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Bank Details -->
+
+            <div class="custom-accordion mt-3">
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('Bank')">
+                        <div>
+                            <h5> Customer Bank Details</h5>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'Bank'"
+                            [class.fa-chevron-up]="openedSection === 'Bank'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'Bank'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="CustomerBankForm"
+                                [fields]="CustomerBankFeilds" ></app-dynamic-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instrument Details -->
+
+            <div class="custom-accordion mt-3">
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('Instrumental')">
+                        <div>
+                            <h5> Instrumental Details</h5>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'Instrumental'"
+                            [class.fa-chevron-up]="openedSection === 'Instrumental'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'Instrumental'">
+                        <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-2">
+                            <button class="btn-submit"> Add</button>
+
+                        </div>
+                        <div>
+                            <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

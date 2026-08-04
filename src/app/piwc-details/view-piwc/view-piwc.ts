@@ -27,28 +27,71 @@ export class ViewPiwc {
 
   }
 
+
   PIWCFields: DynamicField[] = [
-    {
-      type: 'text',
-      label: 'Proposal Number',
-      controlName: 'proposalNo',
-      placeholder: 'Enter Proposal Number',
-      required: true
-    },
-  ]
+  {
+    type: 'select',
+    label: 'PIWC Details Type',
+    controlName: 'SelectedType',
+    required: true,
+    triggerChange: true,
+    options: [
+      {
+        label: 'View Audio PIWC Details',
+        value: 'Audio'
+      },
+      {
+        label: 'View Insta PIWC Details',
+        value: 'Insta'
+      },
+      {
+        label: 'View Video PIWC Details',
+        value: 'Video'
+      }
+    ]
+  },
+  {
+    type: 'text',
+    label: 'Proposal Number',
+    controlName: 'proposalNo',
+    placeholder: 'Enter Proposal Number',
+    required: true,
+    visible: false  
+  }
+];
 
   get PIWCForm(): FormGroup {
     return this.mainForm.get('PIWCForm') as FormGroup;
   }
 
 
-  Submit() {
+   onSelectChange(event: { controlName: string; value: any }) {
+
+    if (event.controlName !== 'SelectedType') {
+      return;
+    }
+
+    const proposalField = this.PIWCFields.find(
+      f => f.controlName === 'proposalNo'
+    );
+
+    if (proposalField) {
+      proposalField.visible = !!event.value;
+    }
+
+    if (!event.value) {
+      this.PIWCForm.get('proposalNo')?.reset();
+    }
+  }
+
+
+  Search() {
     if (!this.commonService.validateForm(this.PIWCForm)) {
       return;
     }
 
-    const fundTransferData = this.PIWCForm.getRawValue();
-    console.log('Fund Transfer Data:', fundTransferData);
+    const piwcData = this.PIWCForm.getRawValue();
+    console.log('PIWC Data:', piwcData);
   }
 
 }

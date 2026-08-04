@@ -20,9 +20,6 @@ export class FundTransferEntry {
   ngOnInit(): void {
     this.mainForm = this.fb.group({
       fundTransferForm: this.fb.group({}),
-      // individualForm: this.fb.group({}),
-      // proposalForm: this.fb.group({}),
-      // channelForm: this.fb.group({}),
     });
 
   }

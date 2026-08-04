@@ -9,17 +9,90 @@
             <div class="inward-card">
 
                 <div class="common-card-header pb-0">
-                    <h5 class="section-title">Courier Details</h5>
+                    <h5 class="section-title">Inward Details</h5>
                 </div>
-                <app-dynamic-form [form]="courierForm" [fields]="courierfields"></app-dynamic-form>
+                <app-dynamic-form [form]="documnetForm" [fields]="documentField"></app-dynamic-form>
             </div>
+
+
+
+
+
             <!-- accordion -->
             <div class="custom-accordion mt-3">
+
+                <!-- curier Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('curier')">
+                        <div>
+                            <h5>Curier Details</h5>
+                            <!-- <p>Provide proposal and customer related information</p> -->
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'curier'"
+                            [class.fa-chevron-up]="openedSection === 'curier'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'curier'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="courierForm" [fields]="courierfields"></app-dynamic-form>
+                            <!-- <app-dynamic-form [form]="paymentForm" [fields]="paymentField"></app-dynamic-form> -->
+                        </div>
+
+
+                    </div>
+                </div>
+
                 <!-- Proposal Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('proposal')">
+                        <div>
+                            <h5>Proposal Details</h5>
+                            <!-- <p>Provide proposal and customer related information</p> -->
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'proposal'"
+                            [class.fa-chevron-up]="openedSection === 'proposal'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'proposal'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="proposalDetailsForm"
+                                [fields]="proposalDetailsFields"></app-dynamic-form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Channel Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('channel')">
+                        <div>
+                            <h5>Channel Details</h5>
+                            <!-- <p>Provide proposal and customer related information</p> -->
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'channel'"
+                            [class.fa-chevron-up]="openedSection === 'channel'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'channel'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="channelDetailsForm"
+                                [fields]="channelDetailsFields"></app-dynamic-form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <!-- Payment Details -->
                 <div class="accordion-item">
                     <div class="accordion-header" (click)="toggleAccordion('document')">
                         <div>
-                            <h5>Document Details</h5>
+                            <h5>Payment Details</h5>
                             <!-- <p>Provide proposal and customer related information</p> -->
                         </div>
                         <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'document'"
@@ -29,7 +102,7 @@
 
                     <div class="accordion-body" [hidden]="openedSection !== 'document'">
                         <div class="pt-2">
-                            <app-dynamic-form [form]="documentForm" [fields]="documentField"></app-dynamic-form>
+                            <app-dynamic-form [form]="paymentForm" [fields]="paymentField"></app-dynamic-form>
                         </div>
 
 

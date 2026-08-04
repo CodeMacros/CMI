@@ -16,6 +16,8 @@ export class MiscellaneousInward {
   mainForm!: FormGroup
 
 
+
+
   courierfields: DynamicField[] = [
     // =========================
     // Courier Details
@@ -63,25 +65,25 @@ export class MiscellaneousInward {
       placeholder: 'Enter AWB Number',
       required: true
     },
-    {
-      type: 'select',
-      label: 'State',
-      controlName: 'state',
-      triggerChange: true,
-      options: [
-        { label: 'Maharashtra', value: 'MH' },
-        { label: 'Bihar', value: 'BR' }
-      ]
-    },
-    {
-      type: 'select',
-      label: 'City',
-      controlName: 'city',
-      options: [
-        { label: 'Mumbai', value: 'Mumbai' },
-        { label: 'Pune', value: 'Pune' }
-      ]
-    },
+    // {
+    //   type: 'select',
+    //   label: 'State',
+    //   controlName: 'state',
+    //   triggerChange: true,
+    //   options: [
+    //     { label: 'Maharashtra', value: 'MH' },
+    //     { label: 'Bihar', value: 'BR' }
+    //   ]
+    // },
+    // {
+    //   type: 'select',
+    //   label: 'City',
+    //   controlName: 'city',
+    //   options: [
+    //     { label: 'Mumbai', value: 'Mumbai' },
+    //     { label: 'Pune', value: 'Pune' }
+    //   ]
+    // },
     {
       type: 'select',
       label: 'Document HandOver To',
@@ -97,19 +99,18 @@ export class MiscellaneousInward {
       label: 'Remarks',
       controlName: 'remarks',
       placeholder: 'Enter Remarks',
-      col: "col-6"
     },
     {
       type: 'text',
       label: 'Additional Information',
       controlName: 'additionalInformation',
       placeholder: 'Enter Additional Information',
-      col: "col-6"
+
     },
   ];
 
 
-  documentForm: DynamicField[] = [
+  documentField: DynamicField[] = [
 
     {
       type: 'select',
@@ -138,6 +139,34 @@ export class MiscellaneousInward {
     }
   ]
 
+  inwardDocumentField: DynamicField[] = [
+
+    {
+      type: 'select',
+      label: 'Inwrd Category',
+      controlName: 'documentSubCategory',
+      required: true,
+      options: [
+        { label: 'Renewal', value: 'renewal' },
+        { label: 'Inital', value: 'intial' },
+        { label: 'Group', value: 'group' },
+      ]
+    },
+    {
+      type: 'select',
+      label: 'Policy No/Proposal No/Membership Form No/Loan Account No',
+      controlName: 'documentNumberType',
+      required: true,
+      col: 'col-6',
+      options: [
+        { label: 'Policy Number', value: 'policy' },
+        { label: 'Proposal Number', value: 'proposal' },
+        { label: 'Membership Form Number', value: 'membership' },
+        { label: 'Loan Account Number', value: 'loan' }
+      ]
+    }
+  ];
+
 
   openedSection!: string
 
@@ -148,6 +177,7 @@ export class MiscellaneousInward {
     this.mainForm = this.fb.group({
       courierForm: this.fb.group({}),
       documnetForm: this.fb.group({}),
+      inwardDocumnetForm: this.fb.group({}),
     });
     this.comSrv.loadStates(this.courierfields)
   }
@@ -159,6 +189,9 @@ export class MiscellaneousInward {
 
   get documnetForm(): FormGroup {
     return this.mainForm.get('documnetForm') as FormGroup;
+  }
+  get inwardDocumnetForm(): FormGroup {
+    return this.mainForm.get('inwardDocumnetForm') as FormGroup;
   }
 
   toggleAccordion(section: string) {
@@ -193,7 +226,8 @@ export class MiscellaneousInward {
 
   clear(): void {
     this.comSrv.clearForm(this.courierForm, this.courierfields)
-    this.comSrv.clearForm(this.documnetForm, this.documentForm)
+    this.comSrv.clearForm(this.documnetForm, this.documentField)
+    this.comSrv.clearForm(this.inwardDocumnetForm, this.inwardDocumentField)
   }
 
 }

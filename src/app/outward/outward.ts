@@ -8,6 +8,7 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrl: './outward.css',
 })
 export class Outward implements OnInit {
+  autoDiv: boolean = false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -15,10 +16,19 @@ export class Outward implements OnInit {
 
   onActionChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
-    console.log(value);
-
-    if (value) {
+    if (value === 'auto') {
+      this.autoDiv = true;
+    } else {
+      this.autoDiv = false;
       this.router.navigate(['/layout/outward/', value]);
     }
+  }
+
+  onAutoTypeChange(event: Event): void {
+
+    const value = (event.target as HTMLSelectElement).value;
+
+    console.log(value);
+    this.router.navigate(['/layout/outward/auto/', value]);
   }
 }

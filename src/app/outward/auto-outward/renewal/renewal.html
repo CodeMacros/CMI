@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- Page Heading -->
+            <div class="page-title mb-3">
+                <h4>Renewal Auto Outward</h4>
+                <!-- <p>Create a new inward entry by providing the required details</p> -->
+            </div>
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Outward Details (Below are the search parameters)</h5>
+                </div>
+                <app-dynamic-form [form]="renewalForm" [fields]="renewalFields"></app-dynamic-form>
+            </div>
+
+            <!-- accordion -->
+            <div class="custom-accordion mt-3">
+                <!-- Receiver Details -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('receiver')">
+                        <div>
+                            <h5>Receiver Details</h5>
+                            <!-- <p>Provide proposal and customer related information</p> -->
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'receiver'"
+                            [class.fa-chevron-up]="openedSection === 'receiver'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'receiver'">
+                        <div class="pt-2">
+                            <app-dynamic-form [form]="receiverForm" [fields]="receiverfields"></app-dynamic-form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button -->
+                <div class="btn-group mt-3">
+                    <button (click)="onSubmit()" class="btn-submit">
+                        Submit
+                    </button>
+                    <button class="btn-clear">
+                        Clear
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

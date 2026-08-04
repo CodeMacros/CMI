@@ -8,7 +8,8 @@ export const OUTWARD_ROUTES: Routes = [
         children: [
             {
                 path: 'auto',
-                loadComponent: () => import('./auto-outward/auto-outward').then(c => c.AutoOutward)
+                loadChildren: () =>
+                    import('./auto-outward/auto-outward.route').then(r => r.AUTOOUTWARD_ROUTES)
             },
             {
                 path: 'track',

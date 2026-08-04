@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+
+            <!-- Page Heading -->
+            <div class="page-title mt-2">
+                <h4>Inward at HO branch - Claims</h4>
+            </div>
+            <div class="inward-card mt-2">
+
+                <div class="common-card-header pb-0 ">
+                    <h5 class="section-title">Courier Details</h5>
+                </div>
+                <app-dynamic-form [form]="courierForm" [fields]="courierFeilds"></app-dynamic-form>
+
+            </div>
+
+
+            <div class="custom-accordion mt-3">
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('claim')">
+                        <div>
+                            <h5>Documnet Details</h5>
+                        </div>
+                        <i class="fa-solid" [class.fa-chevron-down]="openedSection !== 'claim'"
+                            [class.fa-chevron-up]="openedSection === 'claim'">
+                        </i>
+                    </div>
+
+                    <div class="accordion-body" [hidden]="openedSection !== 'claim'">
+
+                        <div class="pt-2">
+                             <app-dynamic-form [form]="documentForm" [fields]="documentFeilds"></app-dynamic-form>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+                <!-- Button -->
+                <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-2">
+                    <button (click)="Submit()" class="btn-submit"> Submit </button>
+                    <button class="btn-clear" (click)="Clear()"> Clear </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

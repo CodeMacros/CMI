@@ -12,6 +12,7 @@ export const INWARD_ROUTES: Routes = [
         children: [
             { path: 'miscellaneous-inward', loadComponent: () => import('./new-business/miscellaneous-inward/miscellaneous-inward').then(c => c.MiscellaneousInward) },
             { path: 'discrepancy-inward', loadComponent: () => import('./new-business/discrepancy-inward/discrepancy-inward').then(c => c.DiscrepancyInward) },
+            { path: 'claim-inward', loadComponent: () => import('./new-business/claim-inward/claim-inward').then(c => c.ClaimInward) },
         ]
     },
     {

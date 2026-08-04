@@ -334,6 +334,35 @@ export class LoanRepayment {
     }
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.CustomerBankForm.get('selectCode')?.valueChanges.subscribe(value => {
+        this.toggleBankFields(value);
+      });
+    });
+  }
+
+  toggleBankFields(value: string) {
+
+    const micr = this.CustomerBankForm.get('MICR');
+    const ifsc = this.CustomerBankForm.get('IFSC');
+
+    if (value === 'MICR') {
+      micr?.enable();
+      ifsc?.disable();
+      ifsc?.reset();
+    }
+    else if (value === 'IFSC') {
+      ifsc?.enable();
+      micr?.disable();
+      micr?.reset();
+    }
+    else {
+      micr?.disable();
+      ifsc?.disable();
+    }
+  }
+
 
 
   tableColumns = [

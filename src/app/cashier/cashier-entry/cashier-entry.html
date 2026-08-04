@@ -8,24 +8,37 @@
         <div class="row g-3">
             <div class="col-md-3">
                 <label class="form-label custom-label">Cashier Entry</label>
-                <select class="form-select custom-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
-                    <option value="">Select</option>
-                    <option value="Individual">Individual</option>
-                    <option value="Group">Group</option>
+                <select class="form-select custom-select" 
+                    (change)="onCategoryChange($event)">
+                    <option value="" disabled selected>Select</option>
+                    <!-- <option value="Individual">Individual</option>  
                     <option value="Sahara">Sahara</option>
-                    <option value="SCMC & Other Cashiering"> SCMC & Other Cashiering </option>
+                    <option value="SCMC & Other Cashiering"> SCMC & Other Cashiering </option> -->
+                    <option value="intial">Initial</option>
+                    <option value="renewal">Renewal</option>
+                    <option value="group">Group</option>
+                    <option value="loanRepayment">Loan Repayment</option>
+                    <option value="pa-cashier-entry">PA Cashier Entry</option>
                 </select>
             </div>
-
-            <div class="col-md-3" *ngIf="subOptions.length">
+            @if (subOptions.length > 0) {
+            <div class="col-md-3">
                 <label class="form-label custom-label">Type</label>
 
-                <select class="form-select custom-select" [(ngModel)]="selectedSubOption"
-                   >
+                <select class="form-select custom-select" 
+                    (change)="onSubCategoryChange($event)">
+
                     <option value="">Select</option>
-                    <option *ngFor="let item of subOptions" [value]="item"> {{ item }} </option>
+
+                    @for (item of subOptions; track item) {
+                    <option [value]="item.value">
+                        {{ item.label }}
+                    </option>
+                    }
+
                 </select>
             </div>
+            }
 
         </div>
 
@@ -33,6 +46,8 @@
 
 </div>
 
-<app-scmcentry *ngIf="selectedSubOption === 'SCMC Entry'"></app-scmcentry>
+<router-outlet></router-outlet>
 
-<app-pacashierentry *ngIf="selectedSubOption === 'PA Cashier Entry'"></app-pacashierentry>
+<!-- <app-scmcentry *ngIf="selectedSubOption === 'SCMC Entry'"></app-scmcentry>
+
+<app-pacashierentry *ngIf="selectedSubOption === 'PA Cashier Entry'"></app-pacashierentry> -->

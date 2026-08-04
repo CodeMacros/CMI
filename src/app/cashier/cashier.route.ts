@@ -5,34 +5,40 @@ import { Reports } from './reports/reports';
 
 
 export const CASHIER_ROUTES: Routes = [
-    {
-        path: 'bulk-upload',
-        component: BulkUpload,
-    },
-    {
-        path: 'cashier-entry',
-        component: CashierEntry,
-       children: [
+  {
+    path: 'bulk-upload',
+    component: BulkUpload,
+  },
+  {
+    path: 'cashier-entry',
+    component: CashierEntry,
+    children: [
+      { path: 'intial', loadComponent: () => import('./cashier-entry/intial/intial').then(c => c.Intial) },
+      { path: 'pa-cashier-entry', loadComponent: () => import('./cashier-entry/pacashierentry/pacashierentry').then(c => c.Pacashierentry) },
+      { path: 'loanRepayment', loadComponent: () => import('./cashier-entry/loan-repayment/loan-repayment').then(c => c.LoanRepayment) },
       {
-        path: '',
-        redirectTo: 'scmc-entry',
-        pathMatch: 'full'
+        path: 'group', loadComponent: () => import('./cashier-entry/group/group').then(c => c.Group),
+        children: [{
+          path: 'rinRaksha', loadComponent: () => import('./cashier-entry/group/rin-raksha/rin-raksha').then(c => c.RinRaksha)
+        }]
       },
-      {
-        path: 'scmc-entry',
-        loadChildren: () =>
-          import('./cashier-entry/cashier-entry.route').then(
-            m => m.CASHIER_ENTRY_ROUTES
-          )
-      }
     ]
-    },
-    {
-        path: 'reports',
-        component: Reports,
-    },
+  },
+  {
+    path: 'reports',
+    component: Reports,
+  },
 
-    
+
+  // {
+  //     path: 'pa-cashier-entry',
+  //     component: Pacashierentry, 
+  // },
+  // {
+  //     path: 'intial',
+  //     component: Intial,
+  // }
+
 ]
 
 

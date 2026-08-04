@@ -18,6 +18,7 @@ export const INWARD_ROUTES: Routes = [
     {
         path: 'renewal',
         component: Renewal,
+        children: [{ path: 'renewal-document', loadComponent: () => import('./renewal/renewal-document/renewal-document').then(c => c.RenewalDocument) }]
     },
     {
         path: 'track-edit',

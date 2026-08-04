@@ -1,1 +1,27 @@
-<p>piwc-entraction works!</p>
+<div class="inward-card mt-2">
+
+    <div class="common-card-header pb-0 ">
+        <h5 class="section-title">PIWC Extraction Details</h5>
+    </div>
+    <div>
+        <app-dynamic-form [form]="PIWCExtractionForm" (fieldChanged)="onSelectChange($event)"
+            [fields]="PIWCExtractionFields"></app-dynamic-form>
+        <div class=" d-flex align-items-center justify-content-center gap-3">
+
+            <button class="btn-submit" (click)="Search()"> Search </button>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="inward-card mt-3" *ngIf="tableData.length > 0">
+
+    <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+
+    <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-2">
+        <button type="button" class="btn-clear"> Back </button>
+        <button type="button" class="btn-submit" (click)="Export()"> Export </button>
+    </div>
+
+</div>

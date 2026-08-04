@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { DynamicField } from '../../../modal/dynamic-field';
 import { Common } from '../../../service/common';
 import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
 import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
 
 @Component({
-  selector: 'app-intial',
+  selector: 'app-renewal',
   imports: [DynamicForm, Dynamictable],
-  templateUrl: './intial.html',
-  styleUrl: './intial.css',
+  templateUrl: './renewal.html',
+  styleUrl: './renewal.css',
 })
-export class Intial {
-
-  intialForm!: FormGroup
+export class Renewal {
+ renewalyForm!: FormGroup
 
   courierfields: DynamicField[] = [
     {
@@ -428,7 +427,7 @@ export class Intial {
   constructor(private fb: FormBuilder, private comSrv: Common) { }
 
   ngOnInit(): void {
-    this.intialForm = this.fb.group({
+    this.renewalyForm = this.fb.group({
       cashierEntryForm: this.fb.group({}),
       courierForm: this.fb.group({}),
       paymentForm: this.fb.group({}),
@@ -438,23 +437,23 @@ export class Intial {
   }
 
   get cashierEntryForm(): FormGroup {
-    return this.intialForm.get('cashierEntryForm') as FormGroup;
+    return this.renewalyForm.get('cashierEntryForm') as FormGroup;
   }
 
   get courierForm(): FormGroup {
-    return this.intialForm.get('courierForm') as FormGroup;
+    return this.renewalyForm.get('courierForm') as FormGroup;
   }
 
   get paymentForm(): FormGroup {
-    return this.intialForm.get('paymentForm') as FormGroup;
+    return this.renewalyForm.get('paymentForm') as FormGroup;
   }
 
   get proposalDetailsForm(): FormGroup {
-    return this.intialForm.get('proposalDetailsForm') as FormGroup;
+    return this.renewalyForm.get('proposalDetailsForm') as FormGroup;
   }
 
   get channelDetailsForm(): FormGroup {
-    return this.intialForm.get('proposalDetailsForm') as FormGroup;
+    return this.renewalyForm.get('proposalDetailsForm') as FormGroup;
   }
 
   toggleAccordion(section: string) {
@@ -466,10 +465,10 @@ export class Intial {
   }
 
   onSubmit() {
-    if (this.comSrv.validateForm(this.intialForm)) {
-      console.log(this.intialForm.getRawValue())
+    if (this.comSrv.validateForm(this.renewalyForm)) {
+      console.log(this.renewalyForm.getRawValue())
     } else {
-      console.log('trackInwardForm is valid', this.comSrv.validateForm(this.intialForm));
+      console.log('trackInwardForm is valid', this.comSrv.validateForm(this.renewalyForm));
     }
   }
 

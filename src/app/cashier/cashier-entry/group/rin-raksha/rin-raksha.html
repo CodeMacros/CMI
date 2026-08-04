@@ -1,1 +1,32 @@
-<p>rin-raksha works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- <div class="page-title mb-3">
+                <h4> Inward</h4>
+            </div> -->
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Group Cashier / File Upload / Cashier Entry</h5>
+                </div>
+                <app-dynamic-form [form]="rinRakshaForm" [fields]="rinRakshaFields"></app-dynamic-form>
+            </div>
+            <app-dynamictable [columns]="tableColumns"></app-dynamictable>
+        </div>
+    </div>
+</div>
+
+
+<div class="btn-group mt-3">
+
+    <button (click)="onSubmit()" class="btn-submit">
+        Upload
+    </button>
+
+    <button class="btn-clear">
+        Clear
+    </button>
+
+</div>

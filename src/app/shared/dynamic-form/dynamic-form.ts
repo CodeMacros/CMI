@@ -193,4 +193,24 @@ export class DynamicForm implements OnInit {
   }
 
 
+  onFileChange(event: Event, field: DynamicField): void {
+    console.log(event);
+
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+
+      const file = input.files[0];
+
+      console.log(file);
+
+      this.form.get(field.controlName)?.setValue(file);
+
+      this.form.get(field.controlName)?.markAsTouched();
+      this.form.get(field.controlName)?.updateValueAndValidity();
+    }
+
+  }
+
+
 }

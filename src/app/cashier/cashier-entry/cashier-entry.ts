@@ -50,6 +50,7 @@ export class CashierEntry {
     } else {
       // Reset previous selection
       // Navigate if required
+      this.subOptions = []
       if (value) {
         this.router.navigate(['/layout/cashier/cashier-entry', value]);
       }

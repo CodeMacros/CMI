@@ -16,6 +16,7 @@ export const CASHIER_ROUTES: Routes = [
       { path: 'intial', loadComponent: () => import('./cashier-entry/intial/intial').then(c => c.Intial) },
       { path: 'pa-cashier-entry', loadComponent: () => import('./cashier-entry/pacashierentry/pacashierentry').then(c => c.Pacashierentry) },
       { path: 'loanRepayment', loadComponent: () => import('./cashier-entry/loan-repayment/loan-repayment').then(c => c.LoanRepayment) },
+      { path: 'renewal', loadComponent: () => import('./cashier-entry/renewal/renewal').then(c => c.Renewal) },
       {
         path: 'group', loadComponent: () => import('./cashier-entry/group/group').then(c => c.Group),
         children: [{
@@ -42,23 +43,3 @@ export const CASHIER_ROUTES: Routes = [
 ]
 
 
-
-// {
-//         path: 'layout', component: LayoutComponent,
-//         children: [
-//             { path: 'dashboard', loadComponent: () => import('./dashboard/dashboard').then(c => c.Dashboard) },
-//             // { path: 'cashier', loadComponent: () => import('./cashier/cashier').then(c => c.Cashier) },
-//             // { path: 'inward', loadComponent: () => import('./inward/inward').then(c => c.Inward) },
-
-//             {
-//                 path: 'inward',
-//                 loadChildren: () =>
-//                     import('./inward/inward.route').then(r => r.INWARD_ROUTES)
-//             },
-//             {
-//                 path: 'cashier',
-//                 loadChildren: () =>
-//                     import('./cashier/cashier.route').then(r => r.CASHIER_ROUTES)
-//             },
-//         ]
-//     },

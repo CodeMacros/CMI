@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
+import { Renewal } from './renewal/renewal';
 
 @Component({
   selector: 'app-cashier-entry',
@@ -22,6 +23,29 @@ export class CashierEntry {
         value: 'rinRaksha'
       },
     ],
+
+    initial: [
+      {
+        label: 'Initial Paymnet',
+        value: 'rinRaksha'
+      },
+      {
+        label: 'Initial CDA Charges',
+        value: 'rinRaksha'
+      },
+      {
+        label: 'Shortage primeum',
+        value: 'rinRaksha'
+      },
+    ],
+
+    Renewal: [
+      {
+        label: 'Rin Raksha',
+        value: 'rinRaksha'
+      },
+    ],
+
 
   };
 
@@ -50,6 +74,7 @@ export class CashierEntry {
     } else {
       // Reset previous selection
       // Navigate if required
+      this.subOptions = []
       if (value) {
         this.router.navigate(['/layout/cashier/cashier-entry', value]);
       }

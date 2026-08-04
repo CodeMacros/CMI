@@ -20,11 +20,16 @@
 
             @case('text'){
 
-            <input [id]="field.controlName" class="form-control" [placeholder]="field.placeholder"
-                [readonly]="field.readonly" [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
+            <input [id]="field.controlName" class="form-control"
+                [placeholder]="field.placeholder?field.placeholder : '' " [readonly]="field.readonly"
+                [formControlName]="field.controlName" [maxlength]="field.maxLength ?? null"
                 [attr.inputmode]="field.inputType === 'number' ? 'numeric' : null"
-                (keypress)="allowInput($event, field)"
-                (input)="field.triggerChange ? onInput($event, field) : null">
+                (keypress)="allowInput($event, field)" (input)="field.triggerChange ? onInput($event, field) : null">
+
+            }
+            @case('file') {
+
+            <input [id]="field.controlName" (change)="onFileChange($event, field)" type="file" class="form-control">
 
             }
 

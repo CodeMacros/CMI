@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DynamicTable } from '../../modal/dynamicTable-field';
 
 @Component({
   selector: 'app-dynamictable',
@@ -10,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class Dynamictable {
 
-  @Input() columns: any[] = [];
+  @Input() columns!: any[] 
   @Input() data: any[] = [];
 
 

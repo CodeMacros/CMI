@@ -35,7 +35,6 @@ export class DynamicForm implements OnInit {
 
   createControls() {
     this.fields.forEach(field => {
-
       if (this.form.contains(field.controlName)) {
         return;
       }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndependentOutward } from './independent-outward';
+import { AutoOutward } from './auto-outward';
 
-describe('IndependentOutward', () => {
-  let component: IndependentOutward;
-  let fixture: ComponentFixture<IndependentOutward>;
+describe('AutoOutward', () => {
+  let component: AutoOutward;
+  let fixture: ComponentFixture<AutoOutward>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IndependentOutward]
+      imports: [AutoOutward]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(IndependentOutward);
+    fixture = TestBed.createComponent(AutoOutward);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -3,16 +3,17 @@
         <div class="common-wrapper">
             <!-- Page Heading -->
             <div class="page-title mb-3">
-                <h4>Independent Outward</h4>
+                <h4>Auto Outward</h4>
                 <!-- <p>Create a new inward entry by providing the required details</p> -->
             </div>
 
             <!-- Courier Details Card -->
             <div class="inward-card">
                 <div class="common-card-header pb-0">
-                    <h5 class="section-title">Courier Details</h5>
+                    <h5 class="section-title">Outward Details (Below are the search parameters)</h5>
                 </div>
-                <app-dynamic-form [form]="courierForm" [fields]="courierfields"></app-dynamic-form>
+                <app-dynamic-form [form]="outwardForm" [fields]="outwardFields"
+                    (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
             </div>
 
             <!-- accordion -->

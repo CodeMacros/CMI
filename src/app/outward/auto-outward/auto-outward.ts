@@ -1,0 +1,464 @@
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DynamicField } from '../../modal/dynamic-field';
+import { CommonModule } from '@angular/common';
+import { DynamicForm } from '../../shared/dynamic-form/dynamic-form';
+import { log } from 'console';
+
+@Component({
+  selector: 'app-auto-outward',
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm],
+  templateUrl: './auto-outward.html',
+  styleUrl: './auto-outward.css',
+})
+export class AutoOutward implements OnInit {
+  outwardForm!: FormGroup;
+  receiverForm!: FormGroup;
+  courierForm!: FormGroup;
+
+  fieldConfig: { [key: string]: DynamicField[] } = {
+    Initial: [
+      {
+        type: 'text',
+        label: 'Proposal No/ Policy Number/ Form Number /LAN',
+        controlName: 'proposalNo',
+        placeholder: 'Enter Proposal No/ Policy Number/ Form Number /LAN',
+        required: true,
+        col: 'col-8'
+      },
+      {
+        type: 'date',
+        label: 'From Date',
+        controlName: 'fromDate',
+        required: true,
+      },
+      {
+        type: 'date',
+        label: 'To Date',
+        controlName: 'toDate',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Inward Number',
+        controlName: 'inwardNumber',
+        placeholder: 'Enter Inward Number',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Document Category Wise',
+        controlName: 'docCatg',
+        placeholder: 'Enter Document Category Wise',
+        required: true,
+      },
+    ],
+
+    Renewal: [
+      {
+        type: 'text',
+        label: 'Proposal No/ Policy Number/ Form Number /LAN',
+        controlName: 'proposalNo',
+        placeholder: 'Enter Proposal No/ Policy Number/ Form Number /LAN',
+        required: true,
+        col: 'col-8'
+      },
+      {
+        type: 'date',
+        label: 'From Date',
+        controlName: 'fromDate',
+        required: true,
+      },
+      {
+        type: 'date',
+        label: 'To Date',
+        controlName: 'toDate',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Inward Number',
+        controlName: 'inwardNumber',
+        placeholder: 'Enter Inward Number',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Document Category Wise',
+        controlName: 'docCatg',
+        placeholder: 'Enter Document Category Wise',
+        required: true,
+      },
+    ],
+
+    Group: [
+      {
+        type: 'select',
+        label: 'Outward Category',
+        controlName: 'outwardCat',
+        placeholder: '-- Select --',
+        required: true,
+        options: [
+          { label: 'Initial', value: 'Initial' },
+          { label: 'Renewal', value: 'Renewal' },
+          { label: 'Group', value: 'Group' },
+          { label: 'PS and LB Payouts', value: 'PS and LB Payouts' },
+        ]
+      },
+      {
+        type: 'text',
+        label: 'Proposal No/ Policy Number/ Form Number /LAN',
+        controlName: 'proposalNo',
+        placeholder: 'Enter Proposal No/ Policy Number/ Form Number /LAN',
+        required: true,
+        col: 'col-8'
+      },
+      {
+        type: 'date',
+        label: 'From Date',
+        controlName: 'fromDate',
+        required: true,
+      },
+      {
+        type: 'date',
+        label: 'To Date',
+        controlName: 'toDate',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Inward Number',
+        controlName: 'inwardNumber',
+        placeholder: 'Enter Inward Number',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Document Category Wise',
+        controlName: 'docCatg',
+        placeholder: 'Enter Document Category Wise',
+        required: true,
+      },
+    ],
+
+    PSPayouts: [
+      {
+        type: 'text',
+        label: 'Proposal No/ Policy Number/ Form Number /LAN',
+        controlName: 'proposalNo',
+        placeholder: 'Enter Proposal No/ Policy Number/ Form Number /LAN',
+        required: true,
+        col: 'col-8'
+      },
+      {
+        type: 'date',
+        label: 'From Date',
+        controlName: 'fromDate',
+        required: true,
+      },
+      {
+        type: 'date',
+        label: 'To Date',
+        controlName: 'toDate',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Inward Number',
+        controlName: 'inwardNumber',
+        placeholder: 'Enter Inward Number',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Document Category Wise',
+        controlName: 'docCatg',
+        placeholder: 'Enter Document Category Wise',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Thread ID/SR No',
+        controlName: 'srNo',
+        placeholder: 'Enter Thread ID/SR No',
+        required: true,
+      },
+      {
+        type: 'text',
+        label: 'Policy Number',
+        controlName: 'policyNumber',
+        placeholder: 'Enter Policy Number',
+      },
+      {
+        type: 'text',
+        label: 'Proposal Number',
+        controlName: 'proposalNumber',
+        placeholder: 'Enter Proposal Number',
+      },
+      {
+        type: 'text',
+        label: 'Type of Payout',
+        controlName: 'payoutType',
+        placeholder: 'Enter Payout Type',
+      },
+      {
+        type: 'text',
+        label: 'Document Closed',
+        controlName: 'docClosed',
+        placeholder: 'Enter closed Document',
+      },
+      {
+        type: 'text',
+        label: 'AWB Number',
+        controlName: 'awbNumber',
+        placeholder: 'Enter AWB Number',
+      },
+      {
+        type: 'date',
+        label: 'Date of Approval',
+        controlName: 'approvalDate',
+      },
+      {
+        type: 'text',
+        label: 'Initiation Branch Name',
+        controlName: 'initiationBranch',
+        placeholder: 'Enter Initiation Branch Name',
+      },
+      {
+        type: 'text',
+        label: 'Initiating User ID',
+        controlName: 'initiatingUser',
+        placeholder: 'Enter Initiating User id',
+      },
+      {
+        type: 'text',
+        label: 'SR Category',
+        controlName: 'srCategory',
+        placeholder: 'Enter SR Category',
+      },
+      {
+        type: 'date',
+        label: 'Date of SR Closure',
+        controlName: 'srClosure',
+      },
+    ]
+  };
+
+  commonFields: DynamicField[] = [
+    {
+      type: 'select',
+      label: 'Outward Category',
+      controlName: 'outwardCat',
+      placeholder: '-- Select --',
+      required: true,
+      options: [
+        { label: 'Initial', value: 'Initial' },
+        { label: 'Renewal', value: 'Renewal' },
+        { label: 'Group', value: 'Group' },
+        { label: 'PS and LB Payouts', value: 'PSPayouts' },
+      ]
+    },
+  ];
+
+  receiverfields: DynamicField[] = [
+    {
+      type: 'select',
+      label: 'Dispatch To',
+      controlName: 'dispatchTo',
+      placeholder: '-- Select --',
+      required: true,
+      options: [
+        { label: 'Inward', value: '1' },
+        { label: 'Outward', value: '2' }
+      ]
+    },
+    {
+      type: 'select',
+      label: 'Dispatch Destination',
+      controlName: 'dispatchDesti',
+      placeholder: '-- Select --',
+      required: true,
+      options: [
+        { label: 'Inward', value: '1' },
+        { label: 'Outward', value: '2' }
+      ]
+    },
+    {
+      type: 'select',
+      label: 'Dispatch Mode',
+      controlName: 'dispatchMode',
+      placeholder: '-- Select --',
+      required: true,
+      options: [
+        { label: 'Inward', value: '1' },
+        { label: 'Outward', value: '2' }
+      ]
+    },
+    {
+      type: 'text',
+      label: 'Dispatch Date',
+      controlName: 'dispatchDate',
+      placeholder: 'Enter Received Date',
+      required: true,
+      defaultValue: '31-07-2026',
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Courier Agency Name',
+      controlName: 'agencyName',
+      placeholder: 'Enter Courier Agency Name',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'AWB Number',
+      controlName: 'awbNumber',
+      placeholder: 'Enter AWB Number',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Receiver Name',
+      controlName: 'receiverName',
+      placeholder: 'Enter Receiver Name',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Location',
+      controlName: 'location',
+      placeholder: 'Enter Location',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Designation',
+      controlName: 'designation',
+      placeholder: 'Enter Designation',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Pin Code',
+      controlName: 'pinCode',
+      placeholder: 'Enter Pin Code',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Reason for Outward',
+      controlName: 'outwardReason',
+      placeholder: 'Enter Outward Reason',
+      required: true
+    },
+    {
+      type: 'text',
+      label: 'Remarks',
+      controlName: 'Remarks',
+      placeholder: 'Enter Remarks',
+      required: true
+    },
+  ];
+
+  outwardFields: DynamicField[] = [...this.commonFields];
+
+  openedSection = '';
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.outwardForm = this.fb.group({});
+
+    this.receiverForm = this.fb.group({});
+
+    this.courierForm = this.fb.group({});
+
+    this.outwardFields = [...this.commonFields];
+
+  }
+
+  createForm() {
+    this.outwardForm = this.fb.group({
+      outwardCat: ['', Validators.required]
+    });
+  }
+
+  // get courierForm(): FormGroup {
+  //   return this.outwardForm.get('courierForm') as FormGroup;
+  // }
+
+  // get receiverForm(): FormGroup {
+  //   return this.outwardForm.get('receiverForm') as FormGroup;
+  // }
+
+  toggleAccordion(section: string) {
+    if (this.openedSection === section) {
+      this.openedSection = '';
+    } else {
+      this.openedSection = section;
+    }
+  }
+
+  onSubmit() {
+    this.outwardForm.markAllAsTouched();
+    console.log(this.outwardForm.getRawValue());
+    if (this.outwardForm.invalid) {
+      console.log(this.outwardForm.invalid);
+      this.scrollToFirstInvalidControl(this.outwardForm);
+      return;
+    }
+    console.log(this.outwardForm.getRawValue());
+  }
+
+  scrollToFirstInvalidControl(control: AbstractControl): void {
+
+    if (control instanceof FormGroup) {
+
+      for (const key of Object.keys(control.controls)) {
+
+        const childControl = control.get(key);
+
+        if (childControl?.invalid) {
+
+          if (childControl instanceof FormGroup || childControl instanceof FormArray) {
+            this.scrollToFirstInvalidControl(childControl);
+            return;
+          }
+
+          setTimeout(() => {
+
+            const element = document.getElementById(key);
+
+            if (element) {
+
+              element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+              });
+
+              (element as HTMLElement).focus();
+
+            }
+
+          });
+
+          return;
+        }
+      }
+    }
+  }
+
+  onFieldChanged(event: any) {
+    console.log(event.controlName);
+
+    if (event.controlName === 'outwardCat') {
+
+      this.outwardFields = [
+        ...this.commonFields,
+        ...(this.fieldConfig[event.value] || [])
+      ];
+
+    }
+
+  }
+}

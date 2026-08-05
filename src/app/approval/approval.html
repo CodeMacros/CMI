@@ -9,7 +9,7 @@
             <div class="inward-card">
                 <div class="col-md-3">
                     <label class="form-label custom-label">Approval Type</label>
-                    <select class="form-select" (change)="onActionChange($event)">
+                    <select class="form-select" [(ngModel)]="selectedAction" (change)="onActionChange($event)">
                         <option value="" selected disabled>Select Approval Type</option>
                         <option value="cashier-entry">Approve Cashier Entry</option>
                         <option value="sahara-cashier-entry">Approve Sahara Cashier Entry</option>

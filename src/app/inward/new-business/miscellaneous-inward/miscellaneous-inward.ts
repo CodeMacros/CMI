@@ -15,7 +15,7 @@ export class MiscellaneousInward {
 
   mainForm!: FormGroup
 
-
+  isRenewal = false
 
 
   courierfields: DynamicField[] = [
@@ -145,10 +145,11 @@ export class MiscellaneousInward {
       type: 'select',
       label: 'Inwrd Category',
       controlName: 'documentSubCategory',
+      triggerChange: true,
       required: true,
       options: [
-        { label: 'Renewal', value: 'renewal' },
         { label: 'Inital', value: 'intial' },
+        { label: 'Renewal', value: 'renewal' },
         { label: 'Group', value: 'group' },
       ]
     },
@@ -208,14 +209,41 @@ export class MiscellaneousInward {
       case 'state':
         this.comSrv.loadCities(event.value, this.courierfields, this.courierForm);
         break;
-      // case 'city':
-      //   console.log('Selected City:', event.value);
-      //   break;
+      case 'documentSubCategory':
+        this.onChangeInwardDetails(event)
+        console.log('Selected documentSubCategory:', event);
+        break;
+    }
+
+  }
+
+
+  onChangeInwardDetails(event: { controlName: string; value: string }) {
+
+    this.isRenewal = event.value === 'renewal';
+
+    const documentForm = this.documnetForm;
+
+    if (!this.documnetForm) {
+      return;
+    }
+
+    if (this.isRenewal) {
+
+      documentForm.disable({ emitEvent: false });
+
+    } else {
+
+      this.comSrv.clearForm(this.documnetForm, this.documentField)
+      documentForm.enable({ emitEvent: false });
+
     }
 
   }
 
   onSubmit() {
+    console.log(this.mainForm.value);
+
     if (this.comSrv.validateForm(this.mainForm)) {
       console.log(this.mainForm.getRawValue())
     } else {

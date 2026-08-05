@@ -1,0 +1,145 @@
+<table class="table table-bordered premium-table">
+
+    <thead>
+        <tr>
+            <th class="bgColor" colspan="2">Particular</th>
+            <th class="bgColor">Premium Due Details</th>
+            <th class="bgColor">Cashiering Details</th>
+        </tr>
+
+        <tr>
+            <th class="bgColor">No of Dues</th>
+            <th>From Date</th>
+            <th class="bg-blue">{{ dueCount }}</th>
+            <th></th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @for (row of rows; track row.label) {
+
+        @switch (row.type) {
+
+        <!-- Normal Row -->
+
+        @case ('text') {
+
+        <tr>
+
+            <td class="left">
+                {{ row.label }}
+            </td>
+
+            <td>
+                {{ row.description }}
+            </td>
+
+            <td>
+                {{ row.premiumValue }}
+            </td>
+
+            <td>
+                {{ row.cashierValue }}
+            </td>
+
+        </tr>
+
+        }
+
+        <!-- Checkbox Group -->
+
+        @case ('checkbox-group') {
+
+        @for (item of row.options; track item.date; let first = $first) {
+
+        <tr>
+
+            @if(first){
+
+            <td class="left" [attr.rowspan]="row.options?.length">
+
+                {{ row.label }}
+
+            </td>
+
+            }
+
+            <td>
+
+                <input type="checkbox" [(ngModel)]="item.checked" (change)="onCheckboxChange(item)">
+
+                {{ item.date }}
+
+            </td>
+
+            <td>{{ item.premium }}</td>
+
+            <td>{{ item.cashier }}</td>
+
+        </tr>
+
+        }
+
+        }
+
+        <!-- Top Up -->
+
+        @case ('checkbox') {
+
+        <tr>
+
+            <td class="left">
+
+                <input type="checkbox">
+
+                {{ row.label }}
+
+            </td>
+
+            <td>{{ row.description }}</td>
+
+            <td class="bg-blue">
+                {{ row.premiumValue }}
+            </td>
+
+            <td>
+                {{ row.cashierValue }}
+            </td>
+
+        </tr>
+
+        }
+
+        }
+
+        }
+
+    </tbody>
+
+</table>
+
+<div class="row mt-4">
+
+    <div class="col-6">
+
+        <div class="footer-title">
+
+            Instument Amount Received
+
+        </div>
+
+    </div>
+
+    <div class="col-6 text-end">
+
+        <div class="footer-value">
+
+            {{ instrumentAmount }}
+
+        </div>
+
+    </div>
+
+</div>

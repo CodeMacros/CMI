@@ -11,12 +11,17 @@
 }
 
 .header {
-    background: #c50063;
+    background: linear-gradient(to right, #D60D47, #280071);
+    color: #fff;
+}
+
+.bgColor  {
+    background: linear-gradient(to right, #D60D47, #280071);
     color: #fff;
 }
 
 .left {
-    background: #c50063;
+    background: linear-gradient(to right, #D60D47, #280071);
     color: #fff;
     font-weight: 600;
     width: 280px;
@@ -28,14 +33,14 @@
 }
 
 .footer-title {
-    background: #c50063;
+    background: linear-gradient(to right, #D60D47, #280071);
     color: #fff;
     padding: 10px;
     font-weight: bold;
 }
 
 .footer-value {
-    background: #c50063;
+    background: linear-gradient(to right, #D60D47, #280071);
     color: #fff;
     padding: 10px;
     width: 220px;

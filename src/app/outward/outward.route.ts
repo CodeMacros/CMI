@@ -6,6 +6,10 @@ export const OUTWARD_ROUTES: Routes = [
         path: '',
         component: Outward,
         children: [
+             {
+                path: 'outward',
+                loadComponent: () => import('./outward/outward').then(c => c.Outward)
+            },
             {
                 path: 'auto',
                 loadChildren: () =>

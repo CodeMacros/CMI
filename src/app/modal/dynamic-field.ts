@@ -2,7 +2,7 @@ import { ValidatorFn } from "@angular/forms";
 
 export interface DynamicField {
 
-    type: 'text' | 'email' | 'number' | 'date' | 'select' | 'textarea' |'checkbox' | 'file';
+    type: 'text' | 'email' | 'number' | 'date' | 'select' | 'textarea' |'checkbox' | 'file' | 'button';
 
     label: string;
 
@@ -51,5 +51,7 @@ export interface DynamicField {
 
     triggerChange?: boolean
 
-    visible?: boolean
+    visible?: boolean;
+
+    buttonLabel?: string;
 }

@@ -29,43 +29,43 @@ export class ViewPiwc {
 
 
   PIWCFields: DynamicField[] = [
-  {
-    type: 'select',
-    label: 'PIWC Details Type',
-    controlName: 'SelectedType',
-    required: true,
-    triggerChange: true,
-    options: [
-      {
-        label: 'View Audio PIWC Details',
-        value: 'Audio'
-      },
-      {
-        label: 'View Insta PIWC Details',
-        value: 'Insta'
-      },
-      {
-        label: 'View Video PIWC Details',
-        value: 'Video'
-      }
-    ]
-  },
-  {
-    type: 'text',
-    label: 'Proposal Number',
-    controlName: 'proposalNo',
-    placeholder: 'Enter Proposal Number',
-    required: true,
-    visible: false  
-  }
-];
+    {
+      type: 'select',
+      label: 'PIWC Details Type',
+      controlName: 'SelectedType',
+      required: true,
+      triggerChange: true,
+      options: [
+        {
+          label: 'View Audio PIWC Details',
+          value: 'viewAudio'
+        },
+        {
+          label: 'View Insta PIWC Details',
+          value: 'viewInsta'
+        },
+        {
+          label: 'View Video PIWC Details',
+          value: 'viewVideo'
+        }
+      ]
+    },
+    {
+      type: 'text',
+      label: 'Proposal Number',
+      controlName: 'proposalNo',
+      placeholder: 'Enter Proposal Number',
+      required: true,
+      visible: false
+    }
+  ];
 
   get PIWCForm(): FormGroup {
     return this.mainForm.get('PIWCForm') as FormGroup;
   }
 
 
-   onSelectChange(event: { controlName: string; value: any }) {
+  onSelectChange(event: { controlName: string; value: any }) {
 
     if (event.controlName !== 'SelectedType') {
       return;

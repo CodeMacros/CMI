@@ -15,7 +15,7 @@ export const PIWC_DETAILS_ROUTES: Routes = [
                 loadComponent: () => import('./view-piwc/view-piwc').then(c => c.ViewPiwc)
             },
             {
-                path: 'entraction',
+                path: 'extraction',
                 loadComponent: () => import('./piwc-entraction/piwc-entraction').then(c => c.PiwcEntraction)
             },
         ]

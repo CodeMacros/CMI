@@ -25,6 +25,12 @@ export class DynamicForm implements OnInit {
     value: any;
   }>();
 
+  // for Button
+  @Output() buttonClick = new EventEmitter<string>();
+
+  onButtonClick(controlName: string) {
+    this.buttonClick.emit(controlName);
+  }
 
   constructor(private fb: FormBuilder) { }
 

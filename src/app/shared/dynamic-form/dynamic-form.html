@@ -35,9 +35,15 @@
 
             @case('textarea'){
 
-            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName"
+            <textarea name="" [id]="field.controlName" [formControlName]="field.controlName"  class="form-control fixed-textarea"
                 [placeholder]="field.placeholder"></textarea>
 
+            }
+
+            @case ('button') {
+            <button type="button" class="btn-submit mt-4 mx-5" (click)="onButtonClick(field.controlName)">
+                {{ field.buttonLabel }}
+            </button>
             }
 
             @case('email'){

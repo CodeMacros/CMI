@@ -1,1 +1,18 @@
-<p>micr-code works!</p>
+<div class="inward-card mt-2">
+
+    <div class="common-card-header pb-0 ">
+        <h5 class="section-title">MICR Code</h5>
+    </div>
+    <app-dynamic-form [form]="micrForm" [fields]="micrFields"></app-dynamic-form>
+
+    <app-dynamic-form [form]="singleEntryForm" [fields]="singleEntryFields"></app-dynamic-form>
+    <div class=" d-flex align-items-center justify-content-center gap-3">
+
+        <button class="btn-submit" (click)="Submit()"> Submit </button>
+         <button class="btn-clear" (click)="Submit()"> Clear </button>
+    </div>
+
+    <!-- <app-dynamic-form [form]="singleEntryForm" [fields]="singleEntryFields"></app-dynamic-form> -->
+
+
+</div>

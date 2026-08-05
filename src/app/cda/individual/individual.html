@@ -9,7 +9,7 @@
             <div class="inward-card">
                 <div class="col-md-3">
                     <label class="form-label custom-label">Individual Type</label>
-                    <select class="form-select" (change)="onActionChange($event)">
+                    <select class="form-select" [(ngModel)]="selectedAction" (change)="onActionChange($event)">
                         <option value="" selected disabled>Select Individual Type</option>
                         <option value="cda-file-upload">CDA File Upload</option>
                         <option value="view-cda-details">View CDA Details</option>

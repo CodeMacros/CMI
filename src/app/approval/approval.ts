@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-approval',
@@ -10,15 +10,24 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './approval.css',
 })
 export class Approval implements OnInit {
-  constructor(private router: Router) { }
+   selectedAction = '';
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.firstChild?.url.subscribe(url => {
+      if (url.length) {
+        this.selectedAction = url[0].path;
+      }
+    });
   }
+
 
   onActionChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
-    if (value) {
-      this.router.navigate(['/layout/approval/', value]);
-    }
+
+    this.selectedAction = value;
+
+     this.router.navigate(['/layout/approval/', value]);
   }
 }

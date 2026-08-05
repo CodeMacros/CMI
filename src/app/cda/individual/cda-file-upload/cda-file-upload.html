@@ -1,1 +1,22 @@
-<p>cda-file-upload works!</p>
+<div class="inward-card mt-2">
+
+    <div class="common-card-header pb-0 ">
+        <h5 class="section-title">CDA Upload</h5>
+    </div>
+    <app-dynamic-form [form]="cdaForm" [fields]="cdaFields"></app-dynamic-form>
+
+
+    <div>
+        <div class="page-title my-2">
+            <h4>Loan Repayment</h4>
+        </div>
+        <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+        <div class=" d-flex align-items-center justify-content-center gap-3 mt-2">
+
+            <button class="btn-submit" (click)="upload()"> Upload </button>
+        </div>
+    </div>
+
+
+
+</div>

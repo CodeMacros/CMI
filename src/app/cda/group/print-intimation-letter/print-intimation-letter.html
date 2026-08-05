@@ -1,1 +1,29 @@
-<p>print-intimation-letter works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- <div class="page-title mb-3">
+                <h4> Inward</h4>
+            </div> -->
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Print CDA Intimation Letter</h5>
+                </div>
+                <app-dynamic-form [form]="cdaIntimationForm" [fields]="cdaIntimationFields"></app-dynamic-form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+    <div class="btn-group">
+        <button (click)="onSubmit()" class="btn-submit">
+            Submit
+        </button>
+
+        <button class="btn-clear">
+            Reset
+        </button>
+    </div>
+</div>

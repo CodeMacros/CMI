@@ -17,7 +17,7 @@ export const CDA_ROUTES: Routes = [
         component: Group,
         children: [
             { path: 'cda-file-upload', loadComponent: () => import('./group/cda-file-upload/cda-file-upload').then(c => c.CdaFileUpload) },
-            { path: 'cda', loadComponent: () => import('../cda/cda').then(c => c.Cda) },
+            { path: 'cda', loadComponent: () => import('./group/cda/cda').then(c => c.Cda) },
             { path: 'cda-representation', loadComponent: () => import('./group/cda-representation/cda-representation').then(c => c.CdaRepresentation) },
             { path: 'print-intimation-letter', loadComponent: () => import('./group/print-intimation-letter/print-intimation-letter').then(c => c.PrintIntimationLetter) },
             { path: 'rinraksha-intimation-letter', loadComponent: () => import('./group/rinraksha-intimation-letter/rinraksha-intimation-letter').then(c => c.RinrakshaIntimationLetter) },

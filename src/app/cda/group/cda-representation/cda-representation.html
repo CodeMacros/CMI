@@ -1,1 +1,31 @@
-<p>cda-representation works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <!-- <div class="page-title mb-3">
+                <h4> Inward</h4>
+            </div> -->
+
+            <!-- Courier Details Card -->
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">CDA Representation</h5>
+                </div>
+                <app-dynamic-form [form]="cdaRepForm" [fields]="cdaRepFields"></app-dynamic-form>
+            </div>
+            <app-dynamictable [columns]="tableColumns"></app-dynamictable>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+    <div class="btn-group">
+        <button (click)="onSubmit()" class="btn-submit">
+            Upload
+        </button>
+
+        <button class="btn-clear">
+            Clear
+        </button>
+    </div>
+</div>

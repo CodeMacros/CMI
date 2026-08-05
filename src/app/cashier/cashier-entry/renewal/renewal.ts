@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DynamicField } from '../../../modal/dynamic-field';
 import { Common } from '../../../service/common';
-import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
-import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-renewal',
-  imports: [DynamicForm, Dynamictable],
+  imports: [RouterOutlet],
   templateUrl: './renewal.html',
   styleUrl: './renewal.css',
 })

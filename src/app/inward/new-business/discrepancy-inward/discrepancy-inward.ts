@@ -128,8 +128,8 @@ export class DiscrepancyInward implements OnInit {
       controlName: 'documentSubCategory',
       required: true,
       options: [
-        { label: 'Renewal', value: 'renewal' },
         { label: 'Inital', value: 'intial' },
+        { label: 'Renewal', value: 'renewal' },
         { label: 'Group', value: 'group' },
       ]
     },

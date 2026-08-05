@@ -24,30 +24,36 @@ export class CashierEntry {
       },
     ],
 
-    initial: [
+    renewal: [
+      // {
+      //   label: 'Rin Raksha',
+      //   value: 'rinRaksha'
+      // },
       {
-        label: 'Initial Paymnet',
-        value: 'rinRaksha'
+        label: 'Renewal Payment',
+        value: 'renewal-payment'
       },
       {
-        label: 'Initial CDA Charges',
-        value: 'rinRaksha'
+        label: 'Revival Premium',
+        value: 'renewal-revival-premium'
       },
       {
-        label: 'Shortage primeum',
-        value: 'rinRaksha'
+        label: 'Renewal CDA charges',
+        value: 'renewal-cda-charges'
       },
-    ],
-
-    Renewal: [
       {
-        label: 'Rin Raksha',
-        value: 'rinRaksha'
+        label: 'Top Up (applicable for ULIP)',
+        value: 'renewal-top-up'
       },
     ],
 
 
   };
+
+  //  <!-- <option value="renewal-payment">Renewal Payment</option>
+  //             <option value="renewal-revival-premium">Revival Premium</option>
+  //             <option value="renewal-cda-charges">Renewal CDA charges</option>
+  //             <option value="renewal-top-up">Top Up (applicable for ULIP) </option>
 
   constructor(private router: Router) { }
 
@@ -68,7 +74,7 @@ export class CashierEntry {
     console.log(value);
 
     // Populate second dropdown
-    if (value == 'group') {
+    if (value == 'group' || value == 'renewal') {
       this.subOptions = this.cashierData[value] || [];
       this.selectedCategory = value
     } else {

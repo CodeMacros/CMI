@@ -7,10 +7,23 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { LoaderInterceptor } from './loader/loader-interceptor';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { definePreset } from '@primeuix/themes'
 
+
+
+// const MyPreset = definePreset(Aura, {
+//   semantic: {
+//     primary: {
+//       50: '#FDECEF',
+//       100: '#F9CDD7',
+//     }
+//   }
+// });
 
 
 export const appConfig: ApplicationConfig = {
+
+
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),

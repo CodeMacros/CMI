@@ -25,8 +25,8 @@
         [scrollable]="config.scrollable ?? true" [scrollHeight]="config.scrollHeight ?? '500px'"
         [loading]="config.loading ?? false" [lazy]="config.lazy ?? false"
         [totalRecords]="config.totalRecords ?? data.length" [globalFilterFields]="globalFilterFields"
-        [(selection)]="selectedRows" (selectionChange)="onSelectionChange($event)"
-        [tableStyle]="{ 'min-width': '100%' }">
+        [(selection)]="selectedRows" (selectionChange)="onSelectionChange($event)" [tableStyle]="{'width': tableWidth }"
+        dataKey="proposalNo">
 
 
         <!-- =========================
@@ -127,7 +127,7 @@
 
         <ng-template pTemplate="body" let-rowData>
 
-            <tr (click)="onRowClick(rowData)">
+            <tr >
 
                 @for (col of columns; track col.field) {
 
@@ -243,23 +243,8 @@
 
                     @else if (col.type === 'button') {
 
-                    <p-button (onClick)="onButtonClick(rowData,col)" [label]="col.buttonLabel" [icon]="col.icon">
-
-                        @if (col.icon) {
-
-                        <i [class]="col.icon"></i>
-
-                        }
-
-                        @if (col.buttonLabel) {
-
-                        <span>
-                            {{ col.buttonLabel }}
-                        </span>
-
-                        }
-
-                    </p-button>
+                    <p-button (onClick)="onButtonClick(rowData,col)" [label]="col.buttonLabel"
+                        [icon]="col.icon"></p-button>
 
                     }
 

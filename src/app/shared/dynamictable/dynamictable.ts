@@ -60,6 +60,8 @@ export class Dynamictable {
 
   onSelectionChange(event: Event): void {
 
+    console.log(event);
+
     this.selectionChange.emit(this.selectedRows);
 
   }
@@ -74,6 +76,7 @@ export class Dynamictable {
   }
 
   onRowClick(row: any): void {
+    console.log(row);
 
     this.rowClick.emit(row);
 
@@ -87,6 +90,18 @@ export class Dynamictable {
       value: row[field]
     });
 
+  }
+  
+
+  isSelected(row: any): boolean {
+  return this.selectedRows?.some(
+    x => x.proposalNo === row.proposalNo
+  );
+}
+
+
+  get tableWidth(): string {
+    return `${this.columns.length * 10}%`;
   }
 
 

@@ -4,14 +4,14 @@ import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angul
 import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
 import { DynamicField } from '../../../modal/dynamic-field';
 import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
-import { TableColumn } from '../../../modal/dynamicTable-field';
+
 import { Common } from '../../../service/common';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-scmcentry',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, Dynamictable],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm,],
   templateUrl: './scmcentry.html',
   styleUrl: './scmcentry.css',
 })

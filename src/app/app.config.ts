@@ -3,8 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { LoaderInterceptor } from './loader/loader-interceptor';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
+
 
 
 export const appConfig: ApplicationConfig = {
@@ -21,5 +24,10 @@ export const appConfig: ApplicationConfig = {
       multi: true
     },
     provideClientHydration(withEventReplay()),
+    providePrimeNG({
+      theme: {
+        preset: Aura
+      }
+    })
   ]
 };

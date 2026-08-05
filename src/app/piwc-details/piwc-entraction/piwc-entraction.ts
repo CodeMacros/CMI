@@ -3,12 +3,12 @@ import { DynamicForm } from '../../shared/dynamic-form/dynamic-form';
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angular/forms';import { Common } from '../../service/common';
 import { DynamicField } from '../../modal/dynamic-field';
-import { Dynamictable } from '../../shared/dynamictable/dynamictable';
+
 ;
 
 @Component({
   selector: 'app-piwc-entraction',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, Dynamictable],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm],
   templateUrl: './piwc-entraction.html',
   styleUrl: './piwc-entraction.css',
 })

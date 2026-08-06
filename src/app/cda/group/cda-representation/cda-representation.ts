@@ -7,7 +7,7 @@ import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-cda-representation',
-  imports: [DynamicForm, Dynamictable],
+  imports: [DynamicForm,],
   templateUrl: './cda-representation.html',
   styleUrl: './cda-representation.css',
 })

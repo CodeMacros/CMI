@@ -7,7 +7,7 @@ import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-deactive-collection-bank',
-  imports: [DynamicForm, Dynamictable],
+  imports: [DynamicForm],
   templateUrl: './deactive-collection-bank.html',
   styleUrl: './deactive-collection-bank.css',
 })

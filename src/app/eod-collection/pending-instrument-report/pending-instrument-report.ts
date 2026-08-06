@@ -7,7 +7,7 @@ import { Dynamictable } from '../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-pending-instrument-report',
-  imports: [DynamicForm , Dynamictable],
+  imports: [DynamicForm ],
   templateUrl: './pending-instrument-report.html',
   styleUrl: './pending-instrument-report.css',
 })

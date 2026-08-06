@@ -37,6 +37,19 @@ export const CASHIER_ROUTES: Routes = [
   {
     path: 'reports',
     component: Reports,
+    children: [
+      { path: 'view-cashier-entry', loadComponent: () => import('./reports/view-cashier-entry/view-cashier-entry').then(c => c.ViewCashierEntry) },
+      { path: 'cash-deposit-slip', loadComponent: () => import('./reports/cash-deposit-slip/cash-deposit-slip').then(c => c.CashDepositSlip) },
+      { path: 'duplicate-deposit-slip', loadComponent: () => import('./reports/duplicate-deposit-slip/duplicate-deposit-slip').then(c => c.DuplicateDepositSlip) },
+      { path: 'cashier-slip', loadComponent: () => import('./reports/cashier-slip/cashier-slip').then(c => c.CashierSlip) },
+      { path: 'scmc-file-upload', loadComponent: () => import('./reports/scmcfile-upload/scmcfile-upload').then(c => c.SCMCFileUpload) },
+      { path: 'ip-cashier-entry', loadComponent: () => import('./reports/ipcashier-entry/ipcashier-entry').then(c => c.IPCashierEntry) },
+      { path: 'view-receipt', loadComponent: () => import('./cashier-entry/intial/intial').then(c => c.Intial) },
+      { path: 'descriptive-rating-sheet-search', loadComponent: () => import('./reports/descriptive-rating-sheet-search-instrument-no/descriptive-rating-sheet-search-instrument-no').then(c => c.DescriptiveRatingSheetSearchInstrumentNo) },
+      { path: 'pending-instrument-report', loadComponent: () => import('./reports/pending-instrument-report/pending-instrument-report').then(c => c.PendingInstrumentReport) },
+      { path: 'sahara', loadComponent: () => import('./reports/sahara/sahara').then(c => c.Sahara) },
+      { path: 'reprint', loadComponent: () => import('./reports/reprint/reprint').then(c => c.Reprint) }
+    ]
   },
 
 

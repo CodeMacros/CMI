@@ -8,7 +8,7 @@ import { Dynamictable } from '../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-eft-approve-cashier',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm,Dynamictable],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm,],//Dynamictable
   templateUrl: './eft-approve-cashier.html',
   styleUrl: './eft-approve-cashier.css',
 })

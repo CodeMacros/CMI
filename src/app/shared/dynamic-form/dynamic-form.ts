@@ -39,6 +39,18 @@ export class DynamicForm implements OnInit {
   }
 
 
+  // @Output() fieldChanged = new EventEmitter<any>();
+  onFieldChange(controlName: string) {
+
+    const control = this.form.get(controlName);
+
+    this.fieldChanged.emit({
+      controlName,
+      value: control?.value
+    });
+
+  }
+
   createControls() {
     this.fields.forEach(field => {
       if (this.form.contains(field.controlName)) {

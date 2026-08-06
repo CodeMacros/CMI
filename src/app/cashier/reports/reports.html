@@ -9,8 +9,22 @@
             <div class="inward-card">
                 <div class="col-md-3">
                     <label class="form-label custom-label">Report Type</label>
-                    <select class="form-select" (change)="onActionChange($event)">
+                    <!-- <select class="form-select" (change)="onActionChange($event)">
                         <option value="" selected disabled>Select Report Type</option>
+                    </select> -->
+                    <select class="form-select" [(ngModel)]="selectedAction" (change)="onActionChange($event)">
+                        <option value="" selected disabled>Select Report Type</option>
+                        <option value="view-cashier-entry">View Cashier Entry</option>
+                        <option value="cash-deposit-slip">Cash Deposit Slip</option>
+                        <option value="duplicate-deposit-slip">Duplicate Deposit Slip</option>
+                        <option value="cashier-slip">Cashier Slip</option>
+                        <option value="scmc-file-upload">SCMC File Upload</option>
+                        <option value="ip-cashier-entry">IP Cashier Entry</option>
+                        <option value="view-receipt">View Receipt</option>
+                        <option value="descriptive-rating-sheet-search"> Descriptive Rating Sheet/Search Instrument Number (Group) </option>
+                        <option value="pending-instrument-report"> Pending Instrument Report </option>
+                        <option value="sahara">Sahara</option>
+                        <option value="reprint">Reprint</option>
                     </select>
                 </div>
             </div>

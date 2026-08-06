@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './dashboard/dashboard';
 import { LayoutComponent } from './layout-component/layout-component';
-import { Inward } from './inward/inward';
-import { Cashier } from './cashier/cashier';
-import { Approval } from './approval/approval';
 import { AllPopup } from './all-popup/all-popup';
 import { Login } from './login/login';
 

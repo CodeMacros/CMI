@@ -1,7 +1,7 @@
 input.form-control.icon_calender {
     /* opacity: 0.8; */
     display: block;
-    background: url("/assets/images/calendar.png") no-repeat right;
+    background: url("../../../assets/images/calendar.png") no-repeat right;
     background-size: 25px;
     border-width: thin;
     background-color: #fff;

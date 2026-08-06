@@ -16,7 +16,7 @@
     @if (selectedMode === 'bulkUpload') {
     <div>
         <app-dynamic-form [form]="bulkUploadForm" [fields]="builkUploadFields"></app-dynamic-form>
-        <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+        <!-- <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable> -->
         <div class=" d-flex align-items-center justify-content-center gap-3 mt-2">
 
             <button class="btn-submit" (click)="upload()"> Upload </button>

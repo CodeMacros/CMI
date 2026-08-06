@@ -1,25 +1,215 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
 import { ButtonDirective } from 'primeng/button';
 import { Dynamictable } from "../../shared/dynamictable/dynamictable";
 import { DynamicTableColumn, DynamicTableConfig } from '../../modal/dynamicTable-field';
+import { DynamicField } from '../../modal/dynamic-field';
+import { Common } from '../../service/common';
+import { DynamicForm } from '../../shared/dynamic-form/dynamic-form';
 @Component({
   selector: 'app-cashier-entry',
-  imports: [CommonModule, FormsModule,],
+  imports: [CommonModule, FormsModule, DynamicForm, Dynamictable],
   templateUrl: './cashier-entry.html',
   styleUrl: './cashier-entry.css',
 })
 export class CashierEntry {
-  isSearchOpen = false;
-  searchType = '';
-  fromDate = '';
-  toDate = '';
 
-  toggleSearch() {
-    this.isSearchOpen = !this.isSearchOpen;
-  };
-  impsStatus = 'Success';
+
+  mainForm!: FormGroup
+
+
+
+  cashierEntrFilterfields: DynamicField[] = [
+    {
+      type: 'text',
+      label: 'DEO',
+      controlName: 'deo',
+      placeholder: '',
+      // required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Date Range',
+      controlName: 'dateRange',
+      placeholder: '',
+      // required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Instrument Date',
+      controlName: 'instrumentDate',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Instrument No',
+      controlName: 'instrumentNo',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Transction ID',
+      controlName: 'transactionId',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Payment Mode',
+      controlName: 'paymentMode',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+  ];
+
+  cashierEntryfields: DynamicField[] = [
+    {
+      type: 'select',
+      label: 'select search type',
+      controlName: 'searchType',
+      required: true,
+      visible: true,
+      triggerChange: true,
+      options: [
+        {
+          label: 'Instrument No',
+          value: 'instrumentNo'
+        },
+        // {
+        //   label: 'DEO',
+        //   value: 'deo'
+        // },
+        {
+          label: 'Unique Transaction ID',
+          value: 'uniqueTransactionId'
+        },
+        {
+          label: 'Checq/Draft Date',
+          value: 'checqDraftDate'
+        },
+        {
+          label: 'Date Entry Operator',
+          value: 'allSearch'
+        },
+        {
+          label: 'All',
+          value: 'all'
+        }
+      ]
+    },
+    {
+      type: 'text',
+      label: 'Instrument No',
+      controlName: 'instrumentNo',
+      placeholder: 'Enter Instrument No',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['instrumentNo']
+      }
+    },
+    {
+      type: 'text',
+      label: 'Unique Transaction ID',
+      controlName: 'uniqueTransactionId',
+      placeholder: 'Enter Unique Transaction ID',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['uniqueTransactionId']
+      }
+    },
+    {
+      type: 'date',
+      label: 'Checq/Draft Date',
+      controlName: 'checqDraftDate',
+      placeholder: 'Enter Checq/Draft Date',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['checqDraftDate']
+      }
+    },
+    {
+      type: 'select',
+      label: 'DEO',
+      controlName: 'deo',
+      required: true,
+      visible: false,
+      triggerChange: true,
+      options: [{ value: 'deo1', label: 'DEO 1' },
+      { value: 'deo2', label: 'DEO 2' }],
+      showWhen: {
+        controlName: 'searchType',
+        values: ['deo']
+      }
+    },
+    {
+      type: 'date',
+      label: 'From Date',
+      controlName: 'fromDate',
+      placeholder: 'Enter From Date',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['allSearch']
+      }
+    },
+    {
+      type: 'date',
+      label: 'To Date',
+      controlName: 'toDate',
+      placeholder: 'Enter To Date',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['allSearch']
+      }
+    },
+    {
+      type: 'text',
+      label: 'DEO1',
+      controlName: 'deo1',
+      placeholder: 'Enter DEO1',
+      required: true,
+      visible: false,
+      showWhen:
+      {
+        controlName: 'deo',
+        values: ['deo1']
+      }
+
+    },
+
+    {
+      type: 'text',
+      label: 'DEO2',
+      controlName: 'deo2',
+      placeholder: 'Enter DEO2',
+      required: true,
+      visible: false,
+      showWhen:
+      {
+        controlName: 'deo',
+        values: ['deo2']
+      }
+
+    }
+  ];
 
 
   tableData = [
@@ -348,4 +538,79 @@ export class CashierEntry {
     scrollHeight: '500px'
   };
 
+  constructor(private fb: FormBuilder, private comSrv: Common) { }
+
+  ngOnInit(): void {
+    this.mainForm = this.fb.group({
+
+      cashierEntrFilterForm: this.fb.group({}),
+      cashierEntrForm: this.fb.group({})
+    });
+  }
+
+
+
+  get cashierEntrFilterForm(): FormGroup {
+    return this.mainForm.get('cashierEntrFilterForm') as FormGroup
+  }
+
+  get cashierEntrForm(): FormGroup {
+    return this.mainForm.get('cashierEntrForm') as FormGroup
+  }
+
+
+  markUnmark(): void {
+    console.log('this =', this);
+    console.log('comSrv =', this.comSrv);
+    ;
+
+    if (this.comSrv.validateForm(this.mainForm)) {
+      console.log(this.mainForm.getRawValue())
+    } else {
+      console.log(' markUnmarkForm is valid', this.comSrv.validateForm(this.mainForm));
+      console.log(this.mainForm.value);
+    }
+
+  }
+
+  clear(): void {
+
+    this.comSrv.clearForm(this.cashierEntrFilterForm, this.cashierEntrFilterfields)
+    this.comSrv.clearForm(this.cashierEntrForm, this.cashierEntryfields)
+  }
+
+
+  onSelectChange(event: { controlName: string; value: any }) {
+
+    this.cashierEntrForm
+      .get(event.controlName)
+      ?.setValue(event.value, { emitEvent: false });
+
+    this.cashierEntryfields.forEach(field => {
+
+      if (!field.showWhen) {
+        field.visible = true;
+        return;
+      }
+
+      const parentValue =
+        this.cashierEntrForm
+          .get(field.showWhen.controlName)
+          ?.value;
+
+      const visible =
+        field.showWhen.values.includes(parentValue);
+
+      // Reset only when the field changes
+      if (field.visible && !visible) {
+        this.cashierEntrForm
+          .get(field.controlName)
+          ?.reset('', { emitEvent: false });
+      }
+
+      field.visible = visible;
+
+    });
+
+  }
 }

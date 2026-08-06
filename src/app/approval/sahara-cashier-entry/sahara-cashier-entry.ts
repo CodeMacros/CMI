@@ -1,14 +1,214 @@
 import { Component } from '@angular/core';
 import { DynamicTableColumn, DynamicTableConfig } from '../../modal/dynamicTable-field';
 import { Dynamictable } from "../../shared/dynamictable/dynamictable";
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { DynamicField } from '../../modal/dynamic-field';
+import { Common } from '../../service/common';
+import { DynamicForm } from '../../shared/dynamic-form/dynamic-form';
 
 @Component({
   selector: 'app-sahara-cashier-entry',
-  imports: [Dynamictable],
+  imports: [DynamicForm, Dynamictable],
   templateUrl: './sahara-cashier-entry.html',
   styleUrl: './sahara-cashier-entry.css',
 })
 export class SaharaCashierEntry {
+
+   mainForm!: FormGroup
+
+
+
+  saharaCashierEntrFilterfields: DynamicField[] = [
+    {
+      type: 'text',
+      label: 'DEO',
+      controlName: 'deo',
+      placeholder: '',
+      // required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Date Range',
+      controlName: 'dateRange',
+      placeholder: '',
+      // required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Instrument Date',
+      controlName: 'instrumentDate',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Instrument No',
+      controlName: 'instrumentNo',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Transction ID',
+      controlName: 'transactionId',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Payment Mode',
+      controlName: 'paymentMode',
+      placeholder: '',
+      required: true,
+      disabled: true
+    },
+  ];
+
+  saharaCashierEntryfields: DynamicField[] = [
+    {
+      type: 'select',
+      label: 'select search type',
+      controlName: 'searchType',
+      required: true,
+      visible: true,
+      triggerChange: true,
+      options: [
+        {
+          label: 'Instrument No',
+          value: 'instrumentNo'
+        },
+        // {
+        //   label: 'DEO',
+        //   value: 'deo'
+        // },
+        {
+          label: 'Unique Transaction ID',
+          value: 'uniqueTransactionId'
+        },
+        {
+          label: 'Checq/Draft Date',
+          value: 'checqDraftDate'
+        },
+        {
+          label: 'Date Entry Operator',
+          value: 'allSearch'
+        },
+        {
+          label: 'All',
+          value: 'all'
+        }
+      ]
+    },
+    {
+      type: 'text',
+      label: 'Instrument No',
+      controlName: 'instrumentNo',
+      placeholder: 'Enter Instrument No',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['instrumentNo']
+      }
+    },
+    {
+      type: 'text',
+      label: 'Unique Transaction ID',
+      controlName: 'uniqueTransactionId',
+      placeholder: 'Enter Unique Transaction ID',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['uniqueTransactionId']
+      }
+    },
+    {
+      type: 'date',
+      label: 'Checq/Draft Date',
+      controlName: 'checqDraftDate',
+      placeholder: 'Enter Checq/Draft Date',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['checqDraftDate']
+      }
+    },
+    {
+      type: 'select',
+      label: 'DEO',
+      controlName: 'deo',
+      required: true,
+      visible: false,
+      triggerChange: true,
+      options: [{ value: 'deo1', label: 'DEO 1' },
+      { value: 'deo2', label: 'DEO 2' }],
+      showWhen: {
+        controlName: 'searchType',
+        values: ['deo']
+      }
+    },
+    {
+      type: 'date',
+      label: 'From Date',
+      controlName: 'fromDate',
+      placeholder: 'Enter From Date',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['allSearch']
+      }
+    },
+    {
+      type: 'date',
+      label: 'To Date',
+      controlName: 'toDate',
+      placeholder: 'Enter To Date',
+      required: true,
+      visible: false,
+      showWhen: {
+        controlName: 'searchType',
+        values: ['allSearch']
+      }
+    },
+    {
+      type: 'text',
+      label: 'DEO1',
+      controlName: 'deo1',
+      placeholder: 'Enter DEO1',
+      required: true,
+      visible: false,
+      showWhen:
+      {
+        controlName: 'deo',
+        values: ['deo1']
+      }
+
+    },
+
+    {
+      type: 'text',
+      label: 'DEO2',
+      controlName: 'deo2',
+      placeholder: 'Enter DEO2',
+      required: true,
+      visible: false,
+      showWhen:
+      {
+        controlName: 'deo',
+        values: ['deo2']
+      }
+
+    }
+  ];
+
 
   tableData = [
     {
@@ -135,31 +335,6 @@ export class SaharaCashierEntry {
       recordUpdated: new Date('2026-08-07'),
       impsStatus: 'Failed',
       remarks: 'Invalid IFSC'
-    },
-    {
-      select: false,
-      cashierType: 'RE',
-      proposalNo: 'PRP100005',
-      proposalDate: new Date('2026-08-07'),
-      policyNo: 'POL500005',
-      chequeNo: 'CHQ10005',
-      paymentMode: 'NEFT',
-      chequeDate: new Date('2026-08-07'),
-      amount: 12000,
-      bankName: 'HDFC Bank',
-      branchName: 'Thane',
-      collectionBank: 'ICICI Bank',
-      chequeType: 'Electronic',
-      ifscCode: 'HDFC0000111',
-      remitterIfsc: 'ICIC0002222',
-      bankAccount: '123456789016',
-      reenterAccount: '123456789016',
-      policyHolder: 'Suresh Kumar',
-      accountHolder: 'Suresh Kumar',
-      ocrVerified: 'No',
-      recordUpdated: new Date('2026-08-07'),
-      impsStatus: 'Failed',
-      remarks: 'Invalid IFSC'
     }
   ];
 
@@ -169,12 +344,14 @@ export class SaharaCashierEntry {
       field: 'select',
       header: '',
       type: 'checkbox',
+      width: '60px'
     },
     {
       field: 'cashierType',
       header: 'Cashier Type',
       type: 'text',
       sortable: false,
+      width: '100px',
       filter: true,
     },
     {
@@ -350,13 +527,89 @@ export class SaharaCashierEntry {
     columns: this.columns,
     data: this.tableData,
     paginator: true,
-    rows: 5,
-    rowsPerPageOptions: [5, 10, 20],
-    globalFilter: true,
+    rows: 10,
+    rowsPerPageOptions: [10, 20, 50],
+    // globalFilter: true,
     sortMode: 'multiple',
     selectionMode: 'multiple',
     scrollable: true,
-    scrollHeight: '500px',
+    scrollHeight: '500px'
   };
+
+  constructor(private fb: FormBuilder, private comSrv: Common) { }
+
+  ngOnInit(): void {
+    this.mainForm = this.fb.group({
+
+      saharaCashierEntrFilterForm: this.fb.group({}),
+      saharaCashierEntrForm: this.fb.group({})
+    });
+  }
+
+
+
+  get saharaCashierEntrFilterForm(): FormGroup {
+    return this.mainForm.get('saharaCashierEntrFilterForm') as FormGroup
+  }
+
+  get saharaCashierEntrForm(): FormGroup {
+    return this.mainForm.get('saharaCashierEntrForm') as FormGroup
+  }
+
+
+  markUnmark(): void {
+    console.log('this =', this);
+    console.log('comSrv =', this.comSrv);
+    ;
+
+    if (this.comSrv.validateForm(this.mainForm)) {
+      console.log(this.mainForm.getRawValue())
+    } else {
+      console.log(' markUnmarkForm is valid', this.comSrv.validateForm(this.mainForm));
+      console.log(this.mainForm.value);
+    }
+
+  }
+
+  clear(): void {
+
+    this.comSrv.clearForm(this.saharaCashierEntrFilterForm, this.saharaCashierEntrFilterfields)
+    this.comSrv.clearForm(this.saharaCashierEntrForm, this.saharaCashierEntryfields)
+  }
+
+
+  onSelectChange(event: { controlName: string; value: any }) {
+
+    this.saharaCashierEntrForm
+      .get(event.controlName)
+      ?.setValue(event.value, { emitEvent: false });
+
+    this.saharaCashierEntryfields.forEach(field => {
+
+      if (!field.showWhen) {
+        field.visible = true;
+        return;
+      }
+
+      const parentValue =
+        this.saharaCashierEntrForm
+          .get(field.showWhen.controlName)
+          ?.value;
+
+      const visible =
+        field.showWhen.values.includes(parentValue);
+
+      // Reset only when the field changes
+      if (field.visible && !visible) {
+        this.saharaCashierEntrForm
+          .get(field.controlName)
+          ?.reset('', { emitEvent: false });
+      }
+
+      field.visible = visible;
+
+    });
+
+  }
 
 }

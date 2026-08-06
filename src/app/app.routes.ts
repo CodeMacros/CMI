@@ -40,6 +40,16 @@ export const routes: Routes = [
                 loadChildren: () =>
                     import('./cda/cda.route').then(r => r.CDA_ROUTES)
             },
+              {
+                path: 'group-validation-billing',
+                loadChildren: () =>
+                    import('./group-validation-billing/group-validation-billing.route').then(r => r.GROUP_VALIDATION_BILLING_ROUTES)
+            },
+             {
+                path: 'group-approval',
+                loadChildren: () =>
+                    import('./group-approval/group-approval.route').then(r => r.GROUP_APPROVAL_ROUTES)
+            },
             {
                 path: 'fund-transfer',
                 loadChildren: () =>

@@ -1,1 +1,60 @@
-<p>sahara-cashier-entry works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Sahara cashier Entry Approval</h5>
+                </div>
+
+
+                <app-dynamic-form [form]="saharaCashierEntrFilterForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="saharaCashierEntrFilterfields"></app-dynamic-form>
+
+
+                <app-dynamic-form [form]="saharaCashierEntrForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="saharaCashierEntryfields"></app-dynamic-form>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center gap-3">
+            
+                        <div>
+                            <button class="btn-submit" (click)="markUnmark()">
+                                Submit
+                            </button>
+                        </div>
+            
+                        <button class="btn-clear" (click)="clear()">
+                            Reset
+                        </button>
+            
+                    </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <!-- <div class="common-card-header pb-0">
+                    <h5 class="section-title">cashier Entry Approval</h5>
+                </div> -->
+
+                <app-dynamictable [config]="tableConfig"></app-dynamictable>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- <app-dynamictable [config]="tableConfig"></app-dynamictable> -->

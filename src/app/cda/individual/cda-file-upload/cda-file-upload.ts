@@ -8,7 +8,7 @@ import { Dynamictable } from '../../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-cda-file-upload',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, Dynamictable],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm,],
   templateUrl: './cda-file-upload.html',
   styleUrl: './cda-file-upload.css',
 })

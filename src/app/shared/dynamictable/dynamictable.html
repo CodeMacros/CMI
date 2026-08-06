@@ -1,60 +1,308 @@
-<div class="approval mt-3">
-    <div class="table-responsive">
+<div class="dynamic-table-container">
 
-        <div class="d-flex align-items-center mb-2 gap-2" *ngIf="showEnteries">
-            <label class="mb-0">Show</label>
+    <!-- =========================
+         GLOBAL SEARCH
+    ========================== -->
 
-            <select class="form-select form-select-sm w-auto" [(ngModel)]="itemsPerPage" (change)="onPageSizeChange()">
+    @if (config.globalFilter) {
 
-                <option *ngFor="let size of pageSizeOptions" [value]="size"> {{ size }} </option>
+    <div class="d-flex justify-content-end mb-3">
 
-            </select>
-
-            <span>entries</span>
-        </div>
-
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <th *ngFor="let col of columns">
-                        {{col.header}}
-                    </th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngIf="data.length === 0">
-                    <td [attr.colspan]="columns.length" class="text-center">
-                        No data available
-                    </td>
-                </tr>
-
-                <tr *ngFor="let row of paginatedData">
-                    <td *ngFor="let col of columns">
-                        <ng-container [ngSwitch]="col.type">
-                            <button *ngSwitchCase="'button'" class="btn btn-sm btn-primary">
-                                {{col.buttonLabel}}
-                            </button>
-
-                            <span *ngSwitchDefault>
-                                {{row[col.field]}}
-                            </span>
-                        </ng-container>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="pagination" *ngIf="showPagination">
-
-        <button (click)="previousPage()" [disabled]="currentPage === 1"> &lt; </button>
-
-        <button *ngFor="let page of pages" (click)="changePage(page)" [disabled]="page === '...'"
-            [class.active]="currentPage === page"> {{page}} </button>
-
-        <button (click)="nextPage()" [disabled]="currentPage === totalPages"> &gt; </button>
+        <input pInputText type="text" class="form-control" style="max-width: 300px;" placeholder="Search..."
+            (input)="filterGlobal($event)">
 
     </div>
+
+    }
+
+
+    <!-- =========================
+         PRIME NG TABLE
+    ========================== -->
+
+    <p-table #dt [value]="data" [columns]="columns" [paginator]="config.paginator ?? false" [rows]="config.rows ?? 10"
+        [rowsPerPageOptions]="config.rowsPerPageOptions ?? [10, 20, 50]" [sortMode]="config.sortMode ?? 'single'"
+        [scrollable]="config.scrollable ?? true" [scrollHeight]="config.scrollHeight ?? '500px'"
+        [loading]="config.loading ?? false" [lazy]="config.lazy ?? false"
+        [totalRecords]="config.totalRecords ?? data.length" [globalFilterFields]="globalFilterFields"
+        [(selection)]="selectedRows" (selectionChange)="onSelectionChange($event)" [tableStyle]="{'width': tableWidth }"
+        dataKey="proposalNo">
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <ng-template pTemplate="header">
+
+            <tr>
+
+                @for (col of columns; track col.field) {
+
+                @if (!col.hidden) {
+
+                @if (col.type === 'checkbox') {
+
+                <th [style.width]="col.width || '50px'" [style.text-align]="col.align || 'center'">
+
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+
+                </th>
+
+                } @else {
+
+                <th [style.width]="col.width" [style.text-align]="col.align || 'left'"
+                    [pSortableColumn]="col.sortable ? col.field : undefined">
+
+                    <div class="d-flex align-items-center gap-2">
+
+                        <span>
+                            {{ col.header }}
+                        </span>
+
+                        @if (col.sortable) {
+
+                        <p-sortIcon [field]="col.field" />
+
+                        }
+
+                    </div>
+
+                </th>
+
+                }
+
+                }
+
+                }
+
+            </tr>
+
+
+            <!-- =========================
+                 COLUMN FILTERS
+            ========================== -->
+
+            @if (config.columnFilter) {
+
+            <tr>
+
+                @for (col of columns; track col.field) {
+
+                @if (!col.hidden) {
+
+                <th>
+
+                    @if (col.filter && col.type !== 'checkbox') {
+
+                    <p-columnFilter [field]="col.field" matchMode="contains" display="false">
+
+                        <!-- <ng-template #filter let-value let-filter="filterCallback">
+
+                            <input pInputText type="text" class="form-control" [value]="value ?? ''"
+                                placeholder="Search" (input)="filter($any($event.target).value)">
+
+                        </ng-template> -->
+
+                    </p-columnFilter>
+
+                    }
+
+                </th>
+
+                }
+
+                }
+
+            </tr>
+
+            }
+
+        </ng-template>
+
+
+        <!-- =========================
+             TABLE BODY
+        ========================== -->
+
+        <ng-template pTemplate="body" let-rowData>
+
+            <tr >
+
+                @for (col of columns; track col.field) {
+
+                @if (!col.hidden) {
+
+                <td [style.width]="col.width" [style.text-align]="col.align || 'left'">
+
+
+                    <!-- =====================
+                                 CHECKBOX
+                            ====================== -->
+
+                    @if (col.type === 'checkbox') {
+
+                    <p-tableCheckbox [value]="rowData" (click)="$event.stopPropagation()"></p-tableCheckbox>
+
+                    }
+
+
+                    <!-- =====================
+                                 INPUT
+                            ====================== -->
+
+                    @else if (col.type === 'input') {
+
+                    <input pInputText class="form-control" [(ngModel)]="rowData[col.field]"
+                        [readonly]="col.readonly ?? false" (click)="$event.stopPropagation()"
+                        (ngModelChange)="onValueChange(rowData, col.field)">
+
+                    }
+
+
+                    <!-- =====================
+                                 NUMBER
+                            ====================== -->
+
+                    @else if (col.type === 'number') {
+
+                    @if (col.editable) {
+
+                    <input pInputText type="number" class="form-control" [(ngModel)]="rowData[col.field]"
+                        [readonly]="col.readonly ?? false" (click)="$event.stopPropagation()"
+                        (ngModelChange)="onValueChange(rowData, col.field)">
+
+                    } @else {
+
+                    {{ rowData[col.field] }}
+
+                    }
+
+                    }
+
+
+                    <!-- =====================
+                                 SELECT
+                            ====================== -->
+
+                    @else if (col.type === 'select') {
+
+                    @if (col.editable) {
+
+                    <select class="form-select" [(ngModel)]="rowData[col.field]" (click)="$event.stopPropagation()"
+                        (ngModelChange)="onValueChange(rowData, col.field)">
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        @for (option of col.options ?? []; track option.value) {
+
+                        <option [ngValue]="option.value">
+                            {{ option.label }}
+                        </option>
+
+                        }
+
+                    </select>
+
+                    } @else {
+
+                    {{ rowData[col.field] }}
+
+                    }
+
+                    }
+
+
+                    <!-- =====================
+                                 DATE
+                            ====================== -->
+
+                    @else if (col.type === 'date') {
+
+                    {{ rowData[col.field] | date:'dd-MM-yyyy' }}
+
+                    }
+
+
+                    <!-- =====================
+                                 CURRENCY
+                            ====================== -->
+
+                    @else if (col.type === 'currency') {
+
+                    {{ rowData[col.field] | currency:'INR':'symbol':'1.2-2' }}
+
+                    }
+
+
+                    <!-- =====================
+                                 BUTTON
+                            ====================== -->
+
+                    @else if (col.type === 'button') {
+
+                    <p-button (onClick)="onButtonClick(rowData,col)" [label]="col.buttonLabel"
+                        [icon]="col.icon"></p-button>
+
+                    }
+
+
+                    <!-- =====================
+                                 ICON
+                            ====================== -->
+
+                    @else if (col.type === 'icon') {
+
+                    <i [class]="col.icon" (click)="
+                                        $event.stopPropagation();
+                                        onButtonClick(rowData, col)
+                                    ">
+                    </i>
+
+                    }
+
+
+                    <!-- =====================
+                                 DEFAULT TEXT
+                            ====================== -->
+
+                    @else {
+
+                    {{ rowData[col.field] }}
+
+                    }
+
+                </td>
+
+                }
+
+                }
+
+            </tr>
+
+        </ng-template>
+
+
+        <!-- =========================
+             EMPTY MESSAGE
+        ========================== -->
+
+        <ng-template pTemplate="emptymessage">
+
+            <tr>
+
+                <td [attr.colspan]="columns.length" class="text-center py-4">
+
+                    No records found
+
+                </td>
+
+            </tr>
+
+        </ng-template>
+
+    </p-table>
+
 </div>

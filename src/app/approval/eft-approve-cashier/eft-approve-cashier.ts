@@ -4,10 +4,11 @@ import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angul
 import { DynamicField } from '../../modal/dynamic-field';
 import { Common } from '../../service/common';
 import { DynamicForm } from '../../shared/dynamic-form/dynamic-form';
+import { Dynamictable } from '../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-eft-approve-cashier',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm,Dynamictable],
   templateUrl: './eft-approve-cashier.html',
   styleUrl: './eft-approve-cashier.css',
 })
@@ -18,6 +19,8 @@ export class EftApproveCashier {
 
   constructor(private fb: FormBuilder) { }
   mainForm!: FormGroup;
+  tableData: any[] = [];
+  selectedMode:boolean = false;
 
   ngOnInit(): void {
     this.mainForm = this.fb.group({
@@ -55,8 +58,20 @@ export class EftApproveCashier {
       type: 'button',
       label: '',
       controlName: 'plus',
-      buttonLabel: '+'
-    }
+      buttonLabel: '+',
+      col: 'col-auto'
+    },
+     {
+      type: 'select',
+      label: 'Search Type',
+      controlName: 'searchType',
+      placeholder: '',
+      required: true,
+      visible: false,
+      options:[
+        
+      ]
+    },
   ]
 
   get eftApprovalForm(): FormGroup {
@@ -64,14 +79,45 @@ export class EftApproveCashier {
   }
 
 
-  // Search(){
-  //    if (!this.commonService.validateForm(this.mainForm)) {
-  //     return;
-  //   }
+  showSearchType = false;
+  onButtonClick(controlName: string) {
+  if (controlName === 'plus') {
 
-  //   const Data = this.mainForm.getRawValue();
-  //   console.log('Fund Transfer Data:', Data);
-  // }
+    this.showSearchType = !this.showSearchType;
+
+    const searchField = this.eftApprovalFields.find(
+      x => x.controlName === 'searchType'
+    );
+
+    if (searchField) {
+      searchField.visible = this.showSearchType;
+    }
+
+    const buttonField = this.eftApprovalFields.find(
+      x => x.controlName === 'plus'
+    );
+
+    if (buttonField) {
+      buttonField.buttonLabel = this.showSearchType ? '-' : '+';
+    }
+  }
+}
+
+
+ tableColumns = [
+    { field: 'CheckDraftNo', header: 'No' },
+    { field: 'CheckDraftDate', header: 'File Name' },
+    { field: 'PayMode', header: 'File Size' },
+    { field: 'PaymentType', header: 'File Type' },
+    { field: 'Amount', header: 'Upload Type' },
+    { field: 'Bank', header: 'Description' },
+    { field: 'Delete', header: 'Option', type: 'button', buttonLabel: 'Delete' }
+
+  ];
+
+  Search(){
+   this.selectedMode = true;
+  }
 
 
 }

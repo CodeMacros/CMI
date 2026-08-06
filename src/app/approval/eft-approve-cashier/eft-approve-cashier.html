@@ -4,14 +4,26 @@
         <h5 class="section-title">EFT Cashier Entry Approval</h5>
         
     </div>
-    <app-dynamic-form [form]="eftApprovalForm" [fields]="eftApprovalFields"></app-dynamic-form>
+    <app-dynamic-form [form]="eftApprovalForm" [fields]="eftApprovalFields" (buttonClick)="onButtonClick($event)"></app-dynamic-form>
 
 
 
     <div class=" d-flex align-items-center justify-content-center gap-3">
 
-        <button class="btn-submit" > Search </button>
+        <button class="btn-submit" (click)="Search()"> Search </button>
     </div>
+
+
+     @if (selectedMode) {
+    <div>
+        <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+        <div class=" d-flex align-items-center justify-content-center gap-3 mt-2">
+
+            <button class="btn-submit"> Approve  </button>
+            <button class="btn-clear"> Reject  </button>
+        </div>
+    </div>
+    }
 
 
 </div>

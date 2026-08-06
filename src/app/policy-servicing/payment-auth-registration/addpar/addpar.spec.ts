@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Dynamictable } from './dynamictable';
+import { Addpar } from './addpar';
 
-describe('Dynamictable', () => {
-  let component: Dynamictable;
-  let fixture: ComponentFixture<Dynamictable>;
+describe('Addpar', () => {
+  let component: Addpar;
+  let fixture: ComponentFixture<Addpar>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Dynamictable]
+      imports: [Addpar]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Dynamictable);
+    fixture = TestBed.createComponent(Addpar);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

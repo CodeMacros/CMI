@@ -5,9 +5,11 @@ import { DynamicForm } from '../../../shared/dynamic-form/dynamic-form';
 import { Common } from '../../../service/common';
 
 
+
+
 @Component({
   selector: 'app-pacashierentry',
-  imports: [ReactiveFormsModule, DynamicForm],
+  imports: [ReactiveFormsModule, DynamicForm,],
   templateUrl: './pacashierentry.html',
   standalone: true,
   styleUrl: './pacashierentry.css',
@@ -215,6 +217,7 @@ export class Pacashierentry {
   ]
 
 
+
   ngOnInit() {
     this.detailForm = this.val.group({
       cashier: this.val.group({})
@@ -226,6 +229,8 @@ export class Pacashierentry {
   get cashier(): FormGroup {
     return this.detailForm.get('cashier') as FormGroup;
   }
+
+
 
 
 

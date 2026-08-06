@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CorrectAWBNumber } from './correct-awbnumber';
+import { Addpar } from './addpar';
 
-describe('CorrectAWBNumber', () => {
-  let component: CorrectAWBNumber;
-  let fixture: ComponentFixture<CorrectAWBNumber>;
+describe('Addpar', () => {
+  let component: Addpar;
+  let fixture: ComponentFixture<Addpar>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CorrectAWBNumber]
+      imports: [Addpar]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CorrectAWBNumber);
+    fixture = TestBed.createComponent(Addpar);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -8,8 +8,11 @@ export const POLICY_SERVICING_ROUTES: Routes = [
         children: [
             {
                 path: 'payment-auth-registration',
-                loadComponent: () => import('./payment-auth-registration/payment-auth-registration').then(c => c.PaymentAuthRegistration)
-            },
+                loadChildren: () =>
+                    import('./payment-auth-registration/payment-auth-registration.route')
+                        .then(r => r.PAYMENT_AUTH_REGISTRATION_ROUTES)
+            }
         ]
-    }
+    },
+
 ]

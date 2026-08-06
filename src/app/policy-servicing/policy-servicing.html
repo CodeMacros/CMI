@@ -1,21 +1,47 @@
-<div class="row">
-    <div class="col-12">
-        <div class="common-wrapper">
-            <!-- Page Heading -->
-            <div class="page-title mb-3">
-                <h4>Policy Details</h4>
+<div class="page-title mb-3">
+    <h4>Policy Servicing</h4>
+    <!-- <p>Create a new policy entry by providing the required details</p> -->
+</div>
+
+<div class="inward-card">
+    <div class="card-body">
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label custom-label">
+                    Policy Servicing
+                </label>
+
+                <select class="form-select custom-select" (change)="onActionChange($event)">
+
+                    <option value="" selected disabled>Select Policy Servicing</option>
+
+                    <option value="payment-auth-registration">
+                        Payment Authority Registration
+                    </option>
+
+                </select>
             </div>
-            <!-- Approval Details Card -->
-            <div class="inward-card">
-                <div class="col-md-3">
-                    <label class="form-label custom-label">Policy Details Type</label>
-                    <select class="form-select" (change)="onActionChange($event)">
-                        <option value="" selected disabled>Select Policy Details Type</option>
-                        <option value="payment-auth-registration">Payment Authority Registration</option>
-                    </select>
-                </div>
+
+            @if(payMentAuthDiv){
+
+            <div class="col-md-3">
+                <label class="form-label custom-label">
+                    Type
+                </label>
+
+                <select class="form-select custom-select" [(ngModel)]="selectedType" (change)="onTypeChange($event)">
+                    <option value="" disabled selected>Select Sub Type</option>
+                    <option value="addpar">AddPAR</option>
+                    <option value="addsubpar">AddSubPAR</option>
+                    <option value="modifypar">ModifyPAR</option>
+                    <option value="viewpar">ViewPAR</option>
+
+                </select>
             </div>
-            <router-outlet></router-outlet>
+            }
+
         </div>
     </div>
 </div>
+
+<router-outlet></router-outlet>

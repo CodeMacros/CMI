@@ -5,14 +5,23 @@
     </div>
     <app-dynamic-form [form]="micrForm" [fields]="micrFields"></app-dynamic-form>
 
+    @if (selectedMode === 'singleEntry') {
     <app-dynamic-form [form]="singleEntryForm" [fields]="singleEntryFields"></app-dynamic-form>
     <div class=" d-flex align-items-center justify-content-center gap-3">
 
         <button class="btn-submit" (click)="Submit()"> Submit </button>
-         <button class="btn-clear" (click)="Submit()"> Clear </button>
+        <button class="btn-clear" (click)="clear()"> Clear </button>
     </div>
+    }
+    @if (selectedMode === 'bulkUpload') {
+    <div>
+        <app-dynamic-form [form]="bulkUploadForm" [fields]="builkUploadFields"></app-dynamic-form>
+        <app-dynamictable [columns]="tableColumns" [data]="tableData"> </app-dynamictable>
+        <div class=" d-flex align-items-center justify-content-center gap-3 mt-2">
 
-    <!-- <app-dynamic-form [form]="singleEntryForm" [fields]="singleEntryFields"></app-dynamic-form> -->
-
+            <button class="btn-submit" (click)="upload()"> Upload </button>
+        </div>
+    </div>
+    }
 
 </div>

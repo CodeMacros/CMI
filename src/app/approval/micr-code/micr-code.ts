@@ -4,31 +4,42 @@ import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup } from '@angul
 import { DynamicField } from '../../modal/dynamic-field';
 import { Common } from '../../service/common';
 import { DynamicForm } from '../../shared/dynamic-form/dynamic-form';
+import { Dynamictable } from '../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-micr-code',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, Dynamictable],
   templateUrl: './micr-code.html',
   styleUrl: './micr-code.css',
 })
 export class MicrCode {
 
-  
+
   commonService = inject(Common);
 
   constructor(private fb: FormBuilder) { }
   mainForm!: FormGroup;
+  tableData: any[] = [];
+  selectedMode = '';
 
   ngOnInit(): void {
     this.mainForm = this.fb.group({
       micrForm: this.fb.group({}),
       singleEntryForm: this.fb.group({}),
+      bulkUploadForm: this.fb.group({})
+    });
+
+
+    setTimeout(() => {
+      this.micrForm.get('selectMode')?.valueChanges.subscribe(value => {
+        this.selectedMode = value;
+      });
     });
 
   }
 
   micrFields: DynamicField[] = [
-      {
+    {
       type: 'select',
       label: 'Select Mode',
       controlName: 'selectMode',
@@ -41,7 +52,7 @@ export class MicrCode {
     }
   ]
 
-   singleEntryFields: DynamicField[] = [
+  singleEntryFields: DynamicField[] = [
     {
       type: 'text',
       label: 'MICR Code',
@@ -59,74 +70,115 @@ export class MicrCode {
     },
     {
       type: 'text',
-      label: 'Bank MICR Code',
-      controlName: 'bankmicrCode',
-      placeholder: 'Enter Bank MICR Code',
+      label: 'City MICR Code',
+      controlName: 'citymicrCode',
+      placeholder: 'Enter City MICR Code',
+      required: true,
+      disabled: true
+    },
+    {
+      type: 'text',
+      label: 'Branch MICR Code',
+      controlName: 'branchmicrCode',
+      placeholder: 'Enter Branch MICR Code',
       required: true,
       disabled: true
     },
     {
       type: 'select',
-      label: 'Select Code',
-      controlName: 'selectCode',
-      placeholder: '-- Select Code --',
+      label: 'Bank Name',
+      controlName: 'bankName',
+      placeholder: '-- Select  --',
+      required: true,
       options: [
         { label: 'MICR', value: 'MICR' },
         { label: 'IFSC', value: 'IFSC' },
 
       ]
     },
-    
     {
-      type: 'text',
-      label: 'IFSC',
-      controlName: 'IFSC',
-      placeholder: 'Enter IFSC',
+      type: 'select',
+      label: 'City Name',
+      controlName: 'cityName',
+      placeholder: '-- Select  --',
       required: true,
-      disabled: true
-    },
-    {
-      type: 'text',
-      label: 'Bank Account No',
-      controlName: 'bankAccountNo',
-      placeholder: 'Enter Bank Account No',
-      required: true,
-    },
-    {
-      type: 'text',
-      label: 'Bank Name',
-      controlName: 'bankName',
-      placeholder: 'Enter Bank Name',
-      disabled: true,
-      required: true
+      options: [
+        { label: 'MICR', value: 'MICR' },
+        { label: 'IFSC', value: 'IFSC' },
+
+      ]
     },
     {
       type: 'text',
       label: 'Branch Name',
       controlName: 'branchName',
       placeholder: 'Enter Branch Name',
-      disabled: true,
       required: true
     },
 
   ]
 
-   get micrForm(): FormGroup {
+  builkUploadFields: DynamicField[] = [
+    {
+      type: 'file',
+      label: 'Choose File',
+      controlName: 'document',
+      required: true
+    }
+  ]
+
+  get micrForm(): FormGroup {
     return this.mainForm.get('micrForm') as FormGroup;
   }
 
-   get singleEntryForm(): FormGroup {
+  get singleEntryForm(): FormGroup {
     return this.mainForm.get('singleEntryForm') as FormGroup;
   }
 
-
-  Submit(){
-    //  if (!this.commonService.validateForm(this.mainForm)) {
-    //   return;
-    // }
-
-    // const Data = this.mainForm.getRawValue();
-    // console.log('Fund Transfer Data:', Data);
+  get bulkUploadForm(): FormGroup {
+    return this.mainForm.get('bulkUploadForm') as FormGroup;
   }
 
+  Submit() {
+    if (!this.commonService.validateForm(this.singleEntryForm)) {
+      return;
+    }
+
+    const payload = {
+      selectedMode: this.selectedMode,
+      data: this.singleEntryForm.getRawValue()
+    };
+
+    console.log(payload);
+  }
+
+  clear() {
+    this.commonService.clearForm(this.singleEntryForm, this.singleEntryFields)
+  }
+
+  tableColumns = [
+    { field: 'CheckDraftNo', header: 'No' },
+    { field: 'CheckDraftDate', header: 'File Name' },
+    { field: 'PayMode', header: 'File Size' },
+    { field: 'PaymentType', header: 'File Type' },
+    { field: 'Amount', header: 'Upload Type' },
+    { field: 'Bank', header: 'Description' },
+    { field: 'Delete', header: 'Option', type: 'button', buttonLabel: 'Delete' }
+
+  ];
+
+  upload() {
+    if (!this.commonService.validateForm(this.bulkUploadForm)) {
+    return;
+  }
+
+  const payload = {
+    selectedMode: this.selectedMode,
+    data: this.bulkUploadForm.getRawValue(),
+    tableData: this.tableData
+  };
+
+  console.log(payload);
+
+  }
 }

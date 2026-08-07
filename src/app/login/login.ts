@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { Api } from '../service/api';
 
 @Component({
@@ -14,7 +14,7 @@ export class Login {
   userId: string = '';
   password: string = '';
 
-  constructor(private apiService: Api) { }
+  constructor(private apiService: Api, private route: Router) { }
 
   login() {
     const body = {
@@ -25,6 +25,11 @@ export class Login {
     this.apiService.makePostRequest('login', body).subscribe({
       next: (res) => {
         console.log(res);
+        if (res.success) {
+          this.route.navigate(['/layout/dashboard']);
+        } else {
+          alert(res.message);
+        }
       },
       error: (err) => {
         console.log(err);

@@ -8,7 +8,7 @@ import { Dynamictable } from '../../shared/dynamictable/dynamictable';
 
 @Component({
   selector: 'app-micr-code',
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, Dynamictable],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, DynamicForm, ],//Dynamictable
   templateUrl: './micr-code.html',
   styleUrl: './micr-code.css',
 })

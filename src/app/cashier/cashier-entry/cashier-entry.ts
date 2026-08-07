@@ -50,10 +50,7 @@ export class CashierEntry {
 
   };
 
-  //  <!-- <option value="renewal-payment">Renewal Payment</option>
-  //             <option value="renewal-revival-premium">Revival Premium</option>
-  //             <option value="renewal-cda-charges">Renewal CDA charges</option>
-  //             <option value="renewal-top-up">Top Up (applicable for ULIP) </option>
+
 
   constructor(private router: Router) { }
 

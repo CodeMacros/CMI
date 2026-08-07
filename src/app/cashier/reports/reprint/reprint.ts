@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-reprint',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './reprint.html',
   styleUrl: './reprint.css',
 })

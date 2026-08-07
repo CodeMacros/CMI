@@ -14,23 +14,23 @@
 
                 <app-dynamic-form [form]="cashierEntrForm" (fieldChanged)="onSelectChange($event)"
                     [fields]="cashierEntryfields"></app-dynamic-form>
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="d-flex justify-content-center gap-3">
-            
-                        <div>
-                            <button class="btn-submit" (click)="markUnmark()">
-                                Submit
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center gap-3">
+
+                            <div>
+                                <button class="btn-submit" (click)="markUnmark()">
+                                    Submit
+                                </button>
+                            </div>
+
+                            <button class="btn-clear" (click)="clear()">
+                                Reset
                             </button>
+
                         </div>
-            
-                        <button class="btn-clear" (click)="clear()">
-                            Reset
-                        </button>
-            
                     </div>
                 </div>
-            </div>
             </div>
 
         </div>
@@ -51,7 +51,7 @@
                 <app-dynamictable [config]="tableConfig"></app-dynamictable>
 
             </div>
-            
+
         </div>
     </div>
 </div>

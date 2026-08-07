@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <div class="common-card-header pb-0">
+                    <h5 class="section-title">Individal Cashier/ File Upload/ Cashier Entry</h5>
+                </div>
+
+
+                <app-dynamic-form [form]="cashierEntrFilterForm" (fieldChanged)="onSelectChange($event)"
+                    [fields]="cashierEntrUploadFields"></app-dynamic-form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="common-wrapper">
+            <div class="inward-card">
+
+                <!-- <div class="common-card-header pb-0">
+                    <h5 class="section-title">cashier Entry Approval</h5>
+                </div> -->
+
+                <app-dynamictable [config]="tableConfig"></app-dynamictable>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-center gap-3">
+
+            <div>
+                <button class="btn-submit" (click)="markUnmark()">
+                    Upload
+                </button>
+            </div>
+
+            <button class="btn-clear" (click)="clear()">
+                clear
+            </button>
+
+        </div>
+    </div>
+</div>

@@ -29,7 +29,7 @@ export class ViewCashierEntry {
       type: 'select',
       label: 'Status',
       controlName: 'status',
-      // placeholder: 'Select Proposal Number',
+      placeholder: '-- Select Status --',
       required: true,
       options: [
         // { label: 'Renewal', value: '1' },

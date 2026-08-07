@@ -27,7 +27,7 @@ export class ViewReceipt {
   viewReceiptFields: DynamicField[] = [
     {
       type: 'select',
-      label: 'Select BY',
+      label: 'Select By',
       controlName: 'selectBy',
       // placeholder: 'Select Proposal Number',
       required: true,

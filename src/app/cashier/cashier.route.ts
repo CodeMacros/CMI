@@ -59,11 +59,11 @@ export const CASHIER_ROUTES: Routes = [
       { path: 'cashier-slip', loadComponent: () => import('./reports/cashier-slip/cashier-slip').then(c => c.CashierSlip) },
       { path: 'scmc-file-upload', loadComponent: () => import('./reports/scmcfile-upload/scmcfile-upload').then(c => c.SCMCFileUpload) },
       { path: 'ip-cashier-entry', loadComponent: () => import('./reports/ipcashier-entry/ipcashier-entry').then(c => c.IPCashierEntry) },
-      { path: 'view-receipt', loadComponent: () => import('./cashier-entry/intial/intial').then(c => c.Intial) },
+      { path: 'view-receipt', loadComponent: () => import('./reports/view-receipt/view-receipt').then(c => c.ViewReceipt) },
       { path: 'descriptive-rating-sheet-search', loadComponent: () => import('./reports/descriptive-rating-sheet-search-instrument-no/descriptive-rating-sheet-search-instrument-no').then(c => c.DescriptiveRatingSheetSearchInstrumentNo) },
       { path: 'pending-instrument-report', loadComponent: () => import('./reports/pending-instrument-report/pending-instrument-report').then(c => c.PendingInstrumentReport) },
-      { path: 'sahara', loadComponent: () => import('./reports/sahara/sahara').then(c => c.Sahara) },
-      { path: 'reprint', loadComponent: () => import('./reports/reprint/reprint').then(c => c.Reprint) }
+      { path: 'sahara', loadChildren: () => import('./reports/sahara/sahara.route').then(c => c.SAHARA_ROUTES) },
+      { path: 'reprint', loadChildren: () => import('./reports/reprint/reprint.route').then(c => c.REPRINT_ROUTES) }
     ]
   },
 

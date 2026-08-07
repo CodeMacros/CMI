@@ -1,31 +1,56 @@
+
+
+
+
+
 <div class="row">
     <div class="col-12">
         <div class="common-wrapper">
-            <!-- Page Heading -->
             <div class="page-title mb-3">
-                <h4>Reports</h4>
+                <h4>Report Type</h4>
             </div>
-            <!-- Approval Details Card -->
             <div class="inward-card">
-                <div class="col-md-3">
-                    <label class="form-label custom-label">Report Type</label>
-                    <!-- <select class="form-select" (change)="onActionChange($event)">
-                        <option value="" selected disabled>Select Report Type</option>
-                    </select> -->
-                    <select class="form-select" [(ngModel)]="selectedAction" (change)="onActionChange($event)">
-                        <option value="" selected disabled>Select Report Type</option>
-                        <option value="view-cashier-entry">View Cashier Entry</option>
-                        <option value="cash-deposit-slip">Cash Deposit Slip</option>
-                        <option value="duplicate-deposit-slip">Duplicate Deposit Slip</option>
-                        <option value="cashier-slip">Cashier Slip</option>
-                        <option value="scmc-file-upload">SCMC File Upload</option>
-                        <option value="ip-cashier-entry">IP Cashier Entry</option>
-                        <option value="view-receipt">View Receipt</option>
-                        <option value="descriptive-rating-sheet-search"> Descriptive Rating Sheet/Search Instrument Number (Group) </option>
-                        <option value="pending-instrument-report"> Pending Instrument Report </option>
-                        <option value="sahara">Sahara</option>
-                        <option value="reprint">Reprint</option>
-                    </select>
+                <label class="form-label custom-label">Report Type</label>
+                <div class="row">
+                    <div class="col-md-3">
+                        <select class="form-select" [(ngModel)]="selectedAction" (change)="onActionChange($event)">
+                            <option value="" selected disabled>Select Report Type</option>
+                            <option value="view-cashier-entry">View Cashier Entry</option>
+                            <option value="cash-deposit-slip">Cash Deposit Slip</option>
+                            <option value="duplicate-deposit-slip">Duplicate Deposit Slip</option>
+                            <option value="cashier-slip">Cashier Slip</option>
+                            <option value="scmc-file-upload">SCMC File Upload</option>
+                            <option value="ip-cashier-entry">IP Cashier Entry</option>
+                            <option value="view-receipt">View Receipt</option>
+                            <option value="descriptive-rating-sheet-search"> Descriptive Rating Sheet/Search Instrument
+                                Number (Group) </option>
+                            <option value="pending-instrument-report"> Pending Instrument Report </option>
+                            <option value="sahara">Sahara</option>
+                            <option value="reprint">Reprint</option>
+                        </select>
+                    </div>
+                    @if(saharaDiv){
+                    <div class="col-md-3">
+                        <select class="form-select" (change)="onSaharaChange($event)">
+                            <option value="" selected disabled>-- Select Sahara --</option>
+                            <option value="saharaPolicyInquiry">Sahara Policy Inquiry</option>
+                            <option value="saharaCashierReport">Sahara Cashier Report</option>
+
+                        </select>
+                    </div>
+                    }
+
+
+                     @if(reprintDiv){
+                    <div class="col-md-3">
+                        <select class="form-select" (change)="onRepairChange($event)">
+                            <option value="" selected disabled>-- Select Reprint --</option>
+                            <option value="renewalPremiumReceipts">Renewal Premium Receipts</option>
+                            <option value="proposalDepositReceipts">Proposal Deposit Receipts</option>
+
+                        </select>
+                    </div>
+                    }
                 </div>
             </div>
             <router-outlet></router-outlet>

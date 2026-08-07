@@ -1,16 +1,15 @@
 <div class="inward-card mt-2">
 
     <div class="common-card-header pb-0 ">
-        <h5 class="section-title">Pending Instrument</h5>
+        <h5 class="section-title">Proposal Deposit Receipt</h5>
     </div>
-    <app-dynamic-form [form]="pendingInstrumentForm" [fields]="pendingInstrumentFields"></app-dynamic-form>
+    <app-dynamic-form [form]="proposalDepositReceiptForm" [fields]="proposalDepositReceiptFields" (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
 
 
 
     <div class=" d-flex align-items-center justify-content-center gap-3">
 
         <button class="btn-submit" (click)="Submit()"> Submit </button>
-        <button class="btn-submit" > Clear All </button>
     </div>
 
 

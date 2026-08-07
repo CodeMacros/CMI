@@ -9,11 +9,20 @@ export const CASHIER_ROUTES: Routes = [
     path: 'bulk-upload',
     component: BulkUpload,
     children: [
-      { path: 'eft-file', loadComponent: () => import('./bulk-upload/eft-upload/eft-upload').then(c => c.EftUpload) },
-      { path: 'cashier-entry-file', loadComponent: () => import('./bulk-upload/cashier-entry-upload/cashier-entry-upload').then(c => c.CashierEntryUpload) },
-      { path: 'online-payment-file', loadComponent: () => import('./bulk-upload/online-payment-upload/online-payment-upload').then(c => c.OnlinePaymentUpload) },
-      { path: 'rpp-payment-file', loadComponent: () => import('./bulk-upload/rpp-payment-upload/rpp-payment-upload').then(c => c.RppPaymentUpload) },
-    ]
+      {
+        path: 'individual', loadComponent: () => import('./bulk-upload/individual/individual').then(c => c.Individual),
+        children: [
+          { path: 'eft-file', loadComponent: () => import('./bulk-upload/individual/eft-upload/eft-upload').then(c => c.EftUpload) },
+          { path: 'cashier-entry-file', loadComponent: () => import('./bulk-upload/individual/cashier-entry-upload/cashier-entry-upload').then(c => c.CashierEntryUpload) },
+          { path: 'online-payment-file', loadComponent: () => import('./bulk-upload/individual/online-payment-upload/online-payment-upload').then(c => c.OnlinePaymentUpload) },
+          { path: 'rpp-payment-file', loadComponent: () => import('./bulk-upload/individual/rpp-payment-upload/rpp-payment-upload').then(c => c.RppPaymentUpload) },
+          { path: 'cashier-feed-not-recive', loadComponent: () => import('./bulk-upload/individual/cashier-feed-not-recived/cashier-feed-not-recived').then(c => c.CashierFeedNotRecived) },
+          { path: 'scmc-file-upload', loadComponent: () => import('./bulk-upload/individual/scmc-file-upload/scmc-file-upload').then(c => c.ScmcFileUpload) },
+          { path: 'upload-file-payment', loadComponent: () => import('./bulk-upload/individual/upload-file-payment/upload-file-payment').then(c => c.UploadFilePayment) },
+          { path: 'ip-ce-file-upload', loadComponent: () => import('./bulk-upload/individual/ip-ce-file-upload/ip-ce-file-upload').then(c => c.IpCeFileUpload) },
+        ]
+      }
+    ],
   },
   {
     path: 'cashier-entry',

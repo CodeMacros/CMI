@@ -100,9 +100,9 @@ export class Dynamictable {
 }
 
 
-  get tableWidth(): string {
-    return `${this.columns.length * 10}%`;
-  }
+  // get tableWidth(): string {
+  //   return `${this.columns.length * 10}%`;
+  // }
 
 
 

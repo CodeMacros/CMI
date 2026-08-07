@@ -25,7 +25,7 @@
         [scrollable]="config.scrollable ?? true" [scrollHeight]="config.scrollHeight ?? '500px'"
         [loading]="config.loading ?? false" [lazy]="config.lazy ?? false"
         [totalRecords]="config.totalRecords ?? data.length" [globalFilterFields]="globalFilterFields"
-        [(selection)]="selectedRows" (selectionChange)="onSelectionChange($event)" [tableStyle]="{'width': tableWidth }"
+        [(selection)]="selectedRows" (selectionChange)="onSelectionChange($event)" [tableStyle]="{'min-width': '100%' }"
         dataKey="proposalNo">
 
 

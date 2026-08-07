@@ -107,7 +107,8 @@
                 <label>User ID</label>
                 <div class="input-box">
                     <img src="assets/images/user.png">
-                    <input type="text" class="form-control" placeholder="Enter User ID">
+                    <input type="text" class="form-control" placeholder="Enter User ID" [(ngModel)]="userId"
+                        name="userId">
                 </div>
             </div>
 
@@ -116,7 +117,8 @@
                 <label>Password</label>
                 <div class="input-box">
                     <img src="assets/images/password.png">
-                    <input type="password" class="form-control" placeholder="Enter Password">
+                    <input type="password" class="form-control" placeholder="Enter Password"
+                        [(ngModel)]="password" name="password">
                 </div>
             </div>
 
@@ -124,7 +126,7 @@
                 <a href="#">Change Password</a>
                 <a style="color: #333333;" href="#">Reset Password</a>
             </div>
-            <button class="login-btn" routerLink="/layout/dashboard">
+            <button class="login-btn" (click)="validateLogin()">
                 Login
             </button>
 

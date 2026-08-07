@@ -1,12 +1,44 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from "@angular/router";
+import { Api } from '../service/api';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink],
+  imports: [RouterModule, FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
 
+  userId: string = '';
+  password: string = '';
+
+  constructor(private apiService: Api) { }
+
+  login() {
+    const body = {
+      username: this.userId,
+      password: this.password
+    };
+    console.log(body);
+    this.apiService.makePostRequest('login', body).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
+  validateLogin() {
+    if (!this.userId) {
+      alert('Please Enter User ID');
+    } else if (!this.password) {
+      alert('Please Enter Password');
+    } else {
+      this.login();
+    }
+  }
 }

@@ -3,9 +3,8 @@
     <div class="common-card-header pb-0 ">
         <h5 class="section-title">Printing Cashier Slip</h5>
     </div>
-    <app-dynamic-form [form]="printingSlipForm" [fields]="printingSlipFields"></app-dynamic-form>
-
-
+    <app-dynamic-form [form]="printingSlipForm" [fields]="printingSlipFields"
+        (fieldChanged)="onFieldChanged($event)"></app-dynamic-form>
 
     <div class=" d-flex align-items-center justify-content-center gap-3">
 

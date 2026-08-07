@@ -31,7 +31,7 @@
                     </div>
                     @if(saharaDiv){
                     <div class="col-md-3">
-                        <select class="form-select" (change)="onSaharaChange($event)">
+                        <select class="form-select" [(ngModel)]="selectedSahara"  (change)="onSaharaChange($event)">
                             <option value="" selected disabled>-- Select Sahara --</option>
                             <option value="saharaPolicyInquiry">Sahara Policy Inquiry</option>
                             <option value="saharaCashierReport">Sahara Cashier Report</option>
@@ -43,7 +43,7 @@
 
                      @if(reprintDiv){
                     <div class="col-md-3">
-                        <select class="form-select" (change)="onRepairChange($event)">
+                        <select class="form-select" [(ngModel)]="selectedReprint" (change)="onRepairChange($event)">
                             <option value="" selected disabled>-- Select Reprint --</option>
                             <option value="renewalPremiumReceipts">Renewal Premium Receipts</option>
                             <option value="proposalDepositReceipts">Proposal Deposit Receipts</option>

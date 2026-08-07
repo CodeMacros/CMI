@@ -12,17 +12,54 @@ export class Reports implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) { }
 
   selectedAction = '';
+  selectedSahara = '';
+  selectedReprint = '';
   saharaDiv: boolean = false;
-  reprintDiv:boolean = false;
+  reprintDiv: boolean = false;
+
+  // ngOnInit(): void {
+  //   this.route.firstChild?.url.subscribe(url => {
+  //     if (url.length) {
+  //       this.selectedAction = url[0].path;
+  //       this.saharaDiv = this.selectedAction === 'sahara';
+  //       this.reprintDiv = this.selectedAction === 'reprint';
+  //     }
+  //   });
+  // }
+
 
   ngOnInit(): void {
-    this.route.firstChild?.url.subscribe(url => {
-      if (url.length) {
-        this.selectedAction = url[0].path;
-        this.saharaDiv = this.selectedAction === 'sahara';
-        this.reprintDiv = this.selectedAction === 'reprint';
+    const firstChild = this.route.firstChild; 
+
+    if (!firstChild) {
+      return;
+    }
+
+    const action = firstChild.snapshot.url[0]?.path;  
+
+    this.saharaDiv = action === 'sahara';
+    this.reprintDiv = action === 'reprint';
+
+    if (action === 'sahara') {
+      const child = firstChild.firstChild?.snapshot.url[0]?.path;
+      if (!child) {
+        this.router.navigate(['/layout/cashier/reports']);
+        return;
       }
-    });
+
+      this.selectedSahara = child;
+    }
+
+    if (action === 'reprint') {
+      const child = firstChild.firstChild?.snapshot.url[0]?.path;
+
+      if (!child) {
+        this.router.navigate(['/layout/cashier/reports']);
+        return;
+      }
+
+      this.selectedReprint = child;
+    }
   }
 
   onActionChange(event: Event): void {
@@ -37,6 +74,7 @@ export class Reports implements OnInit {
 
   onSaharaChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
+
     this.router.navigate(['/layout/cashier/reports/sahara', value]);
   }
 

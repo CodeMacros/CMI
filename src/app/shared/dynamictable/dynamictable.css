@@ -2,3 +2,26 @@
   pointer-events: none;
   opacity: 0.6;
 }
+
+/* Table */
+.p-datatable {
+  background: #fff !important;
+  color: #212529 !important;
+}
+
+/* Header */
+.p-datatable .p-datatable-thead>tr>th {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+/* Body */
+.p-datatable .p-datatable-tbody>tr {
+  background: #fff !important;
+  color: #212529 !important;
+}
+
+/* Alternate rows */
+.p-datatable .p-datatable-tbody>tr:nth-child(even) {
+  background: #f8f9fa !important;
+}

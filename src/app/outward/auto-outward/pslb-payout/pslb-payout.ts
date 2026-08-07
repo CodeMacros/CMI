@@ -18,7 +18,7 @@ export class PslbPayout implements OnInit {
       controlName: 'proposalNo',
       placeholder: 'Enter Proposal No/ Policy Number/ Form Number /LAN',
       required: true,
-      col: 'col-8'
+      col: 'col-6'
     },
     {
       type: 'date',
@@ -55,16 +55,16 @@ export class PslbPayout implements OnInit {
     },
     {
       type: 'text',
-      label: 'Policy Number',
-      controlName: 'policyNumber',
-      placeholder: 'Enter Policy Number',
+      label: 'Proposal Number',
+      controlName: 'proposalNumber',
+      placeholder: 'Enter Proposal Number',
       required: true,
     },
     {
       type: 'text',
-      label: 'Proposal Number',
-      controlName: 'proposalNumber',
-      placeholder: 'Enter Proposal Number',
+      label: 'Policy Number',
+      controlName: 'policyNumber',
+      placeholder: 'Enter Policy Number',
       required: true,
     },
     {

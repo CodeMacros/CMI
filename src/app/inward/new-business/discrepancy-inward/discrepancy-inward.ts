@@ -14,13 +14,13 @@ export class DiscrepancyInward implements OnInit {
   discrepancyForm!: FormGroup
 
   courierfields: DynamicField[] = [
-    {
-      type: 'text',
-      label: 'Inward Number',
-      controlName: 'inwardNumber',
-      placeholder: 'Enter Inward Number',
-      required: true
-    },
+    // {
+    //   type: 'text',
+    //   label: 'Inward Number',
+    //   controlName: 'inwardNumber',
+    //   placeholder: 'Enter Inward Number',
+    //   required: true
+    // },
     {
       type: 'select',
       label: 'Renewal/Initial',

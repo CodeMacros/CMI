@@ -16,7 +16,7 @@ export class BulkUpload implements OnInit {
   onActionChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
     if (value) {
-      this.router.navigate(['/layout/bulk-upload/', value]);
+      this.router.navigate(['/layout/cashier/bulk-upload/', value]);
     }
   }
 }

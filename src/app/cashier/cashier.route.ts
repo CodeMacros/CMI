@@ -8,6 +8,12 @@ export const CASHIER_ROUTES: Routes = [
   {
     path: 'bulk-upload',
     component: BulkUpload,
+    children: [
+      { path: 'eft-file', loadComponent: () => import('./bulk-upload/eft-upload/eft-upload').then(c => c.EftUpload) },
+      { path: 'cashier-entry-file', loadComponent: () => import('./bulk-upload/cashier-entry-upload/cashier-entry-upload').then(c => c.CashierEntryUpload) },
+      { path: 'online-payment-file', loadComponent: () => import('./bulk-upload/online-payment-upload/online-payment-upload').then(c => c.OnlinePaymentUpload) },
+      { path: 'rpp-payment-file', loadComponent: () => import('./bulk-upload/rpp-payment-upload/rpp-payment-upload').then(c => c.RppPaymentUpload) },
+    ]
   },
   {
     path: 'cashier-entry',

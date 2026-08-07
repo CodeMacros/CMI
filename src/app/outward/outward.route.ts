@@ -6,7 +6,7 @@ export const OUTWARD_ROUTES: Routes = [
         path: '',
         component: Outward,
         children: [
-             {
+            {
                 path: 'outward',
                 loadComponent: () => import('./outward/outward').then(c => c.Outward)
             },
@@ -22,6 +22,10 @@ export const OUTWARD_ROUTES: Routes = [
             {
                 path: 'edit',
                 loadComponent: () => import('./edit-outward/edit-outward').then(c => c.EditOutward)
+            },
+            {
+                path: 'correct-awb',
+                loadComponent: () => import('./correct-awb/correct-awb').then(c => c.CorrectAwb)
             },
         ]
     }
